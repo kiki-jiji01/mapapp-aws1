@@ -15,9 +15,9 @@ class Main extends React.Component{
             <MiddleWrapper>
              <Map/>
             </MiddleWrapper>
-            <BottomWrapper>
+            {/* <BottomWrapper>
              <Video/>
-            </BottomWrapper>
+            </BottomWrapper> */}
             <Sns/>
          </MainWrapper>
         );
@@ -43,7 +43,7 @@ background: url("https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ix
 `
 
 const MiddleWrapper = styled.div`
-height: 50vh;
+height: 200vh;
 position: relative;
 
 
