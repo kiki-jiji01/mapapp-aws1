@@ -15,10 +15,10 @@ class Main extends React.Component{
             <MiddleWrapper>
              <Map/>
             </MiddleWrapper>
-            {/* <BottomWrapper>
-             <Video/>
-            </BottomWrapper> */}
-            <Sns/>
+            <BottomWrapper>
+             <Sns/> 
+            </BottomWrapper>
+            
          </MainWrapper>
         );
     }
