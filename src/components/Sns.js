@@ -10,6 +10,7 @@ function Sns() {
               
               .then((data) => {
                 console.log(data);
+              
               });
           }, []);
     return(
