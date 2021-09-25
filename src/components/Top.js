@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components"
+import InstagramEmbed from 'react-instagram-embed'
 
 class Top extends React.Component{
     render(){
@@ -13,7 +14,8 @@ class Top extends React.Component{
             If you wish strong and strong, You can go everywhere you want.<br/> Let's start your dream here.
             </p>
            </Banner>
-          
+           
+            
          </Topwrapper>
         );
     }

@@ -1,23 +1,66 @@
 import React,{useState,useEffect} from 'react';
 import axios from "axios";
 import styled from "styled-components"
+import InstagramEmbed from 'react-instagram-embed'
 
-function Sns() {
-    
-        useEffect(() => {
-            fetch("https://graph.facebook.com/17841564013123618/top_media?user_id=17841411766795081&fields=id,permalink,media_type,comments_count,like_count&access_token=EAA9mxzmBApoBAGrdMdpLi3D7GCxZCa590QkvwiRwluHlmkamsYqO4HyiPjUCTpnQ78pC3HVmRZC8uFvL5G1PExQoF3ftduM3cxF0ILx5ZCvywoCW9w6ZBp5Bux7nFfIGpvNBzRAtVpr5iZCtP4Y3rDQnDPd4oU88bBbUmF4bJbWdgvy76fvYp")
-              .then((response) => response.json())
+function Sns({Post,Caption}) {
+
+  
+    // const [Post,setPost] = useState([]);
+    // const [Caption,setCaption] = useState([]);
+    //     useEffect(() => {
+    //         fetch("https://graph.facebook.com/17841564013123618/top_media?user_id=17841411766795081&fields=id,media_url,caption,permalink,media_type,comments_count,like_count&access_token=EAA9mxzmBApoBANQKYIlJnl0iLdewqw10sROg4d9IOWZAulfN0JkeMp6jMB4JH4pkYzUVJXuVyzRgBWmqlGCUaN3OyZBXq6ZAwyZBj4vFkoZBOeNUaVJH397z1uiRWVe8IOsrkeEGeQTMHMxzZBaG59peUnJiTKZCPgQzjXnbHSNJhj4h4PtjtqD")
+    //           .then((response) => response.json())
+    //           .then((response) => {
               
-              .then((data) => {
-                console.log(data);
+    //             console.log(response.data[0].media_url)
+    //             setPost(response.data[0].media_url);
+    //             setCaption(response.data[0].caption);
+    //           });
+               
+    //         //   .then((data) => {
+    //         //         const image = data.caption
+    //         //         const caption = data[0]
+    //         //       });
+            
+    //       }, 
+          
+         
+    //       []);
+
+        //   useEffect(() => {
+        //     fetch("https://graph.facebook.com/v12.0/instagram_oembed?url=https://www.instagram.com/p/CULG9e4LLRc/&access_token=4335130499941018|637e26a2d9941e0dfa5f90cf1604eb7d")
+        //       .then((response) => response.json())
               
-              });
-          }, []);
+            //   .then((data) => {
+            //     console.log(data);
+              
+            //   });
+        //   }, []);
     return(
         <SnsWrapper>
-            <div>
-                <h>aho</h>
-            </div>
+          <Instagram>
+            <img src={Post}/>
+            <p>{Caption}</p>
+          </Instagram>
+          <Twitter>
+
+          </Twitter>
+          
+          {/* <InstagramEmbed
+                url="https://www.instagram.com/p/CULG9e4LLRc/"
+                clientAccessToken='4335130499941018|637e26a2d9941e0dfa5f90cf1604eb7d'
+                maxWidth={320}
+                hideCaption={false}
+                containerTagName='div'
+                protocol=''
+                injectScript
+                onLoading={() => {}}
+                onSuccess={() => {}}
+                onAfterRender={() => {}}
+                onFailure={() => {}}
+            /> */}
+            
         </SnsWrapper>
     );
 }
@@ -26,7 +69,19 @@ export default Sns;
 
 
 const SnsWrapper = styled.div`
-height: 20vh;
+height: 80vh;
 position: relative;
 top:50vh;
+`
+
+const Instagram = styled.div`
+height: 40vh;
+position: relative;
+
+`
+
+const Twitter = styled.div`
+height: 40vh;
+position: relative;
+
 `

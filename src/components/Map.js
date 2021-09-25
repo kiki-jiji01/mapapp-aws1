@@ -14,7 +14,7 @@ import SearchBar from './SearchBar';
 import VideoList from './VideoList';
 import styled from "styled-components"
 import VideoDetail from './VideoDetail';
-
+import InstagramEmbed from 'react-instagram-embed'
 Geocode.setApiKey("AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM")
 
 
@@ -310,6 +310,8 @@ class Map extends React.Component{
 
         return(
          <div>
+        
+           
           <MapWrapper>
            <MapWithAMarker
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM&v=3.exp&libraries=geometry,drawing,places"
@@ -374,6 +376,7 @@ class Map extends React.Component{
                 </Grid>
             </Grid>
             </VideoWrapper> 
+            
          </div>
           
         );
@@ -392,4 +395,10 @@ const VideoWrapper = styled.div`
 height: 200vh;
 position: relative;
 top:50vh;
+`
+
+const Insta= styled.div`
+height: 10vh;
+position: relative;
+
 `
