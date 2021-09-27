@@ -1,9 +1,10 @@
 import React,{useState,useEffect} from 'react';
 import axios from "axios";
 import styled from "styled-components"
-import InstagramEmbed from 'react-instagram-embed'
+// import InstagramEmbed from 'react-instagram-embed'
+import { TwitterTimelineEmbed,TwitterHashtagButton} from 'react-twitter-embed';
 
-function Sns({Post,Caption}) {
+class Sns extends React.Component{
 
   
     // const [Post,setPost] = useState([]);
@@ -37,32 +38,43 @@ function Sns({Post,Caption}) {
               
             //   });
         //   }, []);
-    return(
-        <SnsWrapper>
-          <Instagram>
-            <img src={Post}/>
-            <p>{Caption}</p>
-          </Instagram>
-          <Twitter>
 
-          </Twitter>
-          
-          {/* <InstagramEmbed
-                url="https://www.instagram.com/p/CULG9e4LLRc/"
-                clientAccessToken='4335130499941018|637e26a2d9941e0dfa5f90cf1604eb7d'
-                maxWidth={320}
-                hideCaption={false}
-                containerTagName='div'
-                protocol=''
-                injectScript
-                onLoading={() => {}}
-                onSuccess={() => {}}
-                onAfterRender={() => {}}
-                onFailure={() => {}}
-            /> */}
-            
-        </SnsWrapper>
-    );
+        render(){
+
+            return(
+                <SnsWrapper>
+                  <Instagram>
+                    <img src={this.props.Post}/>
+                    <p>{this.props.Caption}</p>
+                  </Instagram>
+                  <Twitter>
+                  <TwitterTimelineEmbed
+                    sourceType="profile"
+                    screenName="NASA"
+                    options={{height: 400}}
+                    
+                  />
+                  </Twitter>
+                  
+                  {/* <InstagramEmbed
+                        url="https://www.instagram.com/p/CULG9e4LLRc/"
+                        clientAccessToken='4335130499941018|637e26a2d9941e0dfa5f90cf1604eb7d'
+                        maxWidth={320}
+                        hideCaption={false}
+                        containerTagName='div'
+                        protocol=''
+                        injectScript
+                        onLoading={() => {}}
+                        onSuccess={() => {}}
+                        onAfterRender={() => {}}
+                        onFailure={() => {}}
+                    /> */}
+                    
+                </SnsWrapper>
+            );
+
+        }
+   
 }
 
 export default Sns;

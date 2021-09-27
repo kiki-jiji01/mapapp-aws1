@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components"
-import InstagramEmbed from 'react-instagram-embed'
+
 
 class Top extends React.Component{
     render(){
