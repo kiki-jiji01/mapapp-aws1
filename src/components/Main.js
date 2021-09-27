@@ -10,12 +10,16 @@ function Main (){
 
     const [Post,setPost] = useState([]);
     const [Caption,setCaption] = useState([]);
+
+
         useEffect(() => {
-            fetch("https://graph.facebook.com/17841564013123618/top_media?user_id=17841411766795081&fields=id,media_url,caption,permalink,media_type,comments_count,like_count&access_token=EAA9mxzmBApoBANQKYIlJnl0iLdewqw10sROg4d9IOWZAulfN0JkeMp6jMB4JH4pkYzUVJXuVyzRgBWmqlGCUaN3OyZBXq6ZAwyZBj4vFkoZBOeNUaVJH397z1uiRWVe8IOsrkeEGeQTMHMxzZBaG59peUnJiTKZCPgQzjXnbHSNJhj4h4PtjtqD")
+            fetch("https://graph.facebook.com/17841564013123618/top_media?user_id=17841411766795081&fields=id,media_url,caption,permalink,media_type,comments_count,like_count&access_token=EAA9mxzmBApoBAB5j504ycyfQrCqiu9TiiK1Y2ifAeWP1SyHRjcka9uDCHYQ27N3FRls7NutGEZBf6s9bv19zRbPKAs709oQSYHSkkITKu8aN5zSBVcaQwGYMiZAHPtOD2JzjY4bq7wZB7ooGDR5JSJoPymkP9CPIPHNFV2CBo3u60i48SaE")
               .then((response) => response.json())
+
+
               .then((response) => {
               
-                console.log(response.data[0].media_url)
+                console.log(response.data[0])
                 setPost(response.data[0].media_url);
                 setCaption(response.data[0].caption);
               });
