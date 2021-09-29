@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components"
-import InstagramEmbed from 'react-instagram-embed'
+
 
 class Top extends React.Component{
     render(){
@@ -11,7 +11,8 @@ class Top extends React.Component{
             <h2>Map With</h2>
             <p>
             Where do you wanna live with your beatiful partner in the future?<br/>
-            If you wish strong and strong, You can go everywhere you want.<br/> Let's start your dream here.
+            If you wish strong and strong, You can go everywhere you want.<br/> Let's start your dream here Get
+            
             </p>
            </Banner>
            

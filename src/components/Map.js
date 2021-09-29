@@ -14,7 +14,7 @@ import SearchBar from './SearchBar';
 import VideoList from './VideoList';
 import styled from "styled-components"
 import VideoDetail from './VideoDetail';
-import InstagramEmbed from 'react-instagram-embed'
+
 Geocode.setApiKey("AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM")
 
 

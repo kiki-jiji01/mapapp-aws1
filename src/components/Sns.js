@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import axios from "axios";
 import styled from "styled-components"
-import InstagramEmbed from 'react-instagram-embed'
+
 
 function Sns({Post,Caption}) {
 
