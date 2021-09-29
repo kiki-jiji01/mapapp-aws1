@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "mapappaws1dae0db78": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
