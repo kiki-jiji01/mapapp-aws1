@@ -3,15 +3,18 @@ import VideoItem from './VideoItem';
 import {Grid} from '@material-ui/core';
 
 const VideoList = ({videos , handleVideoSelect}) => {
+
+    if(!videos)  return <div></div>
+
     const renderedVideos =  videos.map((video) => {
-        return <VideoItem key={video.id.videoId} video={video} handleVideoSelect={handleVideoSelect} />
+        return <VideoItem  video={video} handleVideoSelect={handleVideoSelect} />
         // console.log(video.id);
     });
 
     return (
-    <Grid container spacing={6}>
-    {renderedVideos}
-    </Grid>
+    <div> {renderedVideos}</div>
+   
+    
     )
 };
 export default VideoList;
