@@ -14,6 +14,9 @@ import SearchBar from './SearchBar';
 import VideoList from './VideoList';
 import styled from "styled-components"
 import VideoDetail from './VideoDetail';
+import Dashboard from "./Dashboard";
+import zIndex from "@material-ui/core/styles/zIndex";
+
 
 Geocode.setApiKey("AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM")
 
@@ -26,14 +29,14 @@ class Map extends React.Component{
 
 
           videos:[],
-          selectedVideo: null,
+          // selectedVideo: null,
           foodvideos:[],
-          foodselectedVideo: null,
+          // foodselectedVideo: null,
           workvideos:[],
-          workselectedVideo: null,
+          // workselectedVideo: null,
 
-          dhksc: {},
-
+          dhksc: "",
+         
           address :"",
           city :"",
           area :"",
@@ -166,7 +169,7 @@ class Map extends React.Component{
 
         this.setState({
           videos: response.data.items,
-          selectedVideo:response.data.items[0] 
+          // selectedVideo:response.data.items[0] 
         });
         console.log("this is resp",response);
     };
@@ -181,7 +184,7 @@ class Map extends React.Component{
 
       this.setState({
         foodvideos: response.data.items,
-        foodselectedVideo:response.data.items[0] 
+        // foodselectedVideo:response.data.items[0] 
       });
       console.log("this is resp",response);
   };
@@ -196,7 +199,7 @@ class Map extends React.Component{
 
     this.setState({
       workvideos: response.data.items,
-      workselectedVideo:response.data.items[0] 
+      // workselectedVideo:response.data.items[0] 
     });
     console.log("this is resp",response);
 };
@@ -210,12 +213,14 @@ class Map extends React.Component{
               addressArray = place.address_components,
                // plus
               dhksc = place.address_components[0].long_name,
+         
               city = this.getCity(addressArray),
               area = this.getArea(addressArray),
               state = this.getState(addressArray),
               newLat = place.geometry.location.lat(),
               newLng = place.geometry.location.lng();
-    
+              
+              
       //   const handleSubmit = async (termFromSearchBar) => {
       //     const response = await youtube.get('/search', {
       //         params: {
@@ -237,7 +242,8 @@ class Map extends React.Component{
             area: (area) ? area : '',
             city: (city) ? city : '',
             state: (state) ? state : '',
-            dhksc: (dhksc) ? dhksc : '', 　　
+            dhksc: (dhksc) ? dhksc : '', 
+         　
             // plus
               markerPosition: {　
                   lat: newLat,
@@ -256,21 +262,16 @@ class Map extends React.Component{
           console.log(dhksc)
           
        }
-
-
+      
        
-       
-       
-       handleVideoSelect = (video) => {
-        this.setState({
-            selectedVideo: video
-        })
-    }
+    //    handleVideoSelect = (video) => {
+    //     this.setState({
+    //         selectedVideo: video
+    //     })
+    // }
 
     
-    
-     
-
+  
    
     render(){
               const MapWithAMarker = withScriptjs(withGoogleMap(props =>
@@ -291,8 +292,9 @@ class Map extends React.Component{
                    </InfoWindow>
                   </Marker>
 
-                  
+                  <Search>
                   <AutoComplete
+                    class
                     types={['(country)']}
                     onPlaceSelected= {this.onPlaceSelected}
                     
@@ -301,9 +303,12 @@ class Map extends React.Component{
                       height: '40px',
                       paddingLeft: '16px',
                       marginTop: '2px',
-                      marginBottom: '2rem'
+                      marginBottom: '2rem',
+                      zIndex:'1px',
+                      
                   }}
                   />
+                  </Search>
                 </GoogleMap>
               ));
 
@@ -313,69 +318,46 @@ class Map extends React.Component{
         
            
           <MapWrapper>
-           <MapWithAMarker
-          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM&v=3.exp&libraries=geometry,drawing,places"
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `400px` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-        />
+           
+               <MapWithAMarker
+              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM&v=3.exp&libraries=geometry,drawing,places"
+              loadingElement={<div style={{ height: `100%` }} />}
+              containerElement={<div style={{ height: `400px` }} />}
+              mapElement={<div style={{ height: `100%` }} />}
+               />
+          
          </MapWrapper>
+         
          <VideoWrapper> 
-            {/* <SearchBar handleFormSubmit={this.handleSubmit}/> */}
-            <Grid justify="center"  container spacing={10} className="grid">
-                <Grid item xs={10}>
-                 <Grid  container spacing={8}>
+         <Grid justify="center"  container spacing={2} className="grid">
+          
+            <Grid justify="center"  item xs={4} justifyContent="center" alignItems="center" >
 
-                  <Grid item xs={6}>
-                   <VideoDetail video={this.state.selectedVideo}/>
-                  </Grid>
-
-                  <Grid item xs={4}>
+                  <Grid item xs={12} >
                    <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.videos} />
                   </Grid>
 
-                 </Grid>
-                </Grid>
             </Grid>
-            </VideoWrapper> 
+           
 
-            <VideoWrapper> 
-            {/* <SearchBar handleFormSubmit={this.handleSubmit}/> */}
-            <Grid justify="center"  container spacing={10} className="grid">
-                <Grid item xs={10}>
-                 <Grid  container spacing={8}>
-
-                  <Grid item xs={6}>
-                   <VideoDetail video={this.state.foodselectedVideo}/>
+            <Grid justify="center"  item xs={4} justifyContent="center" alignItems="center" >
+            
+                  <Grid item xs={12}>
+                   <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.foodvideos} />
                   </Grid>
-
-                  <Grid item xs={4}>
-                   <VideoList handleVideoSelect={this.FoodhandleVideoSelect} videos={this.state.foodvideos} />
-                  </Grid>
-
-                 </Grid>
-                </Grid>
             </Grid>
-            </VideoWrapper> 
-
-            <VideoWrapper> 
-            {/* <SearchBar handleFormSubmit={this.handleSubmit}/> */}
-            <Grid justify="center"  container spacing={10} className="grid">
-                <Grid item xs={10}>
-                 <Grid  container spacing={8}>
-
-                  <Grid item xs={6}>
-                   <VideoDetail video={this.state.workselectedVideo}/>
+         
+          
+            <Grid justify="center"  item xs={4} justifyContent="center" alignItems="center" >
+                
+                  <Grid item xs={12}>
+                   <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.workvideos} />
                   </Grid>
-
-                  <Grid item xs={4}>
-                   <VideoList handleVideoSelect={this.WorkhandleVideoSelect} videos={this.state.workvideos} />
-                  </Grid>
-
-                 </Grid>
-                </Grid>
             </Grid>
-            </VideoWrapper> 
+
+
+          </Grid>
+          </VideoWrapper> 
             
          </div>
           
@@ -400,5 +382,14 @@ top:50vh;
 const Insta= styled.div`
 height: 10vh;
 position: relative;
+
+`
+
+const Search= styled.div`
+height: 10vh;
+position: absolute;
+top: -15vh;
+width: 50%;
+
 
 `
