@@ -22,7 +22,10 @@ const App = () => {
                 setAuthState(nextAuthState);
                 setUser(authData)
             });
-        }, []);
+                
+        },[]);
+
+       
 
     return authState === AuthState.SignedIn && user ?(
             <div className="main"> 
