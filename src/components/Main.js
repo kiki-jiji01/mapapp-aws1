@@ -37,7 +37,7 @@ function Main (){
         return(
          <MainWrapper> 
             <TopWrapper>
-             <Search/>
+             <Search />
             </TopWrapper>
             <MiddleWrapper>
              <Map/>

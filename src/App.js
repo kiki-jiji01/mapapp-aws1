@@ -8,14 +8,36 @@ import { AmplifyAuthenticator, AmplifySignUp, AmplifySignOut } from '@aws-amplif
 import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components';
 import awsconfig from './aws-exports';
 import styled from "styled-components"
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Slide from '@mui/material/Slide';
+import { TransitionProps } from '@mui/material/transitions';
+
+
+
 
 Amplify.configure(awsconfig);
+
+
+
+
+
+
 
 const App = () => {
  
     
         const [authState, setAuthState] = React.useState();
         const [user, setUser] = React.useState();
+        const [open, setOpen] = React.useState(false);
+       
+
+
+
 
         React.useEffect(() => {
             return onAuthUIStateChange((nextAuthState, authData) => {
@@ -25,11 +47,24 @@ const App = () => {
                 
         },[]);
 
+
+        
+
+
+
+        const handleClickOpen = () => {
+          setOpen(true);
+        };
+      
+        const handleClose = () => {
+          setOpen(false);
+        };
+
        
 
     return authState === AuthState.SignedIn && user ?(
             <div className="main"> 
-            <Main/>
+            <Main />
             </div>
               ):(
                 <Topwrapper> 
@@ -41,16 +76,32 @@ const App = () => {
                  If you wish strong and strong, You can go everywhere you want.<br/> Let's start your dream here Get
                  
                  </p>
-                 <AmplifyAuthenticator>
-                    <AmplifySignUp
-                      slot="sign-up"
-                      formFields={[
-                        { type: "username" },
-                        { type: "password" },
-                        { type: "email" }
-                      ]}
-                    />
-                </AmplifyAuthenticator>
+
+
+                 <Button variant="outlined" onClick={handleClickOpen}>
+                  Login & SighUp
+                 </Button>
+                  <Dialog
+                    open={open}
+                    // TransitionComponent={Transition}
+                    keepMounted
+                    onClose={handleClose}
+                    aria-describedby="alert-dialog-slide-description"
+                  >
+                    <DialogContent>
+                      <AmplifyAuthenticator>
+                      <AmplifySignUp
+                        slot="sign-up"
+                        formFields={[
+                          { type: "username" },
+                          { type: "password" },
+                          { type: "email" }
+                        ]}
+                      />
+                      </AmplifyAuthenticator>
+                    </DialogContent>                  
+                  </Dialog>
+                 
                 </Banner>
                 
                  
