@@ -292,9 +292,9 @@ class Map extends React.Component{
                    </InfoWindow>
                   </Marker>
 
-                  <Search>
+                  {/* <Search> */}
                   <AutoComplete
-                    class
+                    
                     types={['(country)']}
                     onPlaceSelected= {this.onPlaceSelected}
                     
@@ -308,7 +308,7 @@ class Map extends React.Component{
                       
                   }}
                   />
-                  </Search>
+                  {/* </Search> */}
                 </GoogleMap>
               ));
 
@@ -385,11 +385,12 @@ position: relative;
 
 `
 
-const Search= styled.div`
-height: 10vh;
-position: absolute;
-top: -15vh;
-width: 50%;
+// const Search= styled.div`
+// height: 5vh;
+// position: absolute;
+// top: -10vh;
+// width: 30%;
+// margin: auto;
 
 
-`
+// `

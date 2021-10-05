@@ -5,6 +5,7 @@ import Video from "./Video";
 import Sns from "./Sns";
 import styled from "styled-components"
 
+
 function Main (){
 
 
@@ -30,6 +31,8 @@ function Main (){
             //       });
             
           }, 
+
+          
           
          
           []);
@@ -57,30 +60,33 @@ export default Main;
 
 const MainWrapper = styled.div`
 
-
-
+height: 100%;
+position: relative;
 
 `
 
 const TopWrapper = styled.div`
-height: 30vh;
-position: relative;
-background: url("https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixid=MXwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60")center center;
-
+width: 100vw;
+height: 10vh;
+position: fixed;
+background-color: #fff;
+z-index:10;
+box-sizing: border-box;
 `
 
 const MiddleWrapper = styled.div`
-height: 200vh;
-position: relative;
-
-
+height: 300vh;
+position: absolute;
+top:10vh;
+width: 100vw;
+box-sizing: border-box;
 
 `
 
 const BottomWrapper = styled.div`
-top: 10vh;
-height: 80vh;
-position: relative;
-
+top: 310vh;
+height: 50vh;
+position: absolute;
+box-sizing: border-box;
 
 `

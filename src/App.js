@@ -60,9 +60,11 @@ const App = () => {
        
 
     return authState === AuthState.SignedIn && user ?(
-            <div className="main"> 
-            <Main />
+           <div className="main">
+             <Main />
             </div>
+            
+            
               ):(
               
                 <Topwrapper> 

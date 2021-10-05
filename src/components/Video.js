@@ -18,7 +18,7 @@ class Video extends React.Component{
 
     state = {
         videos: [],
-        selectedVideo: null,
+        
        
     }
 
