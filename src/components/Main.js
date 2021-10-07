@@ -60,22 +60,23 @@ export default Main;
 
 const MainWrapper = styled.div`
 
-height: 100%;
+// height: 100%;
 position: relative;
 
 `
 
 const TopWrapper = styled.div`
 width: 100vw;
-height: 10vh;
+// height: 10vh;
 position: fixed;
-background-color: #fff;
+
 z-index:10;
 box-sizing: border-box;
+
 `
 
 const MiddleWrapper = styled.div`
-height: 300vh;
+// height: 300vh;
 position: absolute;
 top:10vh;
 width: 100vw;

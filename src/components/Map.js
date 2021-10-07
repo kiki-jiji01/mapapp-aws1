@@ -16,7 +16,8 @@ import styled from "styled-components"
 import VideoDetail from './VideoDetail';
 import Dashboard from "./Dashboard";
 import zIndex from "@material-ui/core/styles/zIndex";
-
+import { height } from "@mui/system";
+import './components.css'
 
 Geocode.setApiKey("AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM")
 
@@ -87,6 +88,13 @@ class Map extends React.Component{
           })
         })
        }
+      }
+
+
+      componentDidMount(){
+        this.handleSubmit("stockholm")
+        this.WorkhandleSubmit("stockholm")
+        this.FoodhandleSubmit("stockholm")
       }
       
 
@@ -160,7 +168,7 @@ class Map extends React.Component{
 
 
 
-       handleSubmit = async (termFromSearchBar) => {
+    handleSubmit = async (termFromSearchBar) => {
         const response = await youtube.get('/search', {
             params: {
                 q: termFromSearchBar
@@ -278,6 +286,7 @@ class Map extends React.Component{
                 <GoogleMap
                   defaultZoom={8}
                   defaultCenter={{ lat: this.state.mapPosition.lat , lng: this.state.mapPosition.lng }}
+                  
                 >
                  
                   <Marker
@@ -318,17 +327,29 @@ class Map extends React.Component{
         
            
           <MapWrapper>
-           
-               <MapWithAMarker
-              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM&v=3.exp&libraries=geometry,drawing,places"
-              loadingElement={<div style={{ height: `100%` }} />}
-              containerElement={<div style={{ height: `400px` }} />}
-              mapElement={<div style={{ height: `100%` }} />}
-               />
+            <div className="map">
+              <MapWithAMarker
+                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM&v=3.exp&libraries=geometry,drawing,places"
+                loadingElement={<div style={{ height: `100%` }} />}
+                containerElement={<div style={{ height: `50vh` }} />}
+                mapElement={<div style={{ height: `50vh` }} />}
+                
+                />
+            </div>
+               
           
          </MapWrapper>
+
+         <TopCitywrapper>
+         　<DivTopCitywrapper>
+            <Div2TopCitywrapper>
+              
+              <h1>City</h1>
+              
+            </Div2TopCitywrapper> 
+           </DivTopCitywrapper> 
+         </TopCitywrapper>
          
-         <VideoWrapper> 
          <Grid justify="center"  container spacing={2} className="grid">
           
             <Grid justify="center"  item xs={4} justifyContent="center" alignItems="center" >
@@ -357,7 +378,7 @@ class Map extends React.Component{
 
 
           </Grid>
-          </VideoWrapper> 
+           
             
          </div>
           
@@ -368,16 +389,13 @@ class Map extends React.Component{
 export default Map;
 
 const MapWrapper = styled.div`
-height: 30vh;
+margin-bottom:10vh;
 position: relative;
-
+height: 100vh;
+background-color: black;
+border-bottom: 3px solid black;
 `
 
-const VideoWrapper = styled.div`
-height: 200vh;
-position: relative;
-top:50vh;
-`
 
 const Insta= styled.div`
 height: 10vh;
@@ -385,6 +403,50 @@ position: relative;
 
 `
 
+const TopCitywrapper= styled.div`
+
+position: relative;
+margin-left: 32px;
+margin-right: 32px;
+`
+
+
+const DivTopCitywrapper = styled.div`
+
+margin-left: 40%;
+margin-right: 40%;
+position: relative;
+padding: 0 12px;
+
+
+`
+
+const Div2TopCitywrapper = styled.div`
+margin-bottom: 10vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+
+::before{
+  content: '';
+  height: 1px;
+  margin-bottom: 17px;
+  width: 60%;
+  background-color: black;
+  display: block;
+}
+
+::after{
+  margin-top: 17px;
+  width: 60%;
+  content: '';
+  height: 1px;
+  display: block;
+  background-color: #000;
+
+}
+
+`
 // const Search= styled.div`
 // height: 5vh;
 // position: absolute;
