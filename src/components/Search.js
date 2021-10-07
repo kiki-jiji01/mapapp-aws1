@@ -10,9 +10,15 @@ class Search extends React.Component{
 
 
     render(){
+
+
+        
+       
+
+
         return(
          <Topwrapper> 
-           <Button  variant="text" >
+           <Button  variant="text" 　>
                <AmplifySignOut />
             </Button>
           
@@ -25,7 +31,7 @@ export default Search;
 
 
 const Topwrapper = styled.div`
-height: 10vh;
+// height: 10vh;
 position: relative;
 
 `
