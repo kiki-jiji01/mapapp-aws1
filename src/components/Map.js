@@ -88,14 +88,16 @@ class Map extends React.Component{
           })
         })
        }
+       
+        
       }
 
 
-      componentDidMount(){
-        this.handleSubmit("stockholm")
-        this.WorkhandleSubmit("stockholm")
-        this.FoodhandleSubmit("stockholm")
-      }
+      // componentDidMount(){
+      //   this.handleSubmit("stockholm")
+      //   this.WorkhandleSubmit("stockholm")
+      //   this.FoodhandleSubmit("stockholm")
+      // }
       
 
         getCity = (addressArray) => {
@@ -332,7 +334,7 @@ class Map extends React.Component{
                 googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM&v=3.exp&libraries=geometry,drawing,places"
                 loadingElement={<div style={{ height: `100%` }} />}
                 containerElement={<div style={{ height: `50vh` }} />}
-                mapElement={<div style={{ height: `50vh` }} />}
+                mapElement={<div style={{ height: `100%` }} />}
                 
                 />
             </div>
@@ -340,16 +342,43 @@ class Map extends React.Component{
           
          </MapWrapper>
 
+
          <TopCitywrapper>
          　<DivTopCitywrapper>
-            <Div2TopCitywrapper>
-              
-              <h1>City</h1>
-              
+            <Div2TopCitywrapper>             
+              <h1>City</h1>          
             </Div2TopCitywrapper> 
            </DivTopCitywrapper> 
          </TopCitywrapper>
+
+
+         <TopCitywrapper>
+         　<DivSecondCitywrapper>
+            <Div2SecondCitywrapper>
+              <p>Cityscape is one of the important elements for living there.
+              You can feel the city you find here. </p>
+              <Border></Border>
+            </Div2SecondCitywrapper> 
+           </DivSecondCitywrapper> 
+         </TopCitywrapper>
+
          
+         <VideoWrapper>
+          <VideoImage>
+            <VideoImage1>
+             <h3>City</h3>
+             <VideoImage2>
+              <img src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bG9uZG9ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" height="440vh" width="330vw" />
+             </VideoImage2>
+            </VideoImage1>
+          </VideoImage> 
+          <VideoItems>
+
+          </VideoItems>
+         </VideoWrapper>
+
+
+         <VideoWrapper>
          <Grid justify="center"  container spacing={2} className="grid">
           
             <Grid justify="center"  item xs={4} justifyContent="center" alignItems="center" >
@@ -378,7 +407,7 @@ class Map extends React.Component{
 
 
           </Grid>
-           
+          </VideoWrapper>
             
          </div>
           
@@ -392,9 +421,10 @@ const MapWrapper = styled.div`
 margin-bottom:10vh;
 position: relative;
 height: 100vh;
-background-color: black;
-border-bottom: 3px solid black;
+
+border-bottom: 1px solid black;
 `
+
 
 
 const Insta= styled.div`
@@ -413,8 +443,8 @@ margin-right: 32px;
 
 const DivTopCitywrapper = styled.div`
 
-margin-left: 40%;
-margin-right: 40%;
+margin-left: 30%;
+margin-right: 30%;
 position: relative;
 padding: 0 12px;
 
@@ -422,7 +452,7 @@ padding: 0 12px;
 `
 
 const Div2TopCitywrapper = styled.div`
-margin-bottom: 10vh;
+margin-bottom: 5vh;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -430,14 +460,14 @@ align-items: center;
 ::before{
   content: '';
   height: 1px;
-  margin-bottom: 17px;
+  margin-bottom: 1vh;
   width: 60%;
   background-color: black;
   display: block;
 }
 
 ::after{
-  margin-top: 17px;
+  margin-top: 1vh;
   width: 60%;
   content: '';
   height: 1px;
@@ -445,8 +475,73 @@ align-items: center;
   background-color: #000;
 
 }
+`
+
+
+const DivSecondCitywrapper = styled.div`
+
+
+margin-right: 70%;
+position: relative;
+padding: 0 12px;
+
 
 `
+
+const Div2SecondCitywrapper = styled.div`
+
+
+margin-bottom: 5vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+`
+
+const Border = styled.div`
+
+height: 4px;
+background-color: #000;
+font-size: 0;
+line-height: 0;
+width: 10vw;
+margin-top: 5%;
+margin-left: -20%;
+`
+
+const VideoWrapper = styled.div`
+display: flex;
+justify-content: space-between;
+`
+
+
+const VideoImage = styled.div`
+width: 50vw;
+background-color: #F8F8F8;
+`
+
+const VideoImage1 = styled.div`
+padding: 10% 5% 10% 20%;
+display: flex;
+text-align: center;
+align-items: center;
+flex-direction: column;
+`
+
+const VideoImage2 = styled.div`
+
+height: 100%;
+object-fit: contain;
+// background: url("https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bG9uZG9ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60");
+
+`
+
+const VideoItems = styled.div`
+width: 50vw;
+background-color: black;
+`
+
+
+
 // const Search= styled.div`
 // height: 5vh;
 // position: absolute;
