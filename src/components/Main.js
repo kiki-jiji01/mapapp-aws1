@@ -45,10 +45,10 @@ function Main (){
             <MiddleWrapper>
              <Map/>
             </MiddleWrapper>
-            <BottomWrapper>
+            {/* <BottomWrapper>
              <Sns Post={Post} Caption={Caption}/> 
             </BottomWrapper>
-            
+             */}
          </MainWrapper>
         );
     }
@@ -85,9 +85,9 @@ box-sizing: border-box;
 `
 
 const BottomWrapper = styled.div`
-top: 310vh;
-height: 50vh;
-position: absolute;
-box-sizing: border-box;
+// top: 310vh;
+// height: 50vh;
+// position: absolute;
+// box-sizing: border-box;
 
 `
