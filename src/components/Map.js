@@ -362,20 +362,102 @@ class Map extends React.Component{
            </DivSecondCitywrapper> 
          </TopCitywrapper>
 
+
+
          
          <VideoWrapper>
+
           <VideoImage>
             <VideoImage1>
              <h3>City</h3>
              <VideoImage2>
-              <img src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bG9uZG9ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" height="440vh" width="330vw" />
+              <img src="https://images.unsplash.com/photo-1523304867125-2293c498e08a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzh8fGxvbmRvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" height="440vh" width="330vw" />
              </VideoImage2>
             </VideoImage1>
           </VideoImage> 
-          <VideoItems>
 
+          <VideoItems>
           </VideoItems>
+
          </VideoWrapper>
+
+
+         <TopCitywrapper>
+         　<DivTopCitywrapper>
+            <Div2TopCitywrapper>             
+              <h1>Work</h1>          
+            </Div2TopCitywrapper> 
+           </DivTopCitywrapper> 
+         </TopCitywrapper>
+
+
+         <TopCitywrapper>
+         　<DivSecondCitywrapper1>
+            <Div2SecondCitywrapper>
+            <p>Cityscape is one of the important elements for living there.
+              You can feel the city you find here. </p>
+              <Border></Border>
+            </Div2SecondCitywrapper> 
+           </DivSecondCitywrapper1> 
+         </TopCitywrapper>
+　　　　　　
+
+         <VideoWrapper>
+          <VideoItems>
+          </VideoItems>
+          <VideoImage>
+            <VideoImage1>
+            <h3>Work</h3>
+            <VideoImage2>
+              <img src="https://images.unsplash.com/photo-1517971129774-8a2b38fa128e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjIyfHx3b3JraW5nfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" height="440vh" width="330vw" />
+            </VideoImage2>
+            </VideoImage1>
+          </VideoImage>
+　　　　　　</VideoWrapper>
+         
+
+
+          <TopCitywrapper>
+         　<DivTopCitywrapper>
+            <Div2TopCitywrapper>             
+              <h1>Food</h1>          
+            </Div2TopCitywrapper> 
+           </DivTopCitywrapper> 
+          </TopCitywrapper>
+
+
+          <TopCitywrapper>
+          　<DivSecondCitywrapper>
+              <Div2SecondCitywrapper>
+                <p>Cityscape is one of the important elements for living there.
+                You can feel the city you find here. </p>
+                <Border></Border>
+              </Div2SecondCitywrapper> 
+            </DivSecondCitywrapper> 
+          </TopCitywrapper>
+
+
+
+          <VideoWrapper>
+            <VideoImage>
+              <VideoImage1>
+              <h3>Food</h3>
+              <VideoImage2>
+                <img src="https://images.unsplash.com/photo-1579113800032-c38bd7635818?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTEwfHxmb29kfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" height="440vh" width="330vw" />
+              </VideoImage2>
+              </VideoImage1>
+            </VideoImage>
+            <VideoItems>
+            </VideoItems>
+  　　　　　　</VideoWrapper>
+
+
+            <FooterCaption>
+              <FooterCaption1>
+              <p>you can find some Instagram  post of #city name you research</p>
+              </FooterCaption1>
+            </FooterCaption>
+
 
 
          <VideoWrapper>
@@ -441,6 +523,15 @@ margin-right: 32px;
 `
 
 
+const TopCitywrapper1= styled.div`
+
+position: relative;
+margin-left: 32px;
+margin-right: 32px;
+`
+
+
+
 const DivTopCitywrapper = styled.div`
 
 margin-left: 30%;
@@ -480,10 +571,20 @@ align-items: center;
 
 const DivSecondCitywrapper = styled.div`
 
-
-margin-right: 70%;
+font-size: 24px;
+margin-right: 60%;
 position: relative;
-padding: 0 12px;
+padding: 0 48px;
+
+
+`
+
+const DivSecondCitywrapper1 = styled.div`
+
+font-size: 24px;
+margin-left: 60%;
+position: relative;
+padding: 0 48px;
 
 
 `
@@ -511,6 +612,8 @@ margin-left: -20%;
 const VideoWrapper = styled.div`
 display: flex;
 justify-content: space-between;
+margin-bottom: 20vh;
+// border-bottom: 1px solid black;
 `
 
 
@@ -520,7 +623,7 @@ background-color: #F8F8F8;
 `
 
 const VideoImage1 = styled.div`
-padding: 10% 5% 10% 20%;
+padding: 10% 5% 10% 10%;
 display: flex;
 text-align: center;
 align-items: center;
@@ -532,14 +635,26 @@ const VideoImage2 = styled.div`
 height: 100%;
 object-fit: contain;
 // background: url("https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bG9uZG9ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60");
-
 `
 
 const VideoItems = styled.div`
 width: 50vw;
-background-color: black;
+background-color: white;
 `
 
+const FooterCaption = styled.div`
+border-top: 1px solid black;
+
+`
+
+
+const FooterCaption1 = styled.div`
+
+padding: 5% 10%;
+
+p{
+  text-align: center;
+}
 
 
 // const Search= styled.div`
