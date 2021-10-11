@@ -14,12 +14,12 @@ function Main (){
 
 
         useEffect(() => {
-            fetch("https://graph.facebook.com/17841564013123618/top_media?user_id=17841411766795081&fields=id,media_url,caption,permalink,media_type,comments_count,like_count&access_token=EAA9mxzmBApoBAB5j504ycyfQrCqiu9TiiK1Y2ifAeWP1SyHRjcka9uDCHYQ27N3FRls7NutGEZBf6s9bv19zRbPKAs709oQSYHSkkITKu8aN5zSBVcaQwGYMiZAHPtOD2JzjY4bq7wZB7ooGDR5JSJoPymkP9CPIPHNFV2CBo3u60i48SaE")
+            fetch("https://graph.facebook.com/17841564013123618/top_media?user_id=17841411766795081&fields=id,media_url,caption,permalink,media_type,comments_count,like_count&access_token=EAA9mxzmBApoBADIphJmrtMpAtjM5tZCplHlnga8ZBkDcfNuTOCA5aZBZAOwZCMJUOx9ZAZB4qNDxIXK0a0SlWzupWbgRSlEPSZAehdfcADL6GEB4U8STGVM0tNkO1WuZCF2bZAqXVG7YgyZC4vwNW5guTnBclKcLbb6jcTbfMhWZC4g07rJmA0ZBiUc6ZA")
               .then((response) => response.json())
 
 
               .then((response) => {
-              
+                console.log(response)
                 console.log(response.data[0])
                 setPost(response.data[0].media_url);
                 setCaption(response.data[0].caption);
