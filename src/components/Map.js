@@ -18,6 +18,7 @@ import Dashboard from "./Dashboard";
 import zIndex from "@material-ui/core/styles/zIndex";
 import { height } from "@mui/system";
 import './components.css'
+import Footer from "./Footer";
 
 Geocode.setApiKey("AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM")
 
@@ -458,6 +459,10 @@ class Map extends React.Component{
               </FooterCaption1>
             </FooterCaption>
 
+            
+             <Footer/>
+            
+
 
 
          <VideoWrapper>
@@ -655,6 +660,13 @@ padding: 5% 10%;
 p{
   text-align: center;
 }
+
+`
+
+
+
+
+
 
 
 // const Search= styled.div`
