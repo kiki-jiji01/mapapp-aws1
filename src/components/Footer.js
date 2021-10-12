@@ -14,7 +14,7 @@ function Footer() {
 
 
     useEffect(() => {
-        fetch("https://graph.facebook.com/17841564013123618/top_media?user_id=17841411766795081&fields=id,media_url,caption,permalink,media_type,comments_count,like_count&access_token=EAA9mxzmBApoBADIphJmrtMpAtjM5tZCplHlnga8ZBkDcfNuTOCA5aZBZAOwZCMJUOx9ZAZB4qNDxIXK0a0SlWzupWbgRSlEPSZAehdfcADL6GEB4U8STGVM0tNkO1WuZCF2bZAqXVG7YgyZC4vwNW5guTnBclKcLbb6jcTbfMhWZC4g07rJmA0ZBiUc6ZA")
+        fetch("https://graph.facebook.com/17841564013123618/top_media?user_id=17841411766795081&fields=id,media_url,caption,permalink,media_type,comments_count,like_count&access_token=EAA9mxzmBApoBAM5QVFqdF0AUgx5RrG4ZBZAyxZCwj2J1NqGjOg44VqkSd5bwmCcnumT9A2wZASIWgCwKhCn9W2NcIqmy8CH0NnaV7tPduEF361OWN61qN6U4DqSEVYRL3qnYPVNbDZCzMClPGbofZBgPPLjZCgvSOfkkErQXUtSyXwLrUu0FbFI")
           .then((response) => response.json())
 
 

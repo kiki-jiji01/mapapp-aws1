@@ -378,6 +378,27 @@ class Map extends React.Component{
           </VideoImage> 
 
           <VideoItems>
+            <Grid container spacing={8}>
+              <Grid item xs={6}>
+                xs=
+              </Grid>
+              <Grid item xs={6}>
+                xs=4
+              </Grid>
+              <Grid item xs={6}>
+                xs=4
+              </Grid>
+              <Grid item xs={6}>
+                xs=8
+              </Grid>
+              <Grid item xs={6}>
+                xs=4
+              </Grid>
+              <Grid item xs={6}>
+                xs=8
+              </Grid>
+            </Grid>
+
           </VideoItems>
 
          </VideoWrapper>
