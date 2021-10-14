@@ -378,27 +378,9 @@ class Map extends React.Component{
           </VideoImage> 
 
           <VideoItems>
-            <Grid container spacing={8}>
-              <Grid item xs={6}>
-                xs=
-              </Grid>
-              <Grid item xs={6}>
-                xs=4
-              </Grid>
-              <Grid item xs={6}>
-                xs=4
-              </Grid>
-              <Grid item xs={6}>
-                xs=8
-              </Grid>
-              <Grid item xs={6}>
-                xs=4
-              </Grid>
-              <Grid item xs={6}>
-                xs=8
-              </Grid>
-            </Grid>
-
+           <VideoItem>
+            <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.videos} />
+           </VideoItem>
           </VideoItems>
 
          </VideoWrapper>
@@ -426,6 +408,9 @@ class Map extends React.Component{
 
          <VideoWrapper>
           <VideoItems>
+            <VideoItem>
+             <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.workvideos} />
+            </VideoItem>
           </VideoItems>
           <VideoImage>
             <VideoImage1>
@@ -470,6 +455,9 @@ class Map extends React.Component{
               </VideoImage1>
             </VideoImage>
             <VideoItems>
+              <VideoItem>
+               <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.foodvideos} />
+              </VideoItem>
             </VideoItems>
   　　　　　　</VideoWrapper>
 
@@ -484,38 +472,6 @@ class Map extends React.Component{
              <Footer/>
             
 
-
-
-         <VideoWrapper>
-         <Grid justify="center"  container spacing={2} className="grid">
-          
-            <Grid justify="center"  item xs={4} justifyContent="center" alignItems="center" >
-
-                  <Grid item xs={12} >
-                   <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.videos} />
-                  </Grid>
-
-            </Grid>
-           
-
-            <Grid justify="center"  item xs={4} justifyContent="center" alignItems="center" >
-            
-                  <Grid item xs={12}>
-                   <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.foodvideos} />
-                  </Grid>
-            </Grid>
-         
-          
-            <Grid justify="center"  item xs={4} justifyContent="center" alignItems="center" >
-                
-                  <Grid item xs={12}>
-                   <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.workvideos} />
-                  </Grid>
-            </Grid>
-
-
-          </Grid>
-          </VideoWrapper>
             
          </div>
           
@@ -666,6 +622,13 @@ object-fit: contain;
 const VideoItems = styled.div`
 width: 50vw;
 background-color: white;
+`
+
+const VideoItem = styled.div`
+margin-right: 32px;
+margin-left: 32px;
+background-color: white;
+width: 100%;
 `
 
 const FooterCaption = styled.div`
