@@ -13,20 +13,16 @@ const VideoItem = ({video , handleVideoSelect}) => {
     const VideoSrc= `https://www.youtube.com/embed/${video.id.videoId}`
     
     return (
-       <VideoCard>
-            {/* <Card > */}
-             {/* <CardMedia width="100%" height="100%" > */}
-              <iframe src={VideoSrc}/>
-             {/* </CardMedia> */}
-            
-            {/* <CardContent> */}
-                <Typography gutterBottom variant="body2" color="text.secondary">
+       <VideoCard> 
+         <VideoCardInnner> 
+            {/* <Iframe> */}
+              <iframe src={VideoSrc} />
+            {/* </Iframe> */}
+                
                  {video.snippet.title}
-                </Typography>
-            {/* </CardContent> */}
-           
-          
-            {/* </Card> */}
+               
+            
+         </VideoCardInnner> 
        </VideoCard>
        
      
@@ -35,8 +31,26 @@ const VideoItem = ({video , handleVideoSelect}) => {
 export default VideoItem;
 
 const VideoCard = styled.div`
-width: 50%;
-float: left;
+width: 40%;
+margin-bottom: 60px;
+
 `
+
+const VideoCardInnner = styled.div`
+width:100%;              /*横幅いっぱいにwidthを指定*/
+padding-bottom: 56.25%;  /*高さをpaddingで指定(16:9)*/
+height:0px;              /*高さはpaddingで指定するためheightは0に*/
+position: relative;
+
+iframe{
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+`
+
+
 
 
