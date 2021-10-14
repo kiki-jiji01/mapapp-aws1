@@ -622,13 +622,14 @@ object-fit: contain;
 const VideoItems = styled.div`
 width: 50vw;
 background-color: white;
+
 `
 
 const VideoItem = styled.div`
-margin-right: 32px;
-margin-left: 32px;
-background-color: white;
-width: 100%;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+box-sizing: border-box;
 `
 
 const FooterCaption = styled.div`
