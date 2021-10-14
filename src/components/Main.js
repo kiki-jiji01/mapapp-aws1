@@ -11,10 +11,11 @@ function Main (){
 
     const [Post,setPost] = useState([]);
     const [Caption,setCaption] = useState([]);
-
+       
+    // me?fields=accounts{name,instagram_business_account,access_token}
 
         useEffect(() => {
-            fetch("https://graph.facebook.com/17841564013123618/top_media?user_id=17841411766795081&fields=id,media_url,caption,permalink,media_type,comments_count,like_count&access_token=EAA9mxzmBApoBADIphJmrtMpAtjM5tZCplHlnga8ZBkDcfNuTOCA5aZBZAOwZCMJUOx9ZAZB4qNDxIXK0a0SlWzupWbgRSlEPSZAehdfcADL6GEB4U8STGVM0tNkO1WuZCF2bZAqXVG7YgyZC4vwNW5guTnBclKcLbb6jcTbfMhWZC4g07rJmA0ZBiUc6ZA")
+            fetch("https://graph.facebook.com/17841564013123618/top_media?user_id=17841411766795081&fields=id,media_url,caption,permalink,media_type,comments_count,like_count&access_token=EAA9mxzmBApoBAF3Urp4ZCSsSm6E5t0oSCVWpzPg7rmuZAbV6AzhIQcQrw1c4kXuK37TAlfINHxGQe4YQgTZB51zuBSpg5OeDxk9Pb5ekWmHvAq2IytvghmJZBWz1LhmL2pH1wxMEkLw07dutPnItrobUMwPuF8hoLuMvKITVlgRSoS0q5ZB7h")
               .then((response) => response.json())
 
 

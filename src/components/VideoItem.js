@@ -5,7 +5,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
-
+import styled from "styled-components"
 
 const VideoItem = ({video , handleVideoSelect}) => {
 
@@ -13,21 +13,30 @@ const VideoItem = ({video , handleVideoSelect}) => {
     const VideoSrc= `https://www.youtube.com/embed/${video.id.videoId}`
     
     return (
-       
-        <Card  >
+       <VideoCard>
+            {/* <Card > */}
              {/* <CardMedia width="100%" height="100%" > */}
               <iframe src={VideoSrc}/>
              {/* </CardMedia> */}
             
-            <CardContent>
+            {/* <CardContent> */}
                 <Typography gutterBottom variant="body2" color="text.secondary">
                  {video.snippet.title}
                 </Typography>
-            </CardContent>
+            {/* </CardContent> */}
            
           
-        </Card>
+            {/* </Card> */}
+       </VideoCard>
+       
      
     )
 };
 export default VideoItem;
+
+const VideoCard = styled.div`
+width: 50%;
+float: left;
+`
+
+
