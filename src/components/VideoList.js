@@ -1,6 +1,8 @@
 import React from 'react';
 import VideoItem from './VideoItem';
 import {Grid} from '@material-ui/core';
+import styled from "styled-components";
+
 
 const VideoList = ({videos , handleVideoSelect}) => {
 
@@ -12,9 +14,18 @@ const VideoList = ({videos , handleVideoSelect}) => {
     });
 
     return (
-    <div> {renderedVideos}</div>
+    <RenderVideo>{renderedVideos}</RenderVideo> 
    
     
     )
 };
 export default VideoList;
+
+const RenderVideo = styled.div`
+width: 100%;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+overflow: hidden;
+
+`

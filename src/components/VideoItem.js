@@ -15,9 +15,9 @@ const VideoItem = ({video , handleVideoSelect}) => {
     return (
        <VideoCard> 
          <VideoCardInnner> 
-            {/* <Iframe> */}
+            
               <iframe src={VideoSrc} />
-            {/* </Iframe> */}
+           
                 
                  {video.snippet.title}
                
@@ -31,24 +31,16 @@ const VideoItem = ({video , handleVideoSelect}) => {
 export default VideoItem;
 
 const VideoCard = styled.div`
-width: 40%;
+width: 50%;
 margin-bottom: 60px;
+box-sizing: border-box;
 
 `
 
 const VideoCardInnner = styled.div`
-width:100%;              /*横幅いっぱいにwidthを指定*/
-padding-bottom: 56.25%;  /*高さをpaddingで指定(16:9)*/
-height:0px;              /*高さはpaddingで指定するためheightは0に*/
-position: relative;
+width:80%;              /*横幅いっぱいにwidthを指定*/
 
-iframe{
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-}
+
 `
 
 
