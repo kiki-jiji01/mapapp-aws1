@@ -356,8 +356,7 @@ class Map extends React.Component{
          <TopCitywrapper>
          　<DivSecondCitywrapper>
             <Div2SecondCitywrapper>
-              <p>Cityscape is one of the important elements for living there.
-              You can feel the city you find here. </p>
+              <p>The cityscape remains in your heart forever.  </p>
               <Border></Border>
             </Div2SecondCitywrapper> 
            </DivSecondCitywrapper> 
@@ -398,8 +397,7 @@ class Map extends React.Component{
          <TopCitywrapper>
          　<DivSecondCitywrapper1>
             <Div2SecondCitywrapper>
-            <p>Cityscape is one of the important elements for living there.
-              You can feel the city you find here. </p>
+            <p>Working make someones's life more exiting. </p>
               <Border></Border>
             </Div2SecondCitywrapper> 
            </DivSecondCitywrapper1> 
@@ -436,8 +434,7 @@ class Map extends React.Component{
           <TopCitywrapper>
           　<DivSecondCitywrapper>
               <Div2SecondCitywrapper>
-                <p>Cityscape is one of the important elements for living there.
-                You can feel the city you find here. </p>
+                <p>To eat is to color your life.</p>
                 <Border></Border>
               </Div2SecondCitywrapper> 
             </DivSecondCitywrapper> 
@@ -446,14 +443,18 @@ class Map extends React.Component{
 
 
           <VideoWrapper>
+
             <VideoImage>
               <VideoImage1>
-              <h3>Food</h3>
+                <h3>Food</h3>
               <VideoImage2>
                 <img src="https://images.unsplash.com/photo-1579113800032-c38bd7635818?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTEwfHxmb29kfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" height="440vh" width="330vw" />
               </VideoImage2>
+                <p>Cityscape is one of the important elements for living there.
+                  You can feel the city you find here. </p>
               </VideoImage1>
             </VideoImage>
+
             <VideoItems>
               <VideoItem>
                <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.foodvideos} />
@@ -595,13 +596,19 @@ const VideoWrapper = styled.div`
 display: flex;
 justify-content: space-between;
 margin-bottom: 20vh;
-// border-bottom: 1px solid black;
+// margin-top: 20vh;
 `
 
 
 const VideoImage = styled.div`
 width: 50vw;
 background-color: #F8F8F8;
+
+
+p{
+  margin-top: 10vh;
+  width: 80%;
+}
 `
 
 const VideoImage1 = styled.div`
@@ -626,10 +633,10 @@ background-color: white;
 `
 
 const VideoItem = styled.div`
-display: flex;
-flex-wrap: wrap;
-justify-content: space-around;
-box-sizing: border-box;
+margin-right: 32px;
+margin-left: 32px;
+width: 100%;
+
 `
 
 const FooterCaption = styled.div`

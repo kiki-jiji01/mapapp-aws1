@@ -20,7 +20,7 @@ function Footer() {
 
           .then((response) => {
             console.log(response)
-            console.log(response.data[0])
+            // console.log(response.data[0])
             setPost(response.data[0].media_url);
             setCaption(response.data[0].caption);
             setPost1(response.data[1].media_url);
