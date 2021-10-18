@@ -17,7 +17,7 @@ import VideoDetail from './VideoDetail';
 import Dashboard from "./Dashboard";
 import zIndex from "@material-ui/core/styles/zIndex";
 import { height } from "@mui/system";
-import './components.css'
+
 import Footer from "./Footer";
 
 Geocode.setApiKey("AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM")
@@ -304,8 +304,23 @@ class Map extends React.Component{
                    </InfoWindow>
                   </Marker>
 
+
+
                   {/* <Search> */}
-                  <AutoComplete
+
+
+                  {/* </Search> */}
+                </GoogleMap>
+              ));
+
+
+        return(
+         <div>
+        
+           
+          <MapWrapper>
+            <MapInner>
+             <AutoComplete
                     
                     types={['(country)']}
                     onPlaceSelected= {this.onPlaceSelected}
@@ -319,28 +334,17 @@ class Map extends React.Component{
                       zIndex:'1px',
                       
                   }}
-                  />
-                  {/* </Search> */}
-                </GoogleMap>
-              ));
 
+                  defaultValue="Stockholm"
+              />
 
-        return(
-         <div>
-        
-           
-          <MapWrapper>
-            <div className="map">
               <MapWithAMarker
-                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM&v=3.exp&libraries=geometry,drawing,places"
-                loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `50vh` }} />}
-                mapElement={<div style={{ height: `100%` }} />}
-                
-                />
-            </div>
-               
-          
+                  googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM&v=3.exp&libraries=geometry,drawing,places"
+                  loadingElement={<div style={{ height: `100%` }} />}
+                  containerElement={<div style={{ height: `50vh` }} />}
+                  mapElement={<div style={{ height: `100%` }} />}
+                  />
+            </MapInner>
          </MapWrapper>
 
 
@@ -488,6 +492,10 @@ position: relative;
 height: 100vh;
 
 border-bottom: 1px solid black;
+`
+
+const MapInner = styled.div`
+padding: 10% 20%;
 `
 
 
