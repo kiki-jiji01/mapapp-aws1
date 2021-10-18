@@ -68,18 +68,17 @@ position: relative;
 
 const TopWrapper = styled.div`
 width: 100vw;
-// height: 10vh;
 position: fixed;
-
+background-color: black;
 z-index:10;
 box-sizing: border-box;
 
 `
 
 const MiddleWrapper = styled.div`
-// height: 300vh;
+
 position: absolute;
-top:10vh;
+top:0;
 width: 100vw;
 box-sizing: border-box;
 
