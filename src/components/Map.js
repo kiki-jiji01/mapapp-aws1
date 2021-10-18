@@ -17,8 +17,9 @@ import VideoDetail from './VideoDetail';
 import Dashboard from "./Dashboard";
 import zIndex from "@material-ui/core/styles/zIndex";
 import { height } from "@mui/system";
-
 import Footer from "./Footer";
+import { Player } from 'video-react';
+import ReactPlayer from 'react-player'
 
 Geocode.setApiKey("AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM")
 
@@ -317,44 +318,56 @@ class Map extends React.Component{
         return(
          <div>
         
-           
           <MapWrapper>
-            <MapInner>
-             <AutoComplete
-                    
-                    types={['(country)']}
-                    onPlaceSelected= {this.onPlaceSelected}
-                    
-                    style={{
-                      width: '100%',
-                      height: '40px',
-                      paddingLeft: '16px',
-                      marginTop: '2px',
-                      marginBottom: '2rem',
-                      zIndex:'1px',
-                      
-                  }}
+            <MapWrapper1>
+              <PlayerWrapper>
+                <ReactPlayer 
+                url="https://assets.mixkit.co/videos/preview/mixkit-venice-central-canal-at-night-4646-large.mp4"
+                playing="true"
+                loop="true"
+                width='100%'
+                height='100%'
+                />
+              </PlayerWrapper> 
+              <MapInner>
+                  <SearchText>
+                    <p>You can start your journey with three category of city you want to go.</p>
+                  </SearchText>
+                  <AutoComplete
+                        types={['(country)']}
+                        onPlaceSelected= {this.onPlaceSelected}
+                        style={{
+                          width: '100%',
+                          height: '40px',
+                          paddingLeft: '16px',
+                          marginTop: '2px',
+                          marginBottom: '2rem',
+                        }}
+                  /> 
+              </MapInner>
+            </MapWrapper1>
 
-                  defaultValue="Stockholm"
-              />
 
+
+            <MapWrapper2>
               <MapWithAMarker
-                  googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM&v=3.exp&libraries=geometry,drawing,places"
-                  loadingElement={<div style={{ height: `100%` }} />}
-                  containerElement={<div style={{ height: `50vh` }} />}
-                  mapElement={<div style={{ height: `100%` }} />}
-                  />
-            </MapInner>
-         </MapWrapper>
+                        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM&v=3.exp&libraries=geometry,drawing,places"
+                        loadingElement={<div style={{ height: `100%` }} />}
+                        containerElement={<div style={{ height: `60vh` }} />}
+                        mapElement={<div style={{ height: `100%` }} />}
+                />
+            </MapWrapper2>
+          </MapWrapper>
 
 
-         <TopCitywrapper>
+    
+         <TopCitywrapper1>
          　<DivTopCitywrapper>
             <Div2TopCitywrapper>             
               <h1>City</h1>          
             </Div2TopCitywrapper> 
            </DivTopCitywrapper> 
-         </TopCitywrapper>
+         </TopCitywrapper1>
 
 
          <TopCitywrapper>
@@ -490,14 +503,65 @@ const MapWrapper = styled.div`
 margin-bottom:10vh;
 position: relative;
 height: 100vh;
+display: flex;
+-webkit-flex-direction: column;
+flex-direction: column;
 
-border-bottom: 1px solid black;
+
+`
+
+
+const MapWrapper1 = styled.div`
+position: relative;
+padding-top: 56.212%;
+width: 100%;
 `
 
 const MapInner = styled.div`
-padding: 10% 20%;
+
+text-align:center;
+position: absolute;
+top: 40%;
+left: 50%;
+transform: translate(-50%, -50%);
+-webkit-transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+p{
+  color: white;
+}
 `
 
+const SearchText = styled.div`
+margin-top: 10vh;
+margin-bottom: 5vh;
+text-align: center;
+`
+
+const PlayerWrapper = styled.div`
+position: absolute;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+overflow: hidden;
+width: 100%;
+height: 100%;
+object-position: center;
+z-index: -1;
+object-fit: cover;
+`
+
+const MapWrapper2 = styled.div`
+position: relative;
+margin: -5% 20% 10% 20%;
+background-color: rgba(239,239,239,.85);
+position: relative;
+z-index: 100;
+text-align: center;
+display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+`
 
 
 const Insta= styled.div`
@@ -511,6 +575,7 @@ const TopCitywrapper= styled.div`
 position: relative;
 margin-left: 32px;
 margin-right: 32px;
+
 `
 
 
@@ -519,6 +584,7 @@ const TopCitywrapper1= styled.div`
 position: relative;
 margin-left: 32px;
 margin-right: 32px;
+margin-top: 80vh;
 `
 
 
