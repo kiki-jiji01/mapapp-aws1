@@ -70,7 +70,7 @@ const TopWrapper = styled.div`
 width: 100vw;
 position: fixed;
 background-color: black;
-z-index:10;
+z-index:200;
 box-sizing: border-box;
 
 `
