@@ -19,8 +19,9 @@ import zIndex from "@material-ui/core/styles/zIndex";
 import { height } from "@mui/system";
 import Footer from "./Footer";
 import { Player } from 'video-react';
-import ReactPlayer from 'react-player'
-
+import ReactPlayer from 'react-player';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCity, faCoffee } from '@fortawesome/free-solid-svg-icons';
 Geocode.setApiKey("AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM")
 
 
@@ -359,6 +360,27 @@ class Map extends React.Component{
             </MapWrapper2>
           </MapWrapper>
 
+        <NavBorder>
+          <Navigator>
+            <Navigator1>
+              <City>
+                <span><FontAwesomeIcon icon={faCity} /></span>
+                <span>City</span>
+              </City>
+              <Work>
+                <span></span>
+                <span>Work</span>
+              </Work>
+              <Food>
+                <span></span>
+                <span>Food</span>
+              </Food>
+            </Navigator1>
+          </Navigator>
+        </NavBorder>
+
+
+       
 
     
          <TopCitywrapper1>
@@ -561,6 +583,51 @@ text-align: center;
 display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
+
+`
+
+const NavBorder = styled.div`
+position: absolute;
+top: 150vh;
+width: 100%;
+display: block;
+border-top: 1px solid rgba(0,0,0,.15);
+
+`
+
+const Navigator= styled.div`
+display: flex;
+margin-left: 12px;
+`
+
+const Navigator1= styled.div`
+
+`
+
+const City= styled.div`
+color: rgba(0,0,0,.45);
+font-family: "MaisonNeue-Medium","Helvetica Neue",Helvetica,Arial,sans-serif;
+display: inline-block;
+text-transform: none;
+font-size: 14px;
+line-height: 24px;
+letter-spacing: 0;
+
+::after{
+  content: "|";
+    margin-left: 10px;
+    margin-right: 8px;
+    color: rgba(0,0,0,.45);
+
+}
+`
+
+const Work= styled(City)`
+
+`
+
+const Food= styled(City)`
+
 `
 
 
