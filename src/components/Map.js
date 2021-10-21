@@ -21,7 +21,12 @@ import Footer from "./Footer";
 import { Player } from 'video-react';
 import ReactPlayer from 'react-player';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCity, faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faBriefcase, faCircle, faCity, faCoffee, faUtensils } from '@fortawesome/free-solid-svg-icons';
+// import { library } from '@fortawesome/fontawesome-svg-core'
+// import { fab } from '@fortawesome/free-brands-svg-icons'
+// import { faBriefcase, faCity, faCoffee, faUtensils } from '@fortawesome/free-solid-svg-icons'
+
+// library.add(fab, faBriefcase, faCity, faCoffee, faUtensils)
 Geocode.setApiKey("AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM")
 
 
@@ -360,25 +365,42 @@ class Map extends React.Component{
             </MapWrapper2>
           </MapWrapper>
 
+          <Margin></Margin>
+
+
+
+       {/* <Nav> */}
         <NavBorder>
           <Navigator>
             <Navigator1>
               <City>
-                <span><FontAwesomeIcon icon={faCity} /></span>
-                <span>City</span>
+                <span>
+                {/* style="position: absolute; top: 50%; left: 50%;" */}
+                   <FontAwesomeIcon icon={faCity} size="lg" mask={ faCircle } size="2x" transform="shrink-6"/>
+                  
+                </span>
+                <NavText>City</NavText>
               </City>
               <Work>
-                <span></span>
-                <span>Work</span>
+                <span>
+                 
+                   <FontAwesomeIcon icon={faBriefcase}  size="lg"  mask={ faCircle } size="2x" transform="shrink-6"/>
+                  
+                </span>
+                <NavText>Work</NavText>
               </Work>
               <Food>
-                <span></span>
-                <span>Food</span>
+                <span>     
+                            
+                   <FontAwesomeIcon icon={faUtensils}  size="lg"  mask={ faCircle } size="2x" transform="shrink-6"/>  
+                               
+                </span>
+                <NavText>Food</NavText>
               </Food>
             </Navigator1>
           </Navigator>
         </NavBorder>
-
+       {/* </Nav> */}
 
        
 
@@ -586,40 +608,63 @@ display: flex;
 
 `
 
+const Margin = styled.div`
+
+height: 50vh;
+
+
+`
+
+
 const NavBorder = styled.div`
-position: absolute;
-top: 150vh;
+
+
 width: 100%;
 display: block;
 border-top: 1px solid rgba(0,0,0,.15);
-
+position: -webkit-sticky;
+position: sticky;
+top: 10vh;
 `
 
 const Navigator= styled.div`
-display: flex;
-margin-left: 12px;
+
+margin-left: 5vw;
+// position: -webkit-sticky;
+// position: sticky;
+// top: 0;
+span{
+  
+}
 `
 
 const Navigator1= styled.div`
-
+display: flex;
+justify-content: flex-start;
+align-items: center;
+sapn{
+  margin-right: 0.5vw;
+}
 `
 
 const City= styled.div`
 color: rgba(0,0,0,.45);
 font-family: "MaisonNeue-Medium","Helvetica Neue",Helvetica,Arial,sans-serif;
-display: inline-block;
+display: flex;
 text-transform: none;
 font-size: 14px;
 line-height: 24px;
 letter-spacing: 0;
 
-::after{
-  content: "|";
-    margin-left: 10px;
-    margin-right: 8px;
-    color: rgba(0,0,0,.45);
 
-}
+
+// ::after{
+//   content: "|";
+//     margin-left: 10px;
+//     margin-right: 8px;
+//     color: rgba(0,0,0,.45);
+
+// }
 `
 
 const Work= styled(City)`
@@ -627,6 +672,13 @@ const Work= styled(City)`
 `
 
 const Food= styled(City)`
+
+`
+
+
+const NavText= styled.div`
+margin-left: 1vw;
+margin-right: 3vw;
 
 `
 
@@ -651,7 +703,7 @@ const TopCitywrapper1= styled.div`
 position: relative;
 margin-left: 32px;
 margin-right: 32px;
-margin-top: 80vh;
+margin-top: 10vh;
 git`
 
 
