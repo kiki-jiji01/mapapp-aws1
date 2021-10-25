@@ -69,12 +69,14 @@ position: relative;
 const TopWrapper = styled.div`
 width: 100vw;
 position: fixed;
-// background-color: black;
+background-color: rgba(0, 0, 0, 0.9);
 z-index:200;
 box-sizing: border-box;
 padding: 15px 25px;
 justify-content: center;
 top: 0;
+color: white;
+
 `
 
 const MiddleWrapper = styled.div`

@@ -624,7 +624,7 @@ display: block;
 border-top: 1px solid rgba(0,0,0,.15);
 position: -webkit-sticky;
 position: sticky;
-top: 10vh;
+top: 8.5vh;
 `
 
 const Navigator= styled.div`
@@ -648,7 +648,8 @@ sapn{
 `
 
 const City= styled.div`
-color: rgba(0,0,0,.45);
+background-color: hsla(0,0%,100%,.8);
+color: rgba(0, 0, 0, 0.9);
 font-family: "MaisonNeue-Medium","Helvetica Neue",Helvetica,Arial,sans-serif;
 display: flex;
 text-transform: none;
