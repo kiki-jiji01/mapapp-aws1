@@ -324,8 +324,10 @@ class Map extends React.Component{
               <PlayerWrapper>
                 <ReactPlayer 
                 url="https://assets.mixkit.co/videos/preview/mixkit-venice-central-canal-at-night-4646-large.mp4"
+                playing={true}
                 autoPlay={true}
-                loop="true"
+                muted={true}
+                loop={true}
                 width='100%'
                 height='100%'
 
@@ -598,6 +600,17 @@ height: 100%;
 object-position: center;
 z-index: -1;
 object-fit: cover;
+
+::before{
+  　content: "";
+    position: absolute;
+    background-color: rgba(0,0,0,.3);
+    z-index: 10;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
 `
 
 const MapWrapper2 = styled.div`
