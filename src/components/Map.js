@@ -296,7 +296,6 @@ class Map extends React.Component{
                 <GoogleMap
                   defaultZoom={8}
                   defaultCenter={{ lat: this.state.mapPosition.lat , lng: this.state.mapPosition.lng }}
-                  
                 >
                  
                   <Marker
@@ -304,6 +303,7 @@ class Map extends React.Component{
                     onDragEnd={this.onMarkerDragEnd}
                     position={{ lat: this.state.markerPosition.lat , lng: this.state.markerPosition.lng}}
                   >
+
                     <InfoWindow>
                       <div>
                        {this.state.address}
@@ -311,12 +311,6 @@ class Map extends React.Component{
                    </InfoWindow>
                   </Marker>
 
-
-
-                  {/* <Search> */}
-
-
-                  {/* </Search> */}
                 </GoogleMap>
               ));
 
@@ -326,31 +320,40 @@ class Map extends React.Component{
         
           <MapWrapper>
             <MapWrapper1>
+
               <PlayerWrapper>
                 <ReactPlayer 
                 url="https://assets.mixkit.co/videos/preview/mixkit-venice-central-canal-at-night-4646-large.mp4"
-                playing="true"
+                autoPlay={true}
                 loop="true"
                 width='100%'
                 height='100%'
+
                 />
               </PlayerWrapper> 
+
               <MapInner>
                   <SearchText>
                     <p>You can start your journey with three category of city you want to go.</p>
                   </SearchText>
                   <AutoComplete
+                        apiKey={"AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM"}
                         types={['(country)']}
                         onPlaceSelected= {this.onPlaceSelected}
+                        class="pac-target-input" 
+                        placeholder="Enter a location" 
+                        autocomplete="new-password"
                         style={{
                           width: '100%',
                           height: '40px',
                           paddingLeft: '16px',
                           marginTop: '2px',
                           marginBottom: '2rem',
+                          zIndex: '1100',
                         }}
                   /> 
               </MapInner>
+
             </MapWrapper1>
 
 
@@ -567,9 +570,11 @@ text-align:center;
 position: absolute;
 top: 40%;
 left: 50%;
+z-index: 20;
 transform: translate(-50%, -50%);
 -webkit-transform: translate(-50%, -50%);
 -ms-transform: translate(-50%, -50%);
+
 p{
   color: white;
 }
