@@ -13,9 +13,12 @@ export const API = {
     // payment: {
     //     createPayment: `${apiURL}/payments/create-payment/`,
     // },
+    auth: {
+        login: `${baseURL}/auth-token/`
+    },
     countries: {
         list: `${apiURL}/countries/`,
-        create: `${apiURL}/create-country/`,
+        create: `${apiURL}/create-countries/`,
         retrieve: id => `${apiURL}/countries/${id}/`,
         update: id => `${apiURL}/countries/${id}/update/`,
         delete: id => `${apiURL}/countries/${id}/delete/`,
