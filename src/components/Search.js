@@ -6,7 +6,9 @@ import {Auth} from "aws-amplify";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faCircle, faCity, faCoffee, faUtensils } from '@fortawesome/free-solid-svg-icons';
 import { faAirbnb, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-
+import { Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {useHistory} from 'react-router-dom';
 
 const styles = {
    "&.MuiButton-root": {
@@ -26,27 +28,29 @@ const styles = {
  };
 
 
-class Search extends React.Component{
+function Search (){
+
+  const history = useHistory();
+    //  signOut = (e) => {
+    //     e.preventDefault();
+    //     Auth.signOut();
+    //     window.location.reload()
+    //   }
 
 
-     signOut = (e) => {
-        e.preventDefault();
-        Auth.signOut();
-        window.location.reload()
-      }
-
-
-    render(){
+    
      
 
         return(
+        
          <Topwrapper> 
            <Logo>Mapwith</Logo>
-           <Nav>
+           <Button sx={styles} variant="text"   onClick = {() => history.push('/country')}>Create Country List!!</Button>
+           {/* <Nav>
               <ButtonWrapper>
                <Button sx={styles} variant="text" onClick={this.signOut} > Logout </Button>
               </ButtonWrapper>
-           </Nav>
+           </Nav> */}
            <Icon>
             <Linkedin>
              <FontAwesomeIcon icon={faLinkedin} size="lg" mask={ faCircle } size="2x" transform="shrink-6" />
@@ -58,7 +62,7 @@ class Search extends React.Component{
           
         </Topwrapper> 
         );
-    }
+    
 }
 
 export default Search;
@@ -78,14 +82,14 @@ flex-grow: 1;
 flex-shrink: 1;
 flex-basis: 0%;
 `
-const Nav= styled.div`
+// const Nav= styled.div`
 
-margin-left: 64px;
-flex-grow: 1;
-flex-shrink: 1;
-flex-basis: 0%;
-order: -1;
-`
+// margin-left: 64px;
+// flex-grow: 1;
+// flex-shrink: 1;
+// flex-basis: 0%;
+// order: -1;
+// `
 
 const Icon= styled.div`
 margin-right: 64px;
