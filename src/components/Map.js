@@ -529,7 +529,7 @@ class Map extends React.Component{
   　　　　　　</VideoWrapper>
 
 
-            <FooterCaption>
+            {/* <FooterCaption>
               <FooterCaption1>
               <p>you can find some Instagram  post of #city name you research</p>
               </FooterCaption1>
@@ -537,7 +537,7 @@ class Map extends React.Component{
 
             
              <Footer/>
-            
+             */}
 
             
          </div>
