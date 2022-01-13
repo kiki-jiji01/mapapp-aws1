@@ -1,15 +1,22 @@
 import { Formik, Field, Form } from 'formik';
 import axios from "axios"
 import { API } from '../api'
-import { useState } from 'react';
+import {  useContext,useState } from 'react';
+import { AuthContext } from "../contexts/AuthContext";
+
 
 export function CountryCreate() {
     const [loading, setLoading] = useState(false)
-    
+    const { user: { token } } = useContext(AuthContext)
+
     function handleSubmit(values) {
         console.log(values)
         setLoading(true)
-        axios.post(API.countries.create, values)
+        axios.post(API.countries.create, values,{
+            headers: {
+                "Authorization": `Token ${token}`
+            }
+        })
             .then(res => {
                 console.log(res.data)
             })

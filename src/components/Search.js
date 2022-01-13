@@ -45,7 +45,7 @@ function Search (){
         
          <Topwrapper> 
            <Logo>Mapwith</Logo>
-           <Button sx={styles} variant="text"   onClick = {() => history.push('/country')}>Create Country List!!</Button>
+           <Button sx={styles} variant="text"   onClick = {() => history.push('/countries')}>Create Country List!!</Button>
            {/* <Nav>
               <ButtonWrapper>
                <Button sx={styles} variant="text" onClick={this.signOut} > Logout </Button>
