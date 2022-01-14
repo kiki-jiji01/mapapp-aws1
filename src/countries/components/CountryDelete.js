@@ -14,11 +14,22 @@ export function CountryDelete() {
     const { id } = useParams()
 
     const { user: { token } } = useContext(AuthContext)
+
+    useEffect(() => {
+        if (country && !country.is_owner) {
+            history.push(`/`)
+        }
+        return () => null
+    })
     
     useEffect(() => {
         setLoadingCountry(true)
         function fetchCountry() {
-            axios.get(API.countries.retrieve(id))
+            axios.get(API.countries.retrieve(id),{
+                headers: {
+                    "Authorization": `Token ${token}`
+                }
+            })
                 .then(res => {
                     setCountry(res.data)
                 })
@@ -28,7 +39,7 @@ export function CountryDelete() {
         }
         fetchCountry()
         return () => null
-    }, [id])
+    }, [id,token])
 
     function handleSubmit(e) {
         e.preventDefault()

@@ -3,11 +3,12 @@ import axios from "axios"
 import { API } from '../api'
 import {  useContext,useState } from 'react';
 import { AuthContext } from "../contexts/AuthContext";
-
+import {useHistory} from 'react-router-dom';
 
 export function CountryCreate() {
     const [loading, setLoading] = useState(false)
     const { user: { token } } = useContext(AuthContext)
+    const history = useHistory();
 
     function handleSubmit(values) {
         console.log(values)
@@ -18,11 +19,13 @@ export function CountryCreate() {
             }
         })
             .then(res => {
+                history.push(`/countries`)
                 console.log(res.data)
             })
             .finally(() => {
                 setLoading(false)
             })
+            return () => null
     }
 
     return (
