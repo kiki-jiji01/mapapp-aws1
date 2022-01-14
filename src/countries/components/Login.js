@@ -20,6 +20,7 @@ export function Login() {
                 history.push(`/countries`)
             })
             .finally(() => setLoading(false))
+        return () => null
     }
 
     return (
@@ -27,16 +28,16 @@ export function Login() {
             {loading && "Loading..."}
             <Formik
                 initialValues={{
-                    username: '',
+                    email: '',
                     password: '',
                 }}
                 onSubmit={handleSubmit}>
 
                 {({ errors, touched }) => (
                     <Form>
-                        <label htmlFor="username">Username</label>
-                        <Field id="username" name="username" placeholder="Username" />
-                        {touched.username && errors.username && <div>{errors.username}</div>}
+                        <label htmlFor="email">Email</label>
+                        <Field id="email" name="email" placeholder="Email" />
+                        {touched.email && errors.email && <div>{errors.email}</div>}
 
                         <label htmlFor="password">Password</label>
                         <Field id="password" name="password" type="password" />
