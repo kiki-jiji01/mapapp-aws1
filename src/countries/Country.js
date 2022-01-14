@@ -5,6 +5,8 @@ import CountryCreate from "./components/CountryCreate";
 import Login from "./components/Login";
 import CountryUpdate from "./components/CountryUpdate";
 import CountryDelete from "./components/CountryDelete";
+import SignUp from "./components/SignUp";
+import  ConfirmEmail  from "./components/ConfirmEmail";
 import { AuthContextProvider, AuthContext  } from './contexts/AuthContext';
 import { useContext } from "react";
 import Navbar from "./components/Navbar";
@@ -44,7 +46,8 @@ function Country() {
             <Route path="/create-countries"><CountryCreate/></Route>
             <Route path="/countries/:id/delete"> <CountryDelete/></Route>
             <Route path="/countries/:id/update"> <CountryUpdate/></Route>
-
+            <Route path="/countries/signup"><SignUp/> </Route>
+            <Route path="/countries/accounts/confirm-email/:key"><ConfirmEmail /></Route> 
             <Route path="/countries/login"><Login/> </Route>
             <Route path="/countries/:id"> <CountryDetail/> </Route>
             <Route path="/"> <CountryList/> </Route>
