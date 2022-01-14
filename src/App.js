@@ -3,22 +3,22 @@ import './App.css';
 import React,{useState,useEffect} from 'react';
 import Top from './components/Top';
 import Main from './components/Main';
-import Amplify from 'aws-amplify';
-import { AmplifyAuthenticator, AmplifySignUp, AmplifySignOut } from '@aws-amplify/ui-react';
-import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components';
-import awsconfig from './aws-exports';
-import styled from "styled-components"
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Slide from '@mui/material/Slide';
-import { TransitionProps } from '@mui/material/transitions';
-
+// import Amplify from 'aws-amplify';
+// import { AmplifyAuthenticator, AmplifySignUp, AmplifySignOut } from '@aws-amplify/ui-react';
+// import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components';
+// import awsconfig from './aws-exports';
+// import styled from "styled-components"
+// import Button from '@mui/material/Button';
+// import Dialog from '@mui/material/Dialog';
+// import DialogActions from '@mui/material/DialogActions';
+// import DialogContent from '@mui/material/DialogContent';
+// import DialogContentText from '@mui/material/DialogContentText';
+// import DialogTitle from '@mui/material/DialogTitle';
+// import Slide from '@mui/material/Slide';
+// import { TransitionProps } from '@mui/material/transitions';
+import Login from "./countries/components/Login";
 import Country from './countries/Country';
-import CountryDetail from "./countries/components/CountryDetail";
+import { AuthContextProvider, AuthContext  } from './countries/contexts/AuthContext';
 
 
 
@@ -64,12 +64,16 @@ const App = () => {
     return (
     // authState === AuthState.SignedIn && user ?(
          <Router>
-            
-            <Switch>
+          
+           <Switch>
+             
               <Route path="/countries"><Country/> </Route>
               <Route path="/"><div className="main"> <Main /> </div></Route>
-            </Switch>
+           </Switch>
 
+       
+            
+            
         </Router>
     );
               // ):(

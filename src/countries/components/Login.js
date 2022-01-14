@@ -15,7 +15,7 @@ export function Login() {
     function handleSubmit(values) {
         setLoading(true)
         axios.post(API.auth.login, values)
-            .then(res =>  login(res.data.token))
+            .then(res =>  login(res.data.key))
             .then(res => {
                 history.push(`/countries`)
             })

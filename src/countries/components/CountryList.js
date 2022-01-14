@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState , useContext} from "react"
 import axios from "axios"
 import { NavLink } from "react-router-dom"
 import { API } from "../api"
-
+import { AuthContext } from "../contexts/AuthContext"
 
 function CountryList() {
   const [countries, setCountries] = useState(null)
+  // const { user: { token } } = useContext(AuthContext)
 
   useEffect(() => {
     function fetchCountries() {
@@ -16,6 +17,7 @@ function CountryList() {
         })
     }
     fetchCountries()
+    return () => null
   }, [])
 
   return (

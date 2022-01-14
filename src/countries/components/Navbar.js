@@ -17,23 +17,28 @@ function Navbar() {
         axios.post(API.auth.logout)
         .then(res => {
           logout()
-        history.push(`/countries`)
+          history.push(`/countries/login`)
         })
+        return () => null
     }
     return (
         
        
-        <div>   
-           <NavLink to={`/create-countries`}>
-                    Make a list of country
-           </NavLink>
-
+        <div> 
+          
 
           {user ?(
              
+            
+              <div>
               <Button  variant="text"   onClick={handleSubmit}>Logout</Button>
+              <NavLink to={`/create-countries`}>
+              Make a list of country
+              </NavLink>
+              </div>
           ):(
            <div>
+            
             <NavLink to={`/countries/login`}>
             Login
            </NavLink>
