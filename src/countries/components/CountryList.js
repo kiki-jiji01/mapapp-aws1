@@ -6,6 +6,7 @@ import { AuthContext } from "../contexts/AuthContext"
 
 function CountryList() {
   const [countries, setCountries] = useState(null)
+  const { user ,logout } = useContext(AuthContext)
   // const { user: { token } } = useContext(AuthContext)
 
   useEffect(() => {
@@ -26,9 +27,17 @@ function CountryList() {
         {countries && countries.map((country, i) => {
             return (
             <div key={i}>
+              {user ? (
                 <NavLink to={`/countries/${country.id}`}>
                     {country.country_name}: {country.content}
                 </NavLink>
+                ):(
+                  <NavLink to={`/countries/login`}>
+                  {country.country_name}: {country.content}
+                 </NavLink>
+
+                )}
+                
             </div>
             )
         })}
