@@ -38,7 +38,7 @@ function CountryList() {
 
                 )}
                 
-            </div>
+    </div>
             )
         })}
        
