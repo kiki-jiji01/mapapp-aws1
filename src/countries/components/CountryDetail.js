@@ -23,7 +23,7 @@ export function CountryDetail() {
           })
       }
       fetchCountry()
-      // return () => null
+      return () => null
     }, [id, token])
 
     return (
@@ -32,6 +32,9 @@ export function CountryDetail() {
             {!country && "Loading..."}
             {country && (
                 <div>
+                     {country.country_image && (
+                        <img src={country.country_image}  alt={country.country_image} />
+                      )}
                     {country.country_name}
                     {country.is_owner && (
                     <div>
