@@ -23,8 +23,8 @@ export function CountryDetail() {
           })
       }
       fetchCountry()
-      return () => null
-    }, [id])
+      // return () => null
+    }, [id, token])
 
     return (
         <div>

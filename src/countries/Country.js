@@ -11,7 +11,7 @@ import { AuthContextProvider, AuthContext  } from './contexts/AuthContext';
 import { useContext } from "react";
 import Navbar from "./components/Navbar";
 import {useHistory} from 'react-router-dom';
-
+import ErrorBoundary from './Error';
 
 
 function Country() {
@@ -21,6 +21,7 @@ function Country() {
         
         <Router>
         <AuthContextProvider>
+        <ErrorBoundary>
         <div>   
           <Navbar></Navbar>
           
@@ -50,6 +51,7 @@ function Country() {
             
           </Switch>
         </div>
+        </ErrorBoundary>
         </AuthContextProvider>
         </Router>
     );

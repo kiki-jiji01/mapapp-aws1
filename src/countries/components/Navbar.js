@@ -16,8 +16,9 @@ function Navbar() {
     function handleSubmit() {
         axios.post(API.auth.logout)
         .then(res => {
-          logout()
           history.push(`/countries/login`)
+          logout()
+          
         })
         return () => null
     }
