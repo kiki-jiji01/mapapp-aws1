@@ -3,11 +3,25 @@ import axios from "axios"
 import { NavLink } from "react-router-dom"
 import { API } from "../api"
 import { AuthContext } from "../contexts/AuthContext"
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import {useHistory} from 'react-router-dom';
+import styled from "styled-components"
+import ListPage from "./ListPage"
+
 
 function CountryList() {
   const [countries, setCountries] = useState(null)
   const { user ,logout } = useContext(AuthContext)
-  // const { user: { token } } = useContext(AuthContext)
+  const history = useHistory();
+
 
   useEffect(() => {
     function fetchCountries() {
@@ -22,28 +36,41 @@ function CountryList() {
   }, [])
 
   return (
-    <div>
-        {!countries && "Loading..."}
-        {countries && countries.map((country, i) => {
-            return (
-            <div key={i}>
-              {user ? (
-                <NavLink to={`/countries/${country.id}`}>
-                    {country.country_name}: {country.content}
-                </NavLink>
-                ):(
-                  <NavLink to={`/countries/login`}>
-                  {country.country_name}: {country.content}
-                 </NavLink>
-
-                )}
-                
-    </div>
-            )
-        })}
-       
-    </div>
+    
+    
+    <ListWrapper>
+      <ListH1>
+       <ListH2><p>Country List</p></ListH2>
+      </ListH1>
+      
+      {!countries && "Loading..."}
+      <ListPage  countries={countries}/>
+    </ListWrapper>
+    
   );
 }
 
 export default CountryList
+
+const ListWrapper = styled.div`
+
+margin-top: 50vh;
+
+`
+
+const ListH1= styled.div`
+
+margin-left: 30%;
+margin-right: 30%;
+margin-bottom: 20vh;
+font-size: 36px;
+color: black;
+
+`
+
+const ListH2= styled.div`
+
+text-align:center;
+
+
+`
