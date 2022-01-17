@@ -5,6 +5,37 @@ import { useContext } from "react";
 import {useHistory} from 'react-router-dom';
 import axios from "axios"
 import { API } from "../api"
+import styled from "styled-components"
+
+const buttonstyles = {
+  // "&.MuiButton-root": {
+  //   border: "2px black solid"
+  // },
+ 
+  "&.MuiButton-contained": {
+    color: "white"
+  },
+  // "&.MuiButton-outlined": {
+  //   color: "brown"
+  // }
+};
+
+const textstyles = {
+  "&.MuiButton-root": {
+    border: "2px black solid"
+  },
+  "&.MuiButton-text": {
+    color: "black",
+    border: "1px white solid",
+    
+  },
+  "&.MuiButton-contained": {
+    color: "yellow"
+  },
+  "&.MuiButton-outlined": {
+    color: "brown"
+  }
+};
 
 
 function Navbar() {
@@ -24,37 +55,90 @@ function Navbar() {
     }
     return (
         
-       
-        <div> 
-          
+      
 
+        <Topwrapper> 
+          <Secondwrapper>
+          <Logo>Mapwith</Logo>
           {user ?(
-             
-            
-              <div>
-              <Button  variant="text"   onClick={handleSubmit}>Logout</Button>
-              <NavLink to={`/create-countries`}>
-              Make a list of country
-              </NavLink>
-              </div>
+          <>
+          <Button  size="medium" sx={textstyles} variant="text"   onClick={handleSubmit}>
+            <LogoutButton> Logout</LogoutButton>
+          </Button>
+          <Button  size="medium" sx={buttonstyles} variant="contained"   onClick = {() => history.push(`/create-countries`)}>Create Country List!!</Button>
+          </>
           ):(
-           <div>
-            
-            <NavLink to={`/countries/login`}>
-            Login
-           </NavLink>
-            <NavLink to={`/countries/signup`}>
-            SignUp
-           </NavLink>
-           </div>
+          <Icon>
+            <Linkedin>
+                <Button  size="medium" sx={textstyles} variant="text"   onClick = {() => history.push(`/countries/login`)}>
+                 <LoginButton>Login </LoginButton>
+                </Button>
+            </Linkedin>
+
+            <Airbnb>
+                <Button  size="medium" sx={textstyles} variant="text"   onClick = {() => history.push(`/countries/signup`)}>
+                  Signup
+                </Button>
+            </Airbnb>
+          </Icon>
           )}
-           
-          
-        
-        </div>
+          </Secondwrapper>
+        </Topwrapper> 
      
        
     );
 }
 
 export default Navbar
+
+
+const Topwrapper = styled.div`
+
+position: fixed;
+margin-left: auto;
+margin-right: auto;
+width: 100vw;
+justify-content: center;
+z-index:10;
+box-sizing: border-box;
+top:0;
+`
+
+const Secondwrapper = styled.div`
+padding: 21px 82px;
+display: flex;
+`
+
+const LogoutButton = styled.div`
+margin-right: 64px;
+`
+const LoginButton = styled.div`
+margin-right: 64px;
+`
+
+
+const Logo= styled.div`
+
+
+flex-grow: 1;
+flex-shrink: 1;
+flex-basis: 0%;
+`
+
+const Icon= styled.div`
+margin-right: 64px;
+display: flex;
+
+`
+
+const Linkedin= styled.div`
+margin-right: 12px;
+
+
+`
+
+const Airbnb= styled.div`
+margin-right: 12px;
+
+
+`
