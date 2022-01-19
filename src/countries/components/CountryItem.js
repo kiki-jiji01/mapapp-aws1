@@ -27,8 +27,8 @@ const CountryItem = ({country}) => {
              
                
                 <Grid item xs={4}>
-                   <Card sx={{ maxWidth: 345 }}>
-                      <CardActionArea onClick = {push}>
+                   <Card sx={{ maxWidth: 345}} >
+                      <CardActionArea onClick = {push} sx={{ display: "flex", flexDirection: "column", textAlign: "center"}}>
                         <CardMedia
                           component="img"
                           height="140"

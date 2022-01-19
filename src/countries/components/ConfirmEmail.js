@@ -2,6 +2,12 @@ import { useState } from 'react';
 import { useParams } from "react-router"
 import axios from "axios"
 import { API } from '../api'
+import Container from '@mui/material/Container';
+import { useFormik } from 'formik';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
+
 
 export function ConfirmEmail() {
     const [loading, setLoading] = useState(false)
@@ -19,16 +25,13 @@ export function ConfirmEmail() {
     }
 
     return (
-        <div>
+        <Container component="main" maxWidth="xs" sx={{ marginTop: "20vh"}}>
             {success && "Your email has been verified! You can now login"}
             {loading && "Loading..."}
-            <form onSubmit={handleSubmit}>
-                <button className="mt-3 bg-blue-100 rounded-md shadow-sm text-lg px-5 py-3 hover:bg-blue-200" 
-                    type="submit">
-                    Submit
-                </button>
-            </form>
-        </div>
+            <Button  variant="contained" fullWidth type="submit" onClick = {handleSubmit}>
+                Submit
+            </Button>
+        </Container>
     )
 
 }
