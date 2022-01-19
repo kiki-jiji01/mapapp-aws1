@@ -1,11 +1,27 @@
-import { useContext, useEffect, useState } from 'react';
 import { Formik, Field, Form } from 'formik';
-import {useHistory, NavLink} from 'react-router-dom';
+import { useFormik } from 'formik';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 import axios from "axios"
 import { API } from '../api'
+import {  useContext,useState , useEffect} from 'react';
 import { AuthContext } from "../contexts/AuthContext";
-import { useParams } from 'react-router';
+import {useHistory} from 'react-router-dom';
+import * as yup from 'yup';
+import Container from '@mui/material/Container';
+import { useParams } from "react-router"
 
+
+const validationSchema = yup.object({
+    country_name: yup
+      .string('Enter your country_name'),
+    //   .email('Enter a valid country_name')
+    //   .required('country_name is required'),
+    content: yup
+      .string('Enter your content')
+    //   .min(8, 'content should be of minimum 8 characters length')
+    //   .required('content is required'),
+  });
 
 function ImagePreview({ file }) {
     const [imageSrc, setImageSrc] = useState(null)
@@ -36,7 +52,7 @@ export function CountryUpdate() {
     const [loading, setLoading] = useState(false)
     const [loadingCountry, setLoadingCountry] = useState(false)
     const [file, setFile] = useState(null)
-    const [country, setCountry] = useState(null)
+    const [country, setCountry] = useState("")
     const { id } = useParams()
 
     const { user: { token } } = useContext(AuthContext)
@@ -67,11 +83,12 @@ export function CountryUpdate() {
         return () => null
     }, [id, token])
 
-    console.log(country)
+    console.log(country.country_name)
+
+
+
 
     function handleSubmit(values) {
-   
-       
 
         console.log(values)
         setLoading(true)
@@ -97,76 +114,127 @@ export function CountryUpdate() {
             })
         ):( 
             setLoading(false)
-            .then( history.push(`/countries/${country.id}/update`))
-           
-            
+            .then( history.push(`/countries/${country.id}/update`))   
         )}
-   
     }
 
+   
+    const formik = useFormik({
+        initialValues: {
+          country_image: "",
+          country_name: "",
+          content: "",
+        },
+        validationSchema: validationSchema,
+        onSubmit: handleSubmit
+      });
+    
+
     return (
-        <div>
-            {loading && "Submitting..."}
-            {loadingCountry && "Fetching Country Details..."}
-            {country && (
-                <Formik
-                    initialValues={{
-                        country_image:country.country_image,
-                        country_name: country.country_name,
-                        content: country.content,
+        <Container component="main" maxWidth="xs" sx={{ marginTop: "20vh"}}>
+            {loading && "Loading..."}
+            <form onSubmit={formik.handleSubmit}>
+                <TextField
+                fullWidth
+                id="country_name"
+                name="country_name"
+                label="country_name"
+                value={formik.values.country_name}
+                onChange={formik.handleChange}
+                error={formik.touched.country_name && Boolean(formik.errors.country_name)}
+                helperText={formik.touched.country_name && formik.errors.country_name}
+                defaultValue={country.country_name}
+                />
+                <TextField
+                fullWidth
+                id="content"
+                name="content"
+                label="content"
+                // type="password"
+                value={formik.values.content}
+                onChange={formik.handleChange}
+                error={formik.touched.content && Boolean(formik.errors.content)}
+                helperText={formik.touched.content && formik.errors.content}
+                />
+                <Button  variant="contained" component="label" sx={{ marginTop: 36}}>
+                    Image Upload
+                    <input
+                    onChange={e => setFile(e.target.files[0])}
+                    type="file"
+                    style={{display:'none'}}   
+                />
+                </Button>
+                {file && (
+                    <ImagePreview file={file} />
+                )}
+                <Button  variant="contained" fullWidth type="submit" sx={{ marginTop: 36}}>
+                Submit
+                </Button>
+            </form>
+           
+        </Container>
+        // <div>
+        //     {loading && "Submitting..."}
+        //     {loadingCountry && "Fetching Country Details..."}
+        //     {country && (
+        //         <Formik
+        //             initialValues={{
+        //                 country_image:country.country_image,
+        //                 country_name: country.country_name,
+        //                 content: country.content,
                        
-                    }}
-                    validate={values => { 
-                        const errors = {};
-                        if (!values.country_name) {
-                          errors.country_name = 'country_nameを入力してください' 
-                        }
-                        if (!values.content) {
-                            errors.content = 'contentを入力してください' 
-                          }
-                        // if (!values.country_image) {
-                        // errors.country_image = 'contentを入力してください' 
-                        // }
-                        return errors;
-                      }}
+        //             }}
+        //             validate={values => { 
+        //                 const errors = {};
+        //                 if (!values.country_name) {
+        //                   errors.country_name = 'country_nameを入力してください' 
+        //                 }
+        //                 if (!values.content) {
+        //                     errors.content = 'contentを入力してください' 
+        //                   }
+        //                 // if (!values.country_image) {
+        //                 // errors.country_image = 'contentを入力してください' 
+        //                 // }
+        //                 return errors;
+        //               }}
                       
-                    onSubmit={handleSubmit}>
+        //             onSubmit={handleSubmit}>
 
-                    {({ errors, touched }) => (
-                        <Form>
-                            <label htmlFor="country_name">country_name</label>
-                        <Field id="country_name" name="country_name" placeholder="Japan" />
-                        {touched.country_name && errors.country_name && <div>{errors.country_name}</div>}
+        //             {({ errors, touched }) => (
+        //                 <Form>
+        //                     <label htmlFor="country_name">country_name</label>
+        //                 <Field id="country_name" name="country_name" placeholder="Japan" />
+        //                 {touched.country_name && errors.country_name && <div>{errors.country_name}</div>}
 
-                        <label htmlFor="content">content</label>
-                        <Field id="content" name="content" placeholder="Cook" />
-                        {touched.content && errors.content && <div>{errors.content}</div>}
+        //                 <label htmlFor="content">content</label>
+        //                 <Field id="content" name="content" placeholder="Cook" />
+        //                 {touched.content && errors.content && <div>{errors.content}</div>}
 
                         
-                        <div >
-                            <label >
-                                <span >country_image</span>
-                                <input
-                                onChange={e => setFile(e.target.files[0])}
-                                type="file"
+        //                 <div >
+        //                     <label >
+        //                         <span >country_image</span>
+        //                         <input
+        //                         onChange={e => setFile(e.target.files[0])}
+        //                         type="file"
                                
-                                />
-                            </label>
-                            {file && (
-                                <ImagePreview file={file} />
-                            )}
-                        </div>
+        //                         />
+        //                     </label>
+        //                     {file && (
+        //                         <ImagePreview file={file} />
+        //                     )}
+        //                 </div>
 
                        
 
 
-                        <button type="submit">Submit</button>
-                        </Form>
-                    )}
+        //                 <button type="submit">Submit</button>
+        //                 </Form>
+        //             )}
 
-                </Formik>
-            )}
-        </div>
+        //         </Formik>
+        //     )}
+        // </div>
     )
 
 }

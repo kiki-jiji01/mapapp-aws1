@@ -2,6 +2,24 @@ import { useState } from 'react';
 import { Formik, Field, Form } from 'formik';
 import axios from "axios"
 import { API } from '../api'
+import * as yup from 'yup';
+import Container from '@mui/material/Container';
+import { useFormik } from 'formik';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
+const validationSchema = yup.object({
+    email: yup
+      .string('Enter your email'),
+    //   .email('Enter a valid country_name')
+    //   .required('country_name is required'),
+    password1: yup
+      .string('Enter your password'),
+    //   .min(8, 'content should be of minimum 8 characters length')
+    //   .required('content is required'),
+    password2: yup
+      .string('Enter your password')
+  });
 
 export function Signup() {
     const [loading, setLoading] = useState(false)
@@ -17,109 +35,62 @@ export function Signup() {
             .finally(() => setLoading(false))
     }
 
+    const formik = useFormik({
+        initialValues: {
+          email: '',
+          password1: '',
+          password2: '',
+        },
+        validationSchema: validationSchema,
+        onSubmit: handleSubmit
+      });
+
+
     return (
         <div>
             {success && "You will receive a verification email."}
             {loading && "Loading..."}
-            <Formik
-                initialValues={{
-                    email: '',
-                    password1: '',
-                    password2: '',
-                }}
-                onSubmit={handleSubmit}>
-
-                {({ errors, touched }) => (
-                    <Form>
-                        <Field name="email">
-                            {({ field, form }) => (
-                                <label className="mt-3 block">
-                                    <span className="text-gray-700">Email</span>
-                                    <input
-                                    {...field}
-                                    type="text"
-                                    className="
-                                        mt-1
-                                        block
-                                        w-full
-                                        rounded-md
-                                        border-gray-300
-                                        shadow-sm
-                                        focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
-                                    "
-                                    placeholder=""
-                                    style={
-                                        form.touched.email && form.errors.email ? (
-                                            { border: '2px solid var(--primary-red)'}
-                                        ) : null
-                                    }
-                                    />
-                                </label>
-                            )}
-                        </Field>
-
-                        <Field name="password1">
-                            {({ field, form }) => (
-                                <label className="mt-3 block">
-                                    <span className="text-gray-700">Password</span>
-                                    <input
-                                    {...field}
-                                    type="password"
-                                    className="
-                                        mt-1
-                                        block
-                                        w-full
-                                        rounded-md
-                                        border-gray-300
-                                        shadow-sm
-                                        focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
-                                    "
-                                    placeholder=""
-                                    style={
-                                        form.touched.password1 && form.errors.password1 ? (
-                                            { border: '2px solid var(--primary-red)'}
-                                        ) : null
-                                    }
-                                    />
-                                </label>
-                            )}
-                        </Field>
-
-                        <Field name="password2">
-                            {({ field, form }) => (
-                                <label className="mt-3 block">
-                                    <span className="text-gray-700">Confirm Password</span>
-                                    <input
-                                    {...field}
-                                    type="password"
-                                    className="
-                                        mt-1
-                                        block
-                                        w-full
-                                        rounded-md
-                                        border-gray-300
-                                        shadow-sm
-                                        focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
-                                    "
-                                    placeholder=""
-                                    style={
-                                        form.touched.password2 && form.errors.password2 ? (
-                                            { border: '2px solid var(--primary-red)'}
-                                        ) : null
-                                    }
-                                    />
-                                </label>
-                            )}
-                        </Field>
-
-                        <button className="mt-3 bg-blue-100 rounded-md shadow-sm text-lg px-5 py-3 hover:bg-blue-200" 
-                            type="submit">
-                            Submit
-                        </button>
-                    </Form>
-                )}
-
-            </Formik>
+            <Container component="main" maxWidth="xs" sx={{ marginTop: "20vh"}}>
+            {loading && "Loading..."}
+            <form onSubmit={formik.handleSubmit}>
+                <TextField
+                fullWidth
+                id="email"
+                name="email"
+                label="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
+                />
+                <TextField
+                fullWidth
+                id="password1"
+                name="password1"
+                label="password1"
+                type="password1"
+                value={formik.values.password1}
+                onChange={formik.handleChange}
+                error={formik.touched.password1 && Boolean(formik.errors.password1)}
+                helperText={formik.touched.password1 && formik.errors.password1}
+                />
+                <TextField
+                fullWidth
+                id="password2"
+                name="password2"
+                label="password2"
+                type="password2"
+                value={formik.values.password2}
+                onChange={formik.handleChange}
+                error={formik.touched.password2 && Boolean(formik.errors.password2)}
+                helperText={formik.touched.password2 && formik.errors.password2}
+                />
+                <Button  variant="contained" fullWidth type="submit" sx={{ marginTop: 36}}>
+                Submit
+                </Button>
+            </form>
+           
+        </Container>
         </div>
     )
 

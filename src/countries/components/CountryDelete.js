@@ -4,6 +4,11 @@ import axios from "axios"
 import { API } from '../api'
 import { AuthContext } from "../contexts/AuthContext";
 import { useParams } from 'react-router';
+import Container from '@mui/material/Container';
+import { useFormik } from 'formik';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
 
 export function CountryDelete() {
     const history = useHistory();
@@ -58,15 +63,15 @@ export function CountryDelete() {
     }
 
     return (
-        <div>
+        <Container component="main" maxWidth="xs" sx={{ marginTop: "20vh"}}>
             {loading && "Submitting..."}
             {loadingCountry && "Fetching Country Details..."}
             {country && (
-                <form onSubmit={handleSubmit}>
-                    <button type="submit">Submit</button>
-                </form>
+            <Button  variant="contained" fullWidth type="submit" onClick = {handleSubmit}>
+                Submit
+            </Button>
             )}
-        </div>
+        </Container>
     )
 
 }
