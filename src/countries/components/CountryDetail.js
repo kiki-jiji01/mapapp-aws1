@@ -113,7 +113,6 @@ padding: 10% ;
 margin-right: 20%;
 display: flex;
 text-align: center;
-// align-items: center;
 flex-direction: column;
 `
 
