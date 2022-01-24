@@ -40,11 +40,14 @@ function CountryList() {
     
     <ListWrapper>
       <ListH1>
-       <ListH2><p>Country List</p></ListH2>
+       <ListH2><p>Your Country List</p></ListH2>
       </ListH1>
       
       {!countries && "Loading..."}
-      <ListPage  countries={countries}/>
+      <ListWrapper1>
+       <ListPage  countries={countries}/>
+      </ListWrapper1>
+     
     </ListWrapper>
     
   );
@@ -54,7 +57,13 @@ export default CountryList
 
 const ListWrapper = styled.div`
 
-margin-top: 50vh;
+margin-top: 30vh;
+
+`
+
+const ListWrapper1 = styled.div`
+
+margin-left 5%;
 
 `
 
@@ -72,5 +81,8 @@ const ListH2= styled.div`
 
 text-align:center;
 
+p{
+  letter-spacing: 6px;
+}
 
 `

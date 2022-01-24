@@ -27,21 +27,20 @@ const CountryItem = ({country}) => {
              
                
                 <Grid item xs={4}>
-                   <Card sx={{ maxWidth: 345}} >
+                   <Card sx={{ maxWidth: 400, borderRadius:0, boxShadow: 0}} >
                       <CardActionArea onClick = {push} sx={{ display: "flex", flexDirection: "column", textAlign: "center"}}>
                         <CardMedia
                           component="img"
-                          height="140"
+                          height="240"
                           image={country.country_image}
                           alt={country.country_image}
                         />
-                        <CardContent>
-                          <Typography gutterBottom variant="h5" component="div">
-                           {country.country_name}
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                           {country.content}
-                          </Typography>
+                        <CardContent sx={{marginTop: -5, zIndex:100}}>
+                          <FlowWrap >
+                            <Typography gutterBottom variant="h5" component="div">
+                            <p>{country.country_name}</p>
+                            </Typography>
+                          </FlowWrap>
                         </CardContent>
                       </CardActionArea>
                     </Card>
@@ -50,3 +49,19 @@ const CountryItem = ({country}) => {
     )
 };
 export default CountryItem;
+
+
+const FlowWrap= styled.div`
+
+
+
+padding: 8px 64px 8px 64px;
+background-color: rgba(239,239,239,.85);
+
+p{
+  padding: 2px 16px 2px 16px;
+  font-size: 12px;
+  border: 1px solid #000;
+}
+
+`

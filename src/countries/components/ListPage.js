@@ -13,7 +13,7 @@ const ListPage = ({countries}) => {
     });
 
     return (
-        <Grid container spacing={2}>{renderedCountries}</Grid> 
+        <Grid container spacing={6}>{renderedCountries}</Grid> 
     )
 };
 export default ListPage;

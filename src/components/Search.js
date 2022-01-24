@@ -4,19 +4,19 @@ import Button from '@mui/material/Button';
 import styled from "styled-components"
 import {Auth} from "aws-amplify";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcase, faCircle, faCity, faCoffee, faUtensils } from '@fortawesome/free-solid-svg-icons';
-import { faAirbnb, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faBriefcase, faCircle, faCity, faCoffee, faUtensils,faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faAirbnb, faLinkedin,  } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-router-dom'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {useHistory} from 'react-router-dom';
 
 const styles = {
    "&.MuiButton-root": {
-     border: "2px black solid"
+     
    },
    "&.MuiButton-text": {
      color: "white",
-     border: "1px white solid",
+     
      
    },
    "&.MuiButton-contained": {
@@ -24,7 +24,10 @@ const styles = {
    },
    "&.MuiButton-outlined": {
      color: "brown"
-   }
+   },
+   marginRight: "-6px",
+   
+   
  };
 
 
@@ -45,12 +48,12 @@ function Search (){
         
          <Topwrapper> 
            <Logo>Mapwith</Logo>
-           <Button sx={styles} variant="text"   onClick = {() => history.push('/countries')}>Create Country List!!</Button>
-           {/* <Nav>
-              <ButtonWrapper>
-               <Button sx={styles} variant="text" onClick={this.signOut} > Logout </Button>
-              </ButtonWrapper>
-           </Nav> */}
+           <List>
+            <Button sx={styles} variant="text"   onClick = {() => history.push('/countries')}>CountryList</Button>
+            <FontAwesomeIcon icon={faArrowRight} size="lg"  size="2x"  transform="shrink-6" />
+           </List>
+           
+           
            <Icon>
             <Linkedin>
              <FontAwesomeIcon icon={faLinkedin} size="lg" mask={ faCircle } size="2x" transform="shrink-6" />
@@ -90,6 +93,14 @@ flex-basis: 0%;
 // flex-basis: 0%;
 // order: -1;
 // `
+
+
+const List= styled.div`
+margin-right: 48px;
+display: flex;
+
+`
+
 
 const Icon= styled.div`
 margin-right: 64px;
