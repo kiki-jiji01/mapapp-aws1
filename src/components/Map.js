@@ -21,7 +21,7 @@ import Footer from "./Footer";
 import { Player } from 'video-react';
 import ReactPlayer from 'react-player';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcase, faCircle, faCity, faCoffee, faUtensils } from '@fortawesome/free-solid-svg-icons';
+import { faBriefcase, faCircle, faCity, faCoffee, faUtensils,faSearch } from '@fortawesome/free-solid-svg-icons';
 // import { library } from '@fortawesome/fontawesome-svg-core'
 // import { fab } from '@fortawesome/free-brands-svg-icons'
 // import { faBriefcase, faCity, faCoffee, faUtensils } from '@fortawesome/free-solid-svg-icons'
@@ -330,14 +330,16 @@ class Map extends React.Component{
                 loop={true}
                 width='100%'
                 height='100%'
-
+                
                 />
               </PlayerWrapper> 
 
               <MapInner>
                   <SearchText>
-                    <p>You can start your journey with three category of city you want to go.</p>
+                    <p>Are you collecting the imfomation of the country<br></br> which you wanna live work....?</p>
+                    <h1>You can do everythings here</h1>
                   </SearchText>
+                  {/* <FontAwesomeIcon icon={faSearch} size="lg"  size="2x" transform="shrink-6" /> */}
                   <AutoComplete
                         apiKey={"AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM"}
                         types={['(country)']}
@@ -346,12 +348,15 @@ class Map extends React.Component{
                         placeholder="Enter a location" 
                         autocomplete="new-password"
                         style={{
-                          width: '100%',
+                          width: '30%',
                           height: '40px',
                           paddingLeft: '16px',
-                          marginTop: '2px',
+                          marginTop: '20vh',
                           marginBottom: '2rem',
                           zIndex: '1100',
+                          borderRadius: "30px",
+                          outlineStyle: "none",
+                        
                         }}
                   /> 
               </MapInner>
@@ -570,13 +575,13 @@ const MapInner = styled.div`
 
 text-align:center;
 position: absolute;
-top: 40%;
+top: 50%;
 left: 50%;
 z-index: 20;
 transform: translate(-50%, -50%);
 -webkit-transform: translate(-50%, -50%);
 -ms-transform: translate(-50%, -50%);
-
+width: 80%;
 p{
   color: white;
 }
@@ -586,6 +591,18 @@ const SearchText = styled.div`
 margin-top: 10vh;
 margin-bottom: 5vh;
 text-align: center;
+color: white;
+
+p{
+    font-size: 36px;
+    line-height: 120%;
+    margin-bottom: 8vh;
+}
+
+h1{
+    // margin-top: 5vh;
+    font-size: 48px;
+}
 `
 
 const PlayerWrapper = styled.div`

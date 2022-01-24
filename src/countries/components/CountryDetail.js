@@ -46,7 +46,7 @@ export function CountryDetail() {
             </CountryImg>  
           )}
         </Grid>
-        <Grid item xs={7}  style={{height: "80vh"}}>
+        <Grid item xs={7}  style={{height: "72vh"}}>
             <CountryContent>
               <NameContent>
                  <h1>{country.country_name}</h1>

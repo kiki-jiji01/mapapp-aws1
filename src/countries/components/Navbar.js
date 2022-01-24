@@ -6,27 +6,32 @@ import {useHistory} from 'react-router-dom';
 import axios from "axios"
 import { API } from "../api"
 import styled from "styled-components"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBriefcase, faCircle, faCity, faCoffee, faUtensils,faArrowRight } from '@fortawesome/free-solid-svg-icons';
+
 
 const buttonstyles = {
-  // "&.MuiButton-root": {
-  //   border: "2px black solid"
-  // },
+  "&.css-ae8fex-MuiButtonBase-root-MuiButton-root":{
+    backgroundColor: "none",
+    boxShadow: "none",
+  },
  
   "&.MuiButton-contained": {
-    color: "white"
+    color: "white",
+    backgroundColor: "none",
+    boxShadow: "none",
   },
-  // "&.MuiButton-outlined": {
-  //   color: "brown"
-  // }
+  
+  
 };
 
 const textstyles = {
   "&.MuiButton-root": {
-    border: "2px black solid"
+   
   },
   "&.MuiButton-text": {
-    color: "black",
-    border: "1px white solid",
+    color: "white",
+    
     
   },
   "&.MuiButton-contained": {
@@ -34,7 +39,9 @@ const textstyles = {
   },
   "&.MuiButton-outlined": {
     color: "brown"
-  }
+  },
+  marginRight: "-12px"
+
 };
 
 
@@ -65,7 +72,8 @@ function Navbar() {
           <Button  size="medium" sx={textstyles} variant="text"   onClick={handleSubmit}>
             <LogoutButton> Logout</LogoutButton>
           </Button>
-          <Button  size="medium" sx={buttonstyles} variant="contained"   onClick = {() => history.push(`/create-countries`)}>Create Country List!!</Button>
+          <Button  size="medium" sx={textstyles} variant="text"   onClick = {() => history.push(`/create-countries`)}>Create Country List</Button>
+          <span style={{marginLeft: "1px"}}> <FontAwesomeIcon icon={faArrowRight} size="lg"  size="2x"  transform="shrink-6" /></span>
           </>
           ):(
           <Icon>
@@ -97,11 +105,13 @@ const Topwrapper = styled.div`
 position: fixed;
 margin-left: auto;
 margin-right: auto;
+background-color: rgba(0,0,0,.85);
 width: 100vw;
 justify-content: center;
-z-index:10;
+z-index:1000;
 box-sizing: border-box;
 top:0;
+color: white;
 `
 
 const Secondwrapper = styled.div`
