@@ -8,6 +8,7 @@ import { API } from "../api"
 import styled from "styled-components"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faCircle, faCity, faCoffee, faUtensils,faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { Box } from "@mui/system";
 
 
 const buttonstyles = {
@@ -66,7 +67,9 @@ function Navbar() {
 
         <Topwrapper> 
           <Secondwrapper>
+          
           <Logo>Mapwith</Logo>
+         
           {user ?(
           <>
           <Button  size="medium" sx={textstyles} variant="text"   onClick={handleSubmit}>
