@@ -297,7 +297,6 @@ class Map extends React.Component{
                   defaultZoom={8}
                   defaultCenter={{ lat: this.state.mapPosition.lat , lng: this.state.mapPosition.lng }}
                 >
-                 
                   <Marker
                     draggable={true}
                     onDragEnd={this.onMarkerDragEnd}
@@ -330,7 +329,7 @@ class Map extends React.Component{
                 loop={true}
                 width='100%'
                 height='100%'
-                
+                zIndex="-100"
                 />
               </PlayerWrapper> 
 
@@ -344,9 +343,9 @@ class Map extends React.Component{
                         apiKey={"AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM"}
                         types={['(country)']}
                         onPlaceSelected= {this.onPlaceSelected}
-                        class="pac-target-input" 
+                        className="pac-target-input" 
                         placeholder="Enter a location" 
-                        autocomplete="new-password"
+                        autoComplete="new-password"
                         style={{
                           width: '30%',
                           height: '40px',
@@ -532,18 +531,6 @@ class Map extends React.Component{
               </VideoItem>
             </VideoItems>
   　　　　　　</VideoWrapper>
-
-
-            {/* <FooterCaption>
-              <FooterCaption1>
-              <p>you can find some Instagram  post of #city name you research</p>
-              </FooterCaption1>
-            </FooterCaption>
-
-            
-             <Footer/>
-             */}
-
             
          </div>
           
@@ -615,7 +602,7 @@ overflow: hidden;
 width: 100%;
 height: 100%;
 object-position: center;
-z-index: -1;
+z-index: -1000;
 object-fit: cover;
 
 ::before{

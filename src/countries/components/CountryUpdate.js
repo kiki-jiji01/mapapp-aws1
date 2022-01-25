@@ -10,7 +10,9 @@ import {useHistory} from 'react-router-dom';
 import * as yup from 'yup';
 import Container from '@mui/material/Container';
 import { useParams } from "react-router"
-
+import Card from '@mui/material/Card';
+import styled from "styled-components"
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const validationSchema = yup.object({
     country_name: yup
@@ -38,7 +40,7 @@ function ImagePreview({ file }) {
         <div>
             {!imageSrc && "Loading..."}
             {imageSrc && (
-                <img src={imageSrc} className="h-20 w-20 px-3 py-3" alt={file.name} />
+                <img src={imageSrc}  alt={file.name} style={{ marginLeft: "14px", width:"50px",height:"50px", objectFit:"cover", borderRadius:"50%", objectPosition:"0px 0px"}}/>
             )}
         </div>
     )
@@ -54,8 +56,16 @@ export function CountryUpdate() {
     const [file, setFile] = useState(null)
     const [country, setCountry] = useState("")
     const { id } = useParams()
-
     const { user: { token } } = useContext(AuthContext)
+
+    const theme = createTheme({
+        palette: {
+          neutral: {
+            main: "#212121",
+            contrastText: '#fff',
+          },
+        },
+      });
 
     useEffect(() => {
         if (country && !country.is_owner) {
@@ -132,45 +142,54 @@ export function CountryUpdate() {
 
     return (
         <Container component="main" maxWidth="xs" sx={{ marginTop: "20vh"}}>
+            <Card sx={{ maxWidth: 345, padding: 10 }}>
             {loading && "Loading..."}
             <form onSubmit={formik.handleSubmit}>
                 <TextField
                 fullWidth
                 id="country_name"
                 name="country_name"
-                label="country_name"
+                label={country.country_name}
                 value={formik.values.country_name}
                 onChange={formik.handleChange}
                 error={formik.touched.country_name && Boolean(formik.errors.country_name)}
                 helperText={formik.touched.country_name && formik.errors.country_name}
-                defaultValue={country.country_name}
+                
+                style={{ marginBottom: "10%", }}
                 />
                 <TextField
                 fullWidth
                 id="content"
                 name="content"
-                label="content"
+                label={country.content}
                 // type="password"
                 value={formik.values.content}
                 onChange={formik.handleChange}
                 error={formik.touched.content && Boolean(formik.errors.content)}
                 helperText={formik.touched.content && formik.errors.content}
+                style={{ marginBottom: "15%", }}
                 />
-                <Button  variant="contained" component="label" sx={{ marginTop: 36}}>
-                    Image Upload
-                    <input
-                    onChange={e => setFile(e.target.files[0])}
-                    type="file"
-                    style={{display:'none'}}   
-                />
-                </Button>
-                {file && (
-                    <ImagePreview file={file} />
-                )}
-                <Button  variant="contained" fullWidth type="submit" sx={{ marginTop: 36}}>
-                Submit
-                </Button>
+                <ImgUpload>
+                    <Button  variant="contained" component="label" sx={{ marginTop: 36}}>
+                        Image Upload
+                        <input
+                        onChange={e => setFile(e.target.files[0])}
+                        type="file"
+                        style={{display:'none'}}   
+                    />
+                    </Button>
+                    {file && (
+                        <ImagePreview file={file} />
+                    )}
+                </ImgUpload>
+                <ThemeProvider theme={theme}>
+                    <Button  color="neutral" variant="contained" fullWidth type="submit" sx={{ marginTop: 36}}>
+                    Submit
+                    </Button>
+                </ThemeProvider>
+                
             </form>
+            </Card>
            
         </Container>
         // <div>
@@ -240,3 +259,12 @@ export function CountryUpdate() {
 }
 
 export default CountryUpdate
+
+
+const ImgUpload= styled.div`
+
+
+margin-bottom: 20%;
+display: flex;
+
+`
