@@ -114,12 +114,13 @@ export function CountryDetail() {
         </Grid>
         <Grid item xs={7}  style={{height: "72vh", position: "relative"}}>
             <CountryContent>
+             <CountryContent1>
               <NameContent>
-                 <h1>{country.country_name}</h1>
+                 <h1>{country.country_name}  -  {country.city_name}</h1>
               </NameContent>
               <Border></Border>
               <ContentContent>
-                <p>{country.content}</p>
+                <h3>{country.content}</h3>
               </ContentContent>
               {country.is_owner&& (
               <Edit>
@@ -145,28 +146,13 @@ export function CountryDetail() {
                   </Modal>
               </Edit>
               )}
+             </CountryContent1>
             </CountryContent>
         </Grid>
       </Grid>
       )}
       </Detail>
      
-     
-            //   {country.is_owner && (
-            //   <div>
-            //   <NavLink to={`/countries/${country.id}/update`}>
-            //  Update
-            //   </NavLink>
-            //   <NavLink to={`/countries/${country.id}/delete`}>
-            //  Delete
-            //   </NavLink>
-            //   </div>
-            //   )}
-         
-          
-      
-           
-        
     )
 }
 
@@ -200,38 +186,40 @@ const CountryImg1 = styled.div`
 const CountryContent = styled.div`
 
 padding: 10% ;
-margin-right: 20%;
+
 display: flex;
 text-align: center;
 flex-direction: column;
 `
 
-const NameContent = styled.div`
+const CountryContent1 = styled.div`
+margin-left: 20%;
+position: absolute;
+`
 
-padding: 2% 10% ;
+const NameContent = styled.div`
+text-align: left;
 
 `
 
 const ContentContent = styled.div`
-margin-bottom: 5vh;
-
+margin-bottom: 50%;
+text-align: left;
 `
 
 const Edit = styled.div`
 display: flex;
-position: absolute;
-bottom: 0;
-margin-left: 20%;
+
 `
 const Border = styled.div`
-align-self: end;
+
 height: 20px;
 background-color: rgba(192,192,192,0.8);
 font-size: 0;
 line-height: 0;
 width: 40vw;
 margin-bottom: 15vh;
-margin-right: -50%;
+
 align-items: flex-end;
 `
 

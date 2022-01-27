@@ -38,7 +38,7 @@ const CountryItem = ({country}) => {
                         <CardContent sx={{marginTop: -5, zIndex:100}}>
                           <FlowWrap >
                             <Typography gutterBottom variant="h5" component="div">
-                            <p>{country.country_name}</p>
+                            <p>{country.country_name} - {country.city_name}</p>
                             </Typography>
                           </FlowWrap>
                         </CardContent>
