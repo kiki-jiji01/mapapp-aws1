@@ -67,15 +67,18 @@ function Navbar() {
 
         <Topwrapper> 
           <Secondwrapper>
-          
-          <Logo>Mapwith</Logo>
+
+          <Box onClick = {() => history.push(`/`)} sx={{cursor: "pointer", marginRight:"70%"}}>
+            <Logo>Mapwith</Logo>
+          </Box>
+         
          
           {user ?(
           <>
-          <Button  size="medium" sx={textstyles} variant="text"   onClick={handleSubmit}>
+          <Button  size="small" sx={textstyles} variant="text"   onClick={handleSubmit}>
             <LogoutButton> Logout</LogoutButton>
           </Button>
-          <Button  size="medium" sx={textstyles} variant="text"   onClick = {() => history.push(`/create-countries`)}>Create Country List</Button>
+          <Button  size="small" sx={textstyles} variant="text"   onClick = {() => history.push(`/create-countries`)}>Create Country List</Button>
           <span style={{marginLeft: "1px"}}> <FontAwesomeIcon icon={faArrowRight} size="lg"  size="2x"  transform="shrink-6" /></span>
           </>
           ):(
@@ -111,7 +114,7 @@ margin-right: auto;
 background-color: rgba(0,0,0,.85);
 width: 100vw;
 justify-content: center;
-z-index:1000;
+z-index:10;
 box-sizing: border-box;
 top:0;
 color: white;
@@ -132,7 +135,7 @@ margin-right: 64px;
 
 const Logo= styled.div`
 
-
+margin-right: 50%;
 flex-grow: 1;
 flex-shrink: 1;
 flex-basis: 0%;

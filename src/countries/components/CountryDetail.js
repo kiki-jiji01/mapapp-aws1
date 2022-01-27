@@ -92,7 +92,7 @@ export function CountryDetail() {
           }
       })
           .then(res => {
-              history.push(`/countries`)
+              history.push(`/country-list`)
           })
   }
 

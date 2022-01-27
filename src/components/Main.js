@@ -8,9 +8,9 @@ function Main (){
 
         return(
          <MainWrapper> 
-            <TopWrapper>
+            {/* <TopWrapper>
              <Search />
-            </TopWrapper>
+            </TopWrapper> */}
             <MiddleWrapper>
              <Map/>
             </MiddleWrapper>
