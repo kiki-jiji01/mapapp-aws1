@@ -33,7 +33,7 @@ export function Login() {
         axios.post(API.auth.login, values)
             .then(res =>  login(res.data.key))
             .then(res => {
-                history.push(`/countries`)
+                history.push(`/country-list`)
             })
             .finally(() => setLoading(false))
         return () => null

@@ -81,7 +81,7 @@ export function CountryCreate() {
             }
         })
             .then(res => {
-                history.push(`/countries`)
+                history.push(`/country-list`)
                 console.log(res.data)
             })
             .finally(() => {

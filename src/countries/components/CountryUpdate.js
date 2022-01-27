@@ -69,7 +69,7 @@ export function CountryUpdate() {
 
     useEffect(() => {
         if (country && !country.is_owner) {
-            history.push(`/`)
+            history.push(`/country-list`)
         }
         return () => null
     })
@@ -119,7 +119,7 @@ export function CountryUpdate() {
         })
             .then(res => {
                 console.log(res.data)
-                history.push(`/`)
+                history.push(`/country-list`)
             })
             .finally(() => {
                 setLoading(false)
