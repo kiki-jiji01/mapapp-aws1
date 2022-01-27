@@ -71,6 +71,7 @@ export function CountryCreate() {
         data.append('country_image', file)
         data.append('content', values.content)
         data.append('country_name', values.country_name)
+        data.append('city_name', values.city_name)
 
         {file ? (
 
@@ -100,6 +101,7 @@ export function CountryCreate() {
         initialValues: {
           country_image: '',
           country_name: '',
+          city_name: '',
           content: '',
         },
         validationSchema: validationSchema,
@@ -124,6 +126,17 @@ export function CountryCreate() {
                 onChange={formik.handleChange}
                 error={formik.touched.country_name && Boolean(formik.errors.country_name)}
                 helperText={formik.touched.country_name && formik.errors.country_name}
+                style={{ marginBottom: "10%", }}
+                />
+                <TextField
+                fullWidth
+                id="city_name"
+                name="city_name"
+                label="city_name"
+                value={formik.values.city_name}
+                onChange={formik.handleChange}
+                error={formik.touched.city_name && Boolean(formik.errors.city_name)}
+                helperText={formik.touched.city_name && formik.errors.city_name}
                 style={{ marginBottom: "10%", }}
                 />
                 <TextField
