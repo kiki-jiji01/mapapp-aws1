@@ -1,13 +1,9 @@
 import React from "react";
-import { AmplifyAuthenticator, AmplifySignUp, AmplifySignOut } from '@aws-amplify/ui-react';
 import Button from '@mui/material/Button';
 import styled from "styled-components"
-import {Auth} from "aws-amplify";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faCircle, faCity, faCoffee, faUtensils,faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faAirbnb, faLinkedin,  } from '@fortawesome/free-brands-svg-icons';
-import { Link } from 'react-router-dom'
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {useHistory} from 'react-router-dom';
 
 const styles = {

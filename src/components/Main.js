@@ -1,8 +1,6 @@
-import React,{useState,useEffect} from 'react';
+import React from 'react';
 import Search from "./Search";
 import Map from "./Map";
-import Video from "./Video";
-import Sns from "./Sns";
 import styled from "styled-components"
 
 

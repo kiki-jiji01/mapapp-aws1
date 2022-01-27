@@ -1,10 +1,4 @@
 import React from 'react';
-import {Grid,Paper,Typography} from '@material-ui/core';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import styled from "styled-components"
 
 const VideoItem = ({video , handleVideoSelect}) => {
@@ -38,7 +32,7 @@ box-sizing: border-box;
 `
 
 const VideoCardInnner = styled.div`
-width:80%;              /*横幅いっぱいにwidthを指定*/
+width:80%;         
 
 
 `
