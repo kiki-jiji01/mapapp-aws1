@@ -8,25 +8,13 @@ import {
 } from "react-google-maps";
 import Geocode from "react-geocode";
 import AutoComplete from 'react-google-autocomplete';
-import { Grid } from '@material-ui/core';
 import youtube from './youtube';
-import SearchBar from './SearchBar';
 import VideoList from './VideoList';
 import styled from "styled-components"
-import VideoDetail from './VideoDetail';
-import Dashboard from "./Dashboard";
-import zIndex from "@material-ui/core/styles/zIndex";
-import { height } from "@mui/system";
-import Footer from "./Footer";
-import { Player } from 'video-react';
 import ReactPlayer from 'react-player';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faCircle, faCity, faCoffee, faUtensils,faSearch } from '@fortawesome/free-solid-svg-icons';
-// import { library } from '@fortawesome/fontawesome-svg-core'
-// import { fab } from '@fortawesome/free-brands-svg-icons'
-// import { faBriefcase, faCity, faCoffee, faUtensils } from '@fortawesome/free-solid-svg-icons'
 
-// library.add(fab, faBriefcase, faCity, faCoffee, faUtensils)
 Geocode.setApiKey("AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM")
 
 
@@ -314,6 +302,34 @@ class Map extends React.Component{
               ));
 
 
+              const SearchMap = withScriptjs(withGoogleMap(props =>
+                <GoogleMap
+                  defaultZoom={8}
+                  defaultCenter={{ lat: this.state.mapPosition.lat , lng: this.state.mapPosition.lng }}
+                >
+                  <AutoComplete
+                        apiKey={"AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM"}
+                        types={['(country)']}
+                        onPlaceSelected= {this.onPlaceSelected}
+                        className="pac-target-input" 
+                        placeholder="Enter a location" 
+                        autocomplete="new-password"
+                        style={{
+                          width: '30%',
+                          height: '40px',
+                          paddingLeft: '16px',
+                          marginTop: '20vh',
+                          marginBottom: '2rem',
+                          zIndex: '1100',
+                          borderRadius: "30px",
+                          outlineStyle: "none",
+                        
+                        }}
+                  /> 
+                </GoogleMap>
+              ));
+
+
         return(
          <div>
         
@@ -329,7 +345,7 @@ class Map extends React.Component{
                 loop={true}
                 width='100%'
                 height='100%'
-                zIndex="-100"
+                zindex="-100"
                 />
               </PlayerWrapper> 
 
@@ -338,26 +354,12 @@ class Map extends React.Component{
                     <p>Are you collecting the imfomation of the country<br></br> which you wanna live work....?</p>
                     <h1>You can do everythings here</h1>
                   </SearchText>
-                  {/* <FontAwesomeIcon icon={faSearch} size="lg"  size="2x" transform="shrink-6" /> */}
-                  <AutoComplete
-                        apiKey={"AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM"}
-                        types={['(country)']}
-                        onPlaceSelected= {this.onPlaceSelected}
-                        className="pac-target-input" 
-                        placeholder="Enter a location" 
-                        autoComplete="new-password"
-                        style={{
-                          width: '30%',
-                          height: '40px',
-                          paddingLeft: '16px',
-                          marginTop: '20vh',
-                          marginBottom: '2rem',
-                          zIndex: '1100',
-                          borderRadius: "30px",
-                          outlineStyle: "none",
-                        
-                        }}
-                  /> 
+                 <SearchMap
+                 googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM&v=3.exp&libraries=geometry,drawing,places"
+                 loadingElement={<div />}
+                 containerElement={<div/>}
+                 mapElement={<div style={{ height: `100%` ,display:"none"}} />}
+                 />
               </MapInner>
 
             </MapWrapper1>
@@ -366,11 +368,11 @@ class Map extends React.Component{
 
             <MapWrapper2>
               <MapWithAMarker
-                        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM&v=3.exp&libraries=geometry,drawing,places"
-                        loadingElement={<div style={{ height: `100%` }} />}
-                        containerElement={<div style={{ height: `60vh` }} />}
-                        mapElement={<div style={{ height: `100%` }} />}
-                />
+              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM&v=3.exp&libraries=geometry,drawing,places"
+              loadingElement={<div style={{ height: `100%` }} />}
+              containerElement={<div style={{ height: `60vh` }} />}
+              mapElement={<div style={{ height: `100%` }} />}
+              />
             </MapWrapper2>
           </MapWrapper>
 
