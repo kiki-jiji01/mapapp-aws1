@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import './App.css';
 import React,{useState,useEffect} from 'react';
 import Main from './components/Main';
@@ -12,11 +12,17 @@ import SignUp from "./countries/components/SignUp";
 import ConfirmEmail from "./countries/components/ConfirmEmail";
 import CountryDetail from "./countries/components/CountryDetail";
 import Search from "./components/Search";
-
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 
 const App = () => {
- 
+    
+  const key = process.env.NODE_ENV
+
+
+  useEffect(() => {
+    console.log(key);   
+  }, [])
     
 
     return (
