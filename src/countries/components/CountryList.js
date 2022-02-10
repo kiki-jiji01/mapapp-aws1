@@ -44,6 +44,9 @@ function CountryList() {
   const { user ,logout } = useContext(AuthContext)
   const history = useHistory();
 
+  const push = () => {
+    {user ? (history.push(`/create-countries`)):(history.push(`/countries/login`))}
+}
 
   useEffect(() => {
     function fetchCountries() {
@@ -65,7 +68,7 @@ function CountryList() {
        <ListH2><p>Your Country List</p></ListH2>
        <CreateBuuton>
             <FontAwesomeIcon icon={faPen} size="sx"   transform="shrink-10" style={{ marginRight: "-8px"}} />  
-            <Button sx={styles} variant="text"   onClick = {() => history.push('/create-countries')}>CREATE LIST</Button>
+            <Button sx={styles} variant="text"   onClick = {push}>CREATE LIST</Button>
        </CreateBuuton>
       </ListH1>
       

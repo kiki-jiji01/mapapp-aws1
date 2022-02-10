@@ -50,10 +50,14 @@ const validationSchema = yup.object({
 
 export function CountryCreate() {
     const [loading, setLoading] = useState(false)
-    const { user: { token } } = useContext(AuthContext)
     const [file, setFile] = useState(null)
     const history = useHistory();
-
+    const { user } = useContext(AuthContext)
+    let token = ""
+    if (user) {
+        token = user.token
+    }
+    
     const theme = createTheme({
         palette: {
           neutral: {
