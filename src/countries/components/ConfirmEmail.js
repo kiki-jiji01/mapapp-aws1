@@ -23,8 +23,12 @@ import Button from '@material-ui/core/Button';
     }
 
     return (
-        <Container component="main" maxWidth="xs" sx={{ marginTop: "20vh"}}>
-            {success && "Your email has been verified! You can now login"}
+        <Container component="main" maxWidth="xs" sx={{ marginTop: "40vh"}}>
+            <div style={{ marginBottom:" 10vh", textAlign: "center", backgroundColor:"#a9927d", color: "white", fontSize: "16px"}}>
+            {success && 
+              "Your email has been velified. You can now login"
+            }
+            </div>
             {loading && "Loading..."}
             <Button  variant="contained" fullWidth type="submit" onClick = {handleSubmit}>
                 Submit

@@ -27,7 +27,7 @@ const validationSchema = yup.object({
     function handleSubmit(values, { resetForm }) {
         setLoading(true)
         axios.post(API.auth.signup, values)
-            .then(res => {
+            .then(()=> {
                 resetForm()
                 setSuccess(true)
             })
@@ -47,10 +47,14 @@ const validationSchema = yup.object({
 
     return (
         <div>
-            {success && "You will receive a verification email."}
             {loading && "Loading..."}
-            <Container component="main" maxWidth="xs" sx={{ marginTop: "20vh"}}>
-            {loading && "Loading..."}
+            
+            <Container component="main" maxWidth="xs" sx={{ marginTop: "40vh"}}>
+            <div style={{ marginBottom:" 10vh", textAlign: "center", backgroundColor:"#a9927d", color: "white", fontSize: "18px"}}>
+            {success && 
+              "You will receive a verification email."
+            }
+            </div>
             <form onSubmit={formik.handleSubmit}>
                 <TextField
                 fullWidth

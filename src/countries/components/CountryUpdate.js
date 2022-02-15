@@ -84,6 +84,7 @@ export function CountryUpdate() {
             })
                 .then(res => {
                     setCountry(res.data)
+                    console.log(res.data)
                 })
                 .finally(() => {
                     setLoadingCountry(false)
@@ -134,9 +135,9 @@ export function CountryUpdate() {
     const formik = useFormik({
         initialValues: {
           country_image: "",
-          country_name: "",
-          city_name: "",
-          content: "",
+          country_name: country.country_name,
+          city_name: country.city_name,
+          content: country.content,
         },
         validationSchema: validationSchema,
         onSubmit: handleSubmit
@@ -150,37 +151,44 @@ export function CountryUpdate() {
                 <form onSubmit={formik.handleSubmit}>
                     <TextField
                     fullWidth
-                    id="country_name"
+                    required
+                    id="standard-required"
                     name="country_name"
-                    label={country.country_name}
+                    label="CountryName"
+                    defaultValue={country.country_name}
                     value={formik.values.country_name}
                     onChange={formik.handleChange}
                     error={formik.touched.country_name && Boolean(formik.errors.country_name)}
                     helperText={formik.touched.country_name && formik.errors.country_name}
-                    
+                    variant="standard"
                     style={{ marginBottom: "10%", }}
                     />
                     <TextField
                     fullWidth
-                    id="city_name"
+                    required
+                    id="standard-required"
                     name="city_name"
-                    label={country.city_name}
+                    label="CityName"
+                    defaultValue={country.city_name}
                     value={formik.values.city_name}
                     onChange={formik.handleChange}
                     error={formik.touched.city_name && Boolean(formik.errors.city_name)}
                     helperText={formik.touched.city_name && formik.errors.city_name}
-                    
+                    variant="standard"
                     style={{ marginBottom: "10%", }}
                     />
                     <TextField
                     fullWidth
-                    id="content"
+                    required
+                    id="standard-required"
                     name="content"
-                    label={country.content}
+                    label="Content"
+                    defaultValue={country.content}
                     value={formik.values.content}
                     onChange={formik.handleChange}
                     error={formik.touched.content && Boolean(formik.errors.content)}
                     helperText={formik.touched.content && formik.errors.content}
+                    variant="standard"
                     style={{ marginBottom: "15%", }}
                     />
                     <ImgUploadWrapper>
