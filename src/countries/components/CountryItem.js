@@ -1,20 +1,20 @@
-import React from 'react';
-import { useEffect, useState , useContext} from "react"
-import {Grid,Paper,Typography} from '@material-ui/core';
+import React,{useContext} from 'react';
+import { AuthContext } from "../contexts/AuthContext"
+import {useHistory} from 'react-router-dom';
+import {Grid, Typography} from '@material-ui/core';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import styled from "styled-components"
-import CardActions from '@mui/material/CardActions';
 import { CardActionArea } from '@mui/material';
-import {useHistory} from 'react-router-dom';
-import { AuthContext } from "../contexts/AuthContext"
+import styled from "styled-components"
 
-const CountryItem = ({country}) => {
+
+
+function CountryItem  ({country})  {
     const { user ,logout } = useContext(AuthContext)
     const history = useHistory();
-
+    
+    // The function  where the event occurs when CountryCreate is clicked
     const push = () => {
         {user ? (history.push(`/countries/${country.id}`)):(history.push(`/countries/login`))}
     }
@@ -36,11 +36,11 @@ const CountryItem = ({country}) => {
                           alt={country.country_image}
                         />
                         <CardContent sx={{marginTop: -5, zIndex:100}}>
-                          <FlowWrap >
+                          <FlowWrapper >
                             <Typography gutterBottom variant="h5" component="div">
                             <p>{country.country_name} - {country.city_name}</p>
                             </Typography>
-                          </FlowWrap>
+                          </FlowWrapper>
                         </CardContent>
                       </CardActionArea>
                     </Card>
@@ -51,7 +51,7 @@ const CountryItem = ({country}) => {
 export default CountryItem;
 
 
-const FlowWrap= styled.div`
+const FlowWrapper= styled.div`
 
 
 

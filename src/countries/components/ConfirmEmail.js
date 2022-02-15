@@ -1,15 +1,13 @@
 import { useState } from 'react';
-import { useParams } from "react-router"
-import axios from "axios"
 import { API } from '../api'
+import axios from "axios"
+import { useParams } from "react-router"
 import Container from '@mui/material/Container';
-import { useFormik } from 'formik';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 
 
 
-export function ConfirmEmail() {
+ function ConfirmEmail() {
     const [loading, setLoading] = useState(false)
     const [success, setSuccess] = useState(false)
     const { key } = useParams()

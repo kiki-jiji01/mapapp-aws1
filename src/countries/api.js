@@ -1,3 +1,7 @@
+// The used url in all component
+
+
+
 const debug = process.env.NODE_ENV !== "production"
 
 let baseURL = "https://pmakeh.com"
