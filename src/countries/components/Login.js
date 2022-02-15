@@ -1,13 +1,11 @@
 import { useState,useContext } from 'react';
-import { Formik, Field, Form } from 'formik';
-import axios from "axios"
 import { API } from '../api'
-import { authService } from '../services/authentication';
 import { AuthContext } from '../contexts/AuthContext'
+import axios from "axios"
 import {useHistory} from 'react-router-dom';
+import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Container from '@mui/material/Container';
-import { useFormik } from 'formik';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
@@ -23,12 +21,12 @@ const validationSchema = yup.object({
     //   .required('content is required'),
   });
 
-export function Login() {
+ function Login() {
     const [loading, setLoading] = useState(false)
     const { login } = useContext(AuthContext)
     const history = useHistory();
 
-    const handleSubmit = function handleSubmit(values) {
+   function handleSubmit(values) {
         setLoading(true)
         axios.post(API.auth.login, values)
             .then(res =>  login(res.data.key))
@@ -79,31 +77,6 @@ export function Login() {
             </form>
            
         </Container>
-        // <div>
-        //     {loading && "Loading..."}
-        //     <Formik
-        //         initialValues={{
-        //             email: '',
-        //             password: '',
-        //         }}
-        //         onSubmit={handleSubmit}>
-
-        //         {({ errors, touched }) => (
-        //             <Form>
-        //                 <label htmlFor="email">Email</label>
-        //                 <Field id="email" name="email" placeholder="Email" />
-        //                 {touched.email && errors.email && <div>{errors.email}</div>}
-
-        //                 <label htmlFor="password">Password</label>
-        //                 <Field id="password" name="password" type="password" />
-        //                 {touched.password && errors.password && <div>{errors.password}</div>}
-
-        //                 <button type="submit">Submit</button>
-        //             </Form>
-        //         )}
-
-        //     </Formik>
-        // </div>
     )
 
 }

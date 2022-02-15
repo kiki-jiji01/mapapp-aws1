@@ -1,15 +1,14 @@
 import React from 'react';
-import {Grid} from '@material-ui/core';
-import styled from "styled-components";
 import CountryItem from './CountryItem';
+import {Grid} from '@material-ui/core';
 
-const ListPage = ({countries}) => {
+function ListPage  ({countries}) {
 
     if(!countries)  return <div></div>
 
+    // pass countriees data to CountryItem component
     const renderedCountries =  countries.map((country) => {
         return <CountryItem  country={country} />
-        // console.log(video.id);
     });
 
     return (
@@ -18,9 +17,4 @@ const ListPage = ({countries}) => {
 };
 export default ListPage;
 
-const RenderCountry = styled.div`
 
-
-
-
-`

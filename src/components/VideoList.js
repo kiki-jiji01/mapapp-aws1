@@ -3,24 +3,27 @@ import VideoItem from './VideoItem';
 import styled from "styled-components";
 
 
-const VideoList = ({videos , handleVideoSelect}) => {
+function VideoList ({videos})  {
 
-    if(!videos)  return <div></div>
-
-    const renderedVideos =  videos.map((video) => {
-        return <VideoItem  video={video} handleVideoSelect={handleVideoSelect} />
-        // console.log(video.id);
-    });
+        if(!videos)  return <div></div>
+        
+        // pass video data to VideoItem component
+        const renderedVideos =  videos.map((video) => {
+            return <VideoItem  video={video}  />
+        });
 
     return (
-    <RenderVideo>{renderedVideos}</RenderVideo> 
+            
+        <RenderVideoWrapper>
+            {renderedVideos}
+        </RenderVideoWrapper> 
    
     
     )
 };
 export default VideoList;
 
-const RenderVideo = styled.div`
+const RenderVideoWrapper = styled.div`
 width: 100%;
 display: flex;
 flex-wrap: wrap;

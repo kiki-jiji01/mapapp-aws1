@@ -1,23 +1,13 @@
 import { useEffect, useState , useContext} from "react"
-import axios from "axios"
-import { NavLink } from "react-router-dom"
-import { API } from "../api"
-import { AuthContext } from "../contexts/AuthContext"
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import {useHistory} from 'react-router-dom';
-import styled from "styled-components"
 import ListPage from "./ListPage"
+import { AuthContext } from "../contexts/AuthContext"
+import { API } from "../api"
+import axios from "axios"
+import {useHistory} from 'react-router-dom';
+import Button from '@mui/material/Button';
 import { faPen } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-
+import styled from "styled-components"
 
 const styles = {
   "&.MuiButton-root": {
@@ -43,11 +33,13 @@ function CountryList() {
   const [countries, setCountries] = useState(null)
   const { user ,logout } = useContext(AuthContext)
   const history = useHistory();
-
+  
+  // The function  where the event occurs when CountryCreate is clicked
   const push = () => {
     {user ? (history.push(`/create-countries`)):(history.push(`/countries/login`))}
-}
+  }
 
+  // Get the coutrylists data form API
   useEffect(() => {
     function fetchCountries() {
       axios.get(API.countries.list)
@@ -64,18 +56,18 @@ function CountryList() {
     
     
     <ListWrapper>
-      <ListH1>
-       <ListH2><p>Your Country List</p></ListH2>
-       <CreateBuuton>
+      <ListWrapper1>
+       <TextWrapper><p>Your Country List</p></TextWrapper>
+       <CreateBuutonWrapper>
             <FontAwesomeIcon icon={faPen} size="sx"   transform="shrink-10" style={{ marginRight: "-8px"}} />  
             <Button sx={styles} variant="text"   onClick = {push}>CREATE LIST</Button>
-       </CreateBuuton>
-      </ListH1>
+       </CreateBuutonWrapper>
+      </ListWrapper1>
       
       {!countries && "Loading..."}
-      <ListWrapper1>
+      <ListItemWrapper>
        <ListPage  countries={countries}/>
-      </ListWrapper1>
+      </ListItemWrapper>
      
     </ListWrapper>
     
@@ -90,13 +82,13 @@ margin-top: 20vh;
 
 `
 
-const ListWrapper1 = styled.div`
+const ListItemWrapper = styled.div`
 
 margin-left 5%;
 
 `
 
-const ListH1= styled.div`
+const ListWrapper1= styled.div`
 
 margin-left: 30%;
 margin-right: 30%;
@@ -106,7 +98,7 @@ color: black;
 
 `
 
-const ListH2= styled.div`
+const TextWrapper= styled.div`
 
 text-align:center;
 margin-bottom: 15vh;
@@ -116,7 +108,7 @@ p{
 
 `
 
-const CreateBuuton= styled.div`
+const CreateBuutonWrapper = styled.div`
 
 display: flex;
 align-items: center;

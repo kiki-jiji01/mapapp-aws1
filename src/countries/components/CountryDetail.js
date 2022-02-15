@@ -1,17 +1,14 @@
-import axios from "axios"
-import { useEffect, useState ,useContext} from "react"
-import { useParams } from "react-router"
+import React,{ useEffect, useState ,useContext} from "react"
 import { API } from "../api"
-import {useHistory, NavLink} from 'react-router-dom';
 import { AuthContext } from "../contexts/AuthContext"
+import axios from "axios"
+import { useParams } from "react-router"
+import {useHistory} from 'react-router-dom';
 import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import styled from "styled-components"
 import Button from '@mui/material/Button';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Modal, Box } from "@mui/material";
-import React from "react";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import styled from "styled-components"
 
 
 const style = {
@@ -47,7 +44,7 @@ const textstyles = {
 
 
 
-export function CountryDetail() {
+ function CountryDetail() {
     const [country, setCountry] = useState(null)
     const { id } = useParams()
     const { user: { token } } = useContext(AuthContext)
@@ -56,7 +53,7 @@ export function CountryDetail() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-
+    // defining style of Button
     const theme = createTheme({
       palette: {
         neutral: {
@@ -91,67 +88,67 @@ export function CountryDetail() {
               "Authorization": `Token ${token}`
           }
       })
-          .then(res => {
+          .then(()=> {
               history.push(`/country-list`)
           })
-  }
+    }
 
     return (
         
-      <Detail>
+      <DetailWrapper>
       {country && (
       <Grid container spacing={2}>
         <Grid item xs={5}  style={{height: "80vh", paddingLeft: "16px", paddingRight:"16px"}}>
          {country.country_image && (
-            <CountryImg>
+            <CountryImgWrapper>
                 <img   
                 src={country.country_image}  
                 alt={country.country_image} 
                 style={{objectFit:'cover', objectPosition: "center" , width: "100%" ,height: "100%"}}   
                 />
-            </CountryImg>  
+            </CountryImgWrapper>  
           )}
         </Grid>
         <Grid item xs={7}  style={{height: "72vh", position: "relative"}}>
-            <CountryContent>
-             <CountryContent1>
-              <NameContent>
-                 <h1>{country.country_name}  -  {country.city_name}</h1>
-              </NameContent>
-              <Border></Border>
-              <ContentContent>
-                <h3>{country.content}</h3>
-              </ContentContent>
-              {country.is_owner&& (
-              <Edit>
-                 <ThemeProvider theme={theme}>
-                 <Button  color="neutral" sx={{ marginRight: "36px" }} variant="contained"  onClick = {() => history.push(`/countries/${country.id}/update`)}>
-                    Update
-                 </Button>
-                 <Button  color="neutral" sx={{  marginRight: "12px" }} variant="contained"  onClick ={handleOpen}>
-                   Delete
-                 </Button>
-                 </ThemeProvider>
-                  <Modal
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                  >
-                      <Box sx={style}>
-                      <Button sx={textstyles}  variant="text" fullWidth type="submit" onClick = {handleSubmit}>
-                        Are you sure for deleteing this list?
-                      </Button>
-                      </Box>
-                  </Modal>
-              </Edit>
-              )}
-             </CountryContent1>
-            </CountryContent>
+            <CountryDetailWrapper>
+              <CountryDetailWrapper1>
+                <CountryNameWrapper>
+                  <h1>{country.country_name}  -  {country.city_name}</h1>
+                </CountryNameWrapper>
+                <Border></Border>
+                <CountryContentWrapper>
+                  <h3>{country.content}</h3>
+                </CountryContentWrapper>
+                {country.is_owner&& (
+                <EditWrapper>
+                  <ThemeProvider theme={theme}>
+                  <Button  color="neutral" sx={{ marginRight: "36px" }} variant="contained"  onClick = {() => history.push(`/countries/${country.id}/update`)}>
+                      Update
+                  </Button>
+                  <Button  color="neutral" sx={{  marginRight: "12px" }} variant="contained"  onClick ={handleOpen}>
+                    Delete
+                  </Button>
+                  </ThemeProvider>
+                    <Modal
+                      open={open}
+                      onClose={handleClose}
+                      aria-labelledby="modal-modal-title"
+                      aria-describedby="modal-modal-description"
+                    >
+                        <Box sx={style}>
+                        <Button sx={textstyles}  variant="text" fullWidth type="submit" onClick = {handleSubmit}>
+                          Are you sure for deleteing this list?
+                        </Button>
+                        </Box>
+                    </Modal>
+                </EditWrapper>
+                )}
+              </CountryDetailWrapper1>
+            </CountryDetailWrapper>
         </Grid>
       </Grid>
       )}
-      </Detail>
+      </DetailWrapper>
      
     )
 }
@@ -159,19 +156,14 @@ export function CountryDetail() {
 export default CountryDetail
 
 
-const Detail = styled.div`
+const DetailWrapper = styled.div`
 
 margin-top: 20vh;
 height: 100vh;
 width: 100vw;
 `
 
-const Img = styled.div`
-
-
-`
-
-const CountryImg = styled.div`
+const CountryImgWrapper = styled.div`
 height: 100%;
 width: 100%;
 overflow: hidden;
@@ -179,11 +171,7 @@ padding-right: 96px;
 padding-left: 64px;
 `
 
-const CountryImg1 = styled.div`
-
-`
-
-const CountryContent = styled.div`
+const CountryDetailWrapper = styled.div`
 
 padding: 10% ;
 
@@ -192,22 +180,22 @@ text-align: center;
 flex-direction: column;
 `
 
-const CountryContent1 = styled.div`
+const CountryDetailWrapper1 = styled.div`
 margin-left: 20%;
 position: absolute;
 `
 
-const NameContent = styled.div`
+const CountryNameWrapper = styled.div`
 text-align: left;
 
 `
 
-const ContentContent = styled.div`
+const CountryContentWrapper = styled.div`
 margin-bottom: 50%;
 text-align: left;
 `
 
-const Edit = styled.div`
+const EditWrapper = styled.div`
 display: flex;
 
 `

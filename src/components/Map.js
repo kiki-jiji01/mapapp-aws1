@@ -1,21 +1,15 @@
 import React from "react";
-import {
-  InfoWindow,
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  Marker,
-} from "react-google-maps";
-import Geocode from "react-geocode";
-import AutoComplete from 'react-google-autocomplete';
 import youtube from './youtube';
 import VideoList from './VideoList';
-import styled from "styled-components"
+import Geocode from "react-geocode";
+import AutoComplete from 'react-google-autocomplete';
+import {InfoWindow, withScriptjs, withGoogleMap, GoogleMap,Marker} from "react-google-maps";
 import ReactPlayer from 'react-player';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcase, faCircle, faCity, faCoffee, faUtensils,faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faBriefcase, faCircle, faCity, faUtensils} from '@fortawesome/free-solid-svg-icons';
+import styled from "styled-components";
 
-Geocode.setApiKey("AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM")
+Geocode.setApiKey(process.env.REACT_APP_GEOCODE_API_KEY)
 
 
 
@@ -24,16 +18,10 @@ class Map extends React.Component{
 
         state = {
 
-
           videos:[],
-          // selectedVideo: null,
-          foodvideos:[],
-          // foodselectedVideo: null,
-          workvideos:[],
-          // workselectedVideo: null,
-
-          dhksc: "",
-         
+          foodVideos:[],
+          workVideos:[],
+          placeName: "",
           address :"",
           city :"",
           area :"",
@@ -50,8 +38,7 @@ class Map extends React.Component{
           },
         }
 
-
-
+        // Get Current location and set to state
         componentDidMount() {
           if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition( position => {
@@ -74,28 +61,19 @@ class Map extends React.Component{
                        area = this.getArea(addressArray),
                        state = this.getState(addressArray);
       
-                   this.setState({
-                     address : (address) ? address : "",
-                     city : (city) ? city: "",
-                     area : (area) ? area: "",
-                     state: (state)? state: "",
+                 this.setState({
+                    address : (address) ? address : "",
+                    city : (city) ? city: "",
+                    area : (area) ? area: "",
+                    state: (state)? state: "",
+                  })
+                })
               })
             })
-          })
-        })
-       }
-       
+          }
+        }
         
-      }
-
-
-      // componentDidMount(){
-      //   this.handleSubmit("stockholm")
-      //   this.WorkhandleSubmit("stockholm")
-      //   this.FoodhandleSubmit("stockholm")
-      // }
-      
-
+        // get the current city
         getCity = (addressArray) => {
           let city = '';
           for(let index=0; index<addressArray.length; index++) {
@@ -105,38 +83,37 @@ class Map extends React.Component{
             }
           }
         }
-      
-      getArea=(addressArray) => {
-        let area = '';
-        for(let index=0; index<addressArray.length; index++) {
-          if(addressArray[index].types[0]){
-            for(let j =0; j<addressArray.length; j++) {
-              if('sublocalty_level_1' === addressArray[index].types[j] || 'localty' ===addressArray[index].types[j]) {
-            area = addressArray[index].long_name;
-            return area;
-            }
-           }
-          }
-         }
-        }
-      
-      getState =(addressArray) => {
-        let state = '';
-        for(let index=0; index<addressArray.length; index++) {
+        // get the current are
+        getArea=(addressArray) => {
+          let area = '';
           for(let index=0; index<addressArray.length; index++) {
-            if(addressArray[index].types[0] && 'administrative_area_level_1' ===addressArray[index].types[0]) {
-              state = addressArray[index].long_name;
-              return state;
+            if(addressArray[index].types[0]){
+              for(let j =0; j<addressArray.length; j++) {
+                if('sublocalty_level_1' === addressArray[index].types[j] || 'localty' ===addressArray[index].types[j]) {
+              area = addressArray[index].long_name;
+              return area;
+              }
+              }
             }
           }
         }
-      }
+         // get the current state
+        getState =(addressArray) => {
+          let state = '';
+          for(let index=0; index<addressArray.length; index++) {
+            for(let index=0; index<addressArray.length; index++) {
+              if(addressArray[index].types[0] && 'administrative_area_level_1' ===addressArray[index].types[0]) {
+                state = addressArray[index].long_name;
+                return state;
+              }
+            }
+          }
+        }
 
-
+        // Function when the marker in map draged
         onMarkerDragEnd= (event) => {
           let newLat = event.latLng.lat();
           let newLng = event.latLng.lng();
-     
      
           Geocode.fromLatLng(newLat,newLng)
           .then(response => {
@@ -162,387 +139,316 @@ class Map extends React.Component{
                }
              })
           })
-       }
-
-
-
-    handleSubmit = async (termFromSearchBar) => {
-        const response = await youtube.get('/search', {
-            params: {
-                q: termFromSearchBar
-            }
-        })
-
-        this.setState({
-          videos: response.data.items,
-          // selectedVideo:response.data.items[0] 
-        });
-        console.log("this is resp",response);
-    };
-
-
-    FoodhandleSubmit = async (termFromSearchBar) => {
-      const response = await youtube.get('/search', {
-          params: {
-              q: 'food'+termFromSearchBar
-          }
-      })
-
-      this.setState({
-        foodvideos: response.data.items,
-        // foodselectedVideo:response.data.items[0] 
-      });
-      console.log("this is resp",response);
-  };
-    
-
-  WorkhandleSubmit = async (termFromSearchBar) => {
-    const response = await youtube.get('/search', {
-        params: {
-            q: 'work'+termFromSearchBar
         }
-    })
 
-    this.setState({
-      workvideos: response.data.items,
-      // workselectedVideo:response.data.items[0] 
-    });
-    console.log("this is resp",response);
-};
+        // get the youtube data related to City
+        cityHandleSubmit = async (termFromSearchBar) => {
+            const response = await youtube.get('/search', {
+                params: {
+                    q: termFromSearchBar
+                }
+            })
+
+            this.setState({
+              videos: response.data.items,
+            });
+            console.log("this is resp",response);
+        };
+
+
+         // get the youtube data related to Food
+        foodHandleSubmit = async (termFromSearchBar) => {
+          const response = await youtube.get('/search', {
+              params: {
+                  q: 'food'+termFromSearchBar
+              }
+          })
+
+          this.setState({
+            foodVideos: response.data.items,
+          });
+          console.log("this is resp",response);
+        };
+    
+         // get the youtube data related to Work
+        workHandleSubmit = async (termFromSearchBar) => {
+          const response = await youtube.get('/search', {
+              params: {
+                  q: 'work'+termFromSearchBar
+              }
+          })
+
+          this.setState({
+            workVideos: response.data.items,
+          });
+          console.log("this is resp",response);
+        };
 
 
 
 
-
-       onPlaceSelected = (place) => {
+        // function when user selected place in the searchbox
+        onPlaceSelected = (place) => {
         const address = place.formatted_address,
               addressArray = place.address_components,
-               // plus
-              dhksc = place.address_components[0].long_name,
-         
+              placeName = place.address_components[0].long_name,
               city = this.getCity(addressArray),
               area = this.getArea(addressArray),
               state = this.getState(addressArray),
               newLat = place.geometry.location.lat(),
               newLng = place.geometry.location.lng();
-              
-              
-      //   const handleSubmit = async (termFromSearchBar) => {
-      //     const response = await youtube.get('/search', {
-      //         params: {
-      //             q: termFromSearchBar
-      //         }
-      //     })
-  
-      //     this.setState({
-      //       videos: response.data.items,
-      //       selectedVideo:response.data.items[0] 
-      //     });
-      //     console.log("this is resp",response);
-      // };
-  
-        
-          // Set these values in the state.
+          
           this.setState({
             address: (address) ? address : '',
             area: (area) ? area : '',
             city: (city) ? city : '',
             state: (state) ? state : '',
-            dhksc: (dhksc) ? dhksc : '', 
-         　
-            // plus
-              markerPosition: {　
-                  lat: newLat,
-                  lng: newLng
-              },
-              mapPosition: {
-                  lat: newLat,
-                  lng: newLng
-              },
+            placeName: (placeName) ? placeName : '',         　
+            markerPosition: {　
+                lat: newLat,
+                lng: newLng
+            },
+            mapPosition: {
+                lat: newLat,
+                lng: newLng
+            },
           })
-          
-          this.handleSubmit(dhksc)
-          this.FoodhandleSubmit(dhksc)
-          this.WorkhandleSubmit(dhksc)
-          console.log(place)
-          console.log(dhksc)
-          
-       }
-      
-       
-    //    handleVideoSelect = (video) => {
-    //     this.setState({
-    //         selectedVideo: video
-    //     })
-    // }
+          this.cityHandleSubmit(placeName)
+          this.foodHandleSubmit(placeName)
+          this.workHandleSubmit(placeName)
+        }
 
-    
-  
-   
+
+     
     render(){
-              const MapWithAMarker = withScriptjs(withGoogleMap(props =>
-                <GoogleMap
-                  defaultZoom={8}
-                  defaultCenter={{ lat: this.state.mapPosition.lat , lng: this.state.mapPosition.lng }}
-                >
-                  <Marker
-                    draggable={true}
-                    onDragEnd={this.onMarkerDragEnd}
-                    position={{ lat: this.state.markerPosition.lat , lng: this.state.markerPosition.lng}}
-                  >
 
-                    <InfoWindow>
-                      <div>
-                       {this.state.address}
-                      </div>
-                   </InfoWindow>
-                  </Marker>
+      // Defining GoogleMap
+      const MapWithAMarker = withScriptjs(withGoogleMap(props =>
+        <GoogleMap
+          defaultZoom={8}
+          defaultCenter={{ lat: this.state.mapPosition.lat , lng: this.state.mapPosition.lng }}
+        >
+          <Marker
+            draggable={true}
+            onDragEnd={this.onMarkerDragEnd}
+            position={{ lat: this.state.markerPosition.lat , lng: this.state.markerPosition.lng}}
+          >
+            <InfoWindow>
+              <div>
+                {this.state.address}
+              </div>
+            </InfoWindow>
+          </Marker>
+        </GoogleMap>
+      ));
 
-                </GoogleMap>
-              ));
-
-
-              const SearchMap = withScriptjs(withGoogleMap(props =>
-                <GoogleMap
-                  defaultZoom={8}
-                  defaultCenter={{ lat: this.state.mapPosition.lat , lng: this.state.mapPosition.lng }}
-                >
-                  <AutoComplete
-                        apiKey={"AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM"}
-                        types={['(country)']}
-                        onPlaceSelected= {this.onPlaceSelected}
-                        className="pac-target-input" 
-                        placeholder="Enter a location" 
-                        autocomplete="new-password"
-                        style={{
-                          width: '30%',
-                          height: '40px',
-                          paddingLeft: '16px',
-                          marginTop: '20vh',
-                          marginBottom: '2rem',
-                          zIndex: '1100',
-                          borderRadius: "30px",
-                          outlineStyle: "none",
-                        
-                        }}
-                  /> 
-                </GoogleMap>
-              ));
-
-
-        return(
-         <div>
-        
-          <MapWrapper>
-            <MapWrapper1>
-
-              <PlayerWrapper>
-                <ReactPlayer 
-                url="https://assets.mixkit.co/videos/preview/mixkit-venice-central-canal-at-night-4646-large.mp4"
-                playing={true}
-                autoPlay={true}
-                muted={true}
-                loop={true}
-                width='100%'
-                height='100%'
-                zindex="-100"
-                />
-              </PlayerWrapper> 
-
-              <MapInner>
-                  <SearchText>
-                    <p>Are you collecting the imfomation of the country<br></br> which you wanna live work....?</p>
-                    <h1>You can do everythings here</h1>
-                  </SearchText>
-                 <SearchMap
-                 googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM&v=3.exp&libraries=geometry,drawing,places"
-                 loadingElement={<div />}
-                 containerElement={<div/>}
-                 mapElement={<div style={{ height: `100%` ,display:"none"}} />}
-                 />
-              </MapInner>
-
-            </MapWrapper1>
+      // Defining SearchBox
+      const SearchBox = withScriptjs(withGoogleMap(props =>
+        <GoogleMap
+          defaultZoom={8}
+          defaultCenter={{ lat: this.state.mapPosition.lat , lng: this.state.mapPosition.lng }}
+        >
+          <AutoComplete
+                apiKey={"AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM"}
+                types={['(country)']}
+                onPlaceSelected= {this.onPlaceSelected}
+                className="pac-target-input" 
+                placeholder="Enter a location" 
+                autocomplete="new-password"
+                style={{
+                  width: '30%',
+                  height: '40px',
+                  paddingLeft: '16px',
+                  marginTop: '20vh',
+                  marginBottom: '2rem',
+                  zIndex: '1100',
+                  borderRadius: "30px",
+                  outlineStyle: "none",
+                
+                }}
+           /> 
+        </GoogleMap>
+      ));
 
 
+    return(
 
-            <MapWrapper2>
-              <MapWithAMarker
+      <div>
+
+      <TopPageWrapper>
+        <TopPageWrapper1>
+          <BackGroundVideoWrapper>
+            <ReactPlayer 
+            url="https://assets.mixkit.co/videos/preview/mixkit-venice-central-canal-at-night-4646-large.mp4"
+            playing={true}
+            autoPlay={true}
+            muted={true}
+            loop={true}
+            width='100%'
+            height='100%'
+            zindex="-100"
+            />
+          </BackGroundVideoWrapper>
+          <AboveVideoWrapper>
+              <TextWrapper>
+                <p>Are you collecting the imfomation of the country<br></br> which you wanna live work....?</p>
+                <h1>You can do everythings here</h1>
+              </TextWrapper>
+              <SearchBox
               googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM&v=3.exp&libraries=geometry,drawing,places"
-              loadingElement={<div style={{ height: `100%` }} />}
-              containerElement={<div style={{ height: `60vh` }} />}
-              mapElement={<div style={{ height: `100%` }} />}
+              loadingElement={<div />}
+              containerElement={<div/>}
+              mapElement={<div style={{ height: `100%` ,display:"none"}} />}
               />
-            </MapWrapper2>
-          </MapWrapper>
+          </AboveVideoWrapper>
+        </TopPageWrapper1>
+        <MapWrapper>
+          <MapWithAMarker
+          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM&v=3.exp&libraries=geometry,drawing,places"
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `60vh` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+          />
+        </MapWrapper>
+      </TopPageWrapper>
 
-          <Margin></Margin>
+      <Margin></Margin>
 
+      <NavWrapper>
+        <NavWrapper1>
+          <NavWrapper2>
+            <NavCityWrapper>
+              <span>
+                <FontAwesomeIcon icon={faCity} size="lg" mask={ faCircle } size="2x" transform="shrink-6"/>
+              </span>
+              <NavTextWrapper>City</NavTextWrapper>
+            </NavCityWrapper>
+            <NavWorkWrapper>
+              <span>
+                <FontAwesomeIcon icon={faBriefcase}  size="lg"  mask={ faCircle } size="2x" transform="shrink-6"/> 
+              </span>
+              <NavTextWrapper>Work</NavTextWrapper>
+            </NavWorkWrapper>
+            <NavFoodWrapper>
+              <span>                     
+                <FontAwesomeIcon icon={faUtensils}  size="lg"  mask={ faCircle } size="2x" transform="shrink-6"/>               
+              </span>
+              <NavTextWrapper>Food</NavTextWrapper>
+            </NavFoodWrapper>
+          </NavWrapper2>
+        </NavWrapper1>
+      </NavWrapper>
 
+      <CityTitleWrapper>
+      　<CityTitleWrapper1>
+          <CityTitleWrapper2>             
+            <h1>City</h1>          
+          </CityTitleWrapper2> 
+        </CityTitleWrapper1> 
+      </CityTitleWrapper>
 
-       {/* <Nav> */}
-        <NavBorder>
-          <Navigator>
-            <Navigator1>
-              <City>
-                <span>
-                {/* style="position: absolute; top: 50%; left: 50%;" */}
-                   <FontAwesomeIcon icon={faCity} size="lg" mask={ faCircle } size="2x" transform="shrink-6"/>
-                  
-                </span>
-                <NavText>City</NavText>
-              </City>
-              <Work>
-                <span>
-                 
-                   <FontAwesomeIcon icon={faBriefcase}  size="lg"  mask={ faCircle } size="2x" transform="shrink-6"/>
-                  
-                </span>
-                <NavText>Work</NavText>
-              </Work>
-              <Food>
-                <span>     
-                            
-                   <FontAwesomeIcon icon={faUtensils}  size="lg"  mask={ faCircle } size="2x" transform="shrink-6"/>  
-                               
-                </span>
-                <NavText>Food</NavText>
-              </Food>
-            </Navigator1>
-          </Navigator>
-        </NavBorder>
-       {/* </Nav> */}
+      <CityContentWrapper>
+      　<CityContentWrapper1>
+          <CityContentWrapper2>
+            <p>The cityscape remains in your heart forever.  </p>
+            <Border></Border>
+          </CityContentWrapper2> 
+        </CityContentWrapper1> 
+      </CityContentWrapper>
 
-       
+      <VideoWrapper>
+        <VideoImageWrapper>
+          <VideoImageWrapper1>
+            <h3>City</h3>
+            <VideoImageWrapper2>
+             <img src="https://images.unsplash.com/photo-1523304867125-2293c498e08a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzh8fGxvbmRvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" height="440vh" width="330vw" />
+            </VideoImageWrapper2>
+          </VideoImageWrapper1>
+        </VideoImageWrapper> 
+        <VideoItemsWrapper>
+          <VideoItemsWrapper1>
+           <VideoList  videos={this.state.videos} />
+          </VideoItemsWrapper1>
+        </VideoItemsWrapper>
+      </VideoWrapper>
 
-    
-         <TopCitywrapper1>
-         　<DivTopCitywrapper>
-            <Div2TopCitywrapper>             
-              <h1>City</h1>          
-            </Div2TopCitywrapper> 
-           </DivTopCitywrapper> 
-         </TopCitywrapper1>
+      <WorkTitleWrapper>
+      　<WorkTitleWrapper1>
+          <WorkTitleWrapper2>             
+            <h1>Work</h1>          
+          </WorkTitleWrapper2> 
+        </WorkTitleWrapper1> 
+      </WorkTitleWrapper>
 
-
-         <TopCitywrapper>
-         　<DivSecondCitywrapper>
-            <Div2SecondCitywrapper>
-              <p>The cityscape remains in your heart forever.  </p>
-              <Border></Border>
-            </Div2SecondCitywrapper> 
-           </DivSecondCitywrapper> 
-         </TopCitywrapper>
-
-
-
-         
-         <VideoWrapper>
-
-          <VideoImage>
-            <VideoImage1>
-             <h3>City</h3>
-             <VideoImage2>
-              <img src="https://images.unsplash.com/photo-1523304867125-2293c498e08a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzh8fGxvbmRvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" height="440vh" width="330vw" />
-             </VideoImage2>
-            </VideoImage1>
-          </VideoImage> 
-
-          <VideoItems>
-           <VideoItem>
-            <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.videos} />
-           </VideoItem>
-          </VideoItems>
-
-         </VideoWrapper>
-
-
-         <TopCitywrapper>
-         　<DivTopCitywrapper>
-            <Div2TopCitywrapper>             
-              <h1>Work</h1>          
-            </Div2TopCitywrapper> 
-           </DivTopCitywrapper> 
-         </TopCitywrapper>
-
-
-         <TopCitywrapper>
-         　<DivSecondCitywrapper1>
-            <Div2SecondCitywrapper>
+      <WorkContentWrapper>
+      　<WorkContentWrapper1>
+          <WorkContentWrapper2>
             <p>Working make someones's life more exiting. </p>
-              <Border></Border>
-            </Div2SecondCitywrapper> 
-           </DivSecondCitywrapper1> 
-         </TopCitywrapper>
-　　　　　　
+            <Border></Border>
+          </WorkContentWrapper2> 
+        </WorkContentWrapper1> 
+      </WorkContentWrapper>
+  　　　　　　
+      <VideoWrapper>
+      <VideoItemsWrapper>
+        <VideoItemsWrapper1>
+          <VideoList  videos={this.state.workVideos} />
+        </VideoItemsWrapper1>
+      </VideoItemsWrapper>
+      <VideoImageWrapper>
+        <VideoImageWrapper1>
+        <h3>Work</h3>
+        <VideoImageWrapper2>
+          <img src="https://images.unsplash.com/photo-1517971129774-8a2b38fa128e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjIyfHx3b3JraW5nfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" height="440vh" width="330vw" />
+        </VideoImageWrapper2>
+        </VideoImageWrapper1>
+      </VideoImageWrapper>
+  　　</VideoWrapper>
+      
+      <FoodTitleWrapper>
+      　<FoodTitleWrapper1>
+        <FoodTitleWrapper2>             
+          <h1>Food</h1>          
+        </FoodTitleWrapper2> 
+        </FoodTitleWrapper1> 
+      </FoodTitleWrapper>
 
-         <VideoWrapper>
-          <VideoItems>
-            <VideoItem>
-             <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.workvideos} />
-            </VideoItem>
-          </VideoItems>
-          <VideoImage>
-            <VideoImage1>
-            <h3>Work</h3>
-            <VideoImage2>
-              <img src="https://images.unsplash.com/photo-1517971129774-8a2b38fa128e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjIyfHx3b3JraW5nfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" height="440vh" width="330vw" />
-            </VideoImage2>
-            </VideoImage1>
-          </VideoImage>
-　　　　　　</VideoWrapper>
-         
+      <FoodContentWrapper>
+      　<FoodContentWrapper1>
+          <FoodContentWrapper2>
+            <p>To eat is to color your life.</p>
+            <Border></Border>
+          </FoodContentWrapper2> 
+        </FoodContentWrapper1> 
+      </FoodContentWrapper>
 
-
-          <TopCitywrapper>
-         　<DivTopCitywrapper>
-            <Div2TopCitywrapper>             
-              <h1>Food</h1>          
-            </Div2TopCitywrapper> 
-           </DivTopCitywrapper> 
-          </TopCitywrapper>
-
-
-          <TopCitywrapper>
-          　<DivSecondCitywrapper>
-              <Div2SecondCitywrapper>
-                <p>To eat is to color your life.</p>
-                <Border></Border>
-              </Div2SecondCitywrapper> 
-            </DivSecondCitywrapper> 
-          </TopCitywrapper>
-
-
-
-          <VideoWrapper>
-
-            <VideoImage>
-              <VideoImage1>
-                <h3>Food</h3>
-              <VideoImage2>
-                <img src="https://images.unsplash.com/photo-1579113800032-c38bd7635818?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTEwfHxmb29kfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" height="440vh" width="330vw" />
-              </VideoImage2>
-                <p>Cityscape is one of the important elements for living there.
-                  You can feel the city you find here. </p>
-              </VideoImage1>
-            </VideoImage>
-
-            <VideoItems>
-              <VideoItem>
-               <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.foodvideos} />
-              </VideoItem>
-            </VideoItems>
-  　　　　　　</VideoWrapper>
-            
-         </div>
-          
-        );
+      <VideoWrapper>
+        <VideoImageWrapper>
+          <VideoImageWrapper1>
+            <h3>Food</h3>
+          <VideoImageWrapper2>
+            <img src="https://images.unsplash.com/photo-1579113800032-c38bd7635818?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTEwfHxmb29kfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" height="440vh" width="330vw" />
+          </VideoImageWrapper2>
+            <p>Cityscape is one of the important elements for living there.
+              You can feel the city you find here. </p>
+          </VideoImageWrapper1>
+        </VideoImageWrapper>
+        <VideoItemsWrapper>
+          <VideoItemsWrapper1>
+            <VideoList  videos={this.state.foodVideos} />
+          </VideoItemsWrapper1>
+        </VideoItemsWrapper>
+  　　</VideoWrapper>
+        
+      </div>
+      
+    );
     }
 }
 
 export default Map;
 
-const MapWrapper = styled.div`
+const TopPageWrapper = styled.div`
 margin-bottom:10vh;
 position: relative;
 height: 100vh;
@@ -554,47 +460,13 @@ flex-direction: column;
 `
 
 
-const MapWrapper1 = styled.div`
+const TopPageWrapper1 = styled.div`
 position: relative;
 padding-top: 56.212%;
 width: 100%;
 `
 
-const MapInner = styled.div`
-
-text-align:center;
-position: absolute;
-top: 50%;
-left: 50%;
-z-index: 20;
-transform: translate(-50%, -50%);
--webkit-transform: translate(-50%, -50%);
--ms-transform: translate(-50%, -50%);
-width: 80%;
-p{
-  color: white;
-}
-`
-
-const SearchText = styled.div`
-margin-top: 10vh;
-margin-bottom: 5vh;
-text-align: center;
-color: white;
-
-p{
-    font-size: 36px;
-    line-height: 120%;
-    margin-bottom: 8vh;
-}
-
-h1{
-    // margin-top: 5vh;
-    font-size: 48px;
-}
-`
-
-const PlayerWrapper = styled.div`
+const BackGroundVideoWrapper = styled.div`
 position: absolute;
 top: 0;
 left: 0;
@@ -619,7 +491,42 @@ object-fit: cover;
 }
 `
 
-const MapWrapper2 = styled.div`
+const AboveVideoWrapper = styled.div`
+
+text-align:center;
+position: absolute;
+top: 50%;
+left: 50%;
+z-index: 20;
+transform: translate(-50%, -50%);
+-webkit-transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+width: 80%;
+p{
+  color: white;
+}
+`
+
+const TextWrapper = styled.div`
+margin-top: 10vh;
+margin-bottom: 5vh;
+text-align: center;
+color: white;
+
+p{
+    font-size: 36px;
+    line-height: 120%;
+    margin-bottom: 8vh;
+}
+
+h1{
+    // margin-top: 5vh;
+    font-size: 48px;
+}
+`
+
+
+const MapWrapper= styled.div`
 position: relative;
 margin: -5% 20% 10% 20%;
 background-color: rgba(239,239,239,.85);
@@ -640,7 +547,7 @@ height: 50vh;
 `
 
 
-const NavBorder = styled.div`
+const NavWrapper = styled.div`
 
 
 width: 100%;
@@ -651,7 +558,7 @@ position: sticky;
 top: 8.5vh;
 `
 
-const Navigator= styled.div`
+const NavWrapper1= styled.div`
 
 margin-left: 5vw;
 // position: -webkit-sticky;
@@ -662,7 +569,7 @@ span{
 }
 `
 
-const Navigator1= styled.div`
+const NavWrapper2= styled.div`
 display: flex;
 justify-content: flex-start;
 align-items: center;
@@ -671,7 +578,7 @@ sapn{
 }
 `
 
-const City= styled.div`
+const NavCityWrapper= styled.div`
 background-color: hsla(0,0%,100%,.8);
 color: rgba(0, 0, 0, 0.9);
 font-family: "MaisonNeue-Medium","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -692,58 +599,41 @@ letter-spacing: 0;
 // }
 `
 
-const Work= styled(City)`
+const NavWorkWrapper= styled(NavCityWrapper)`
 
 `
 
-const Food= styled(City)`
+const NavFoodWrapper= styled(NavCityWrapper)`
 
 `
 
 
-const NavText= styled.div`
+const NavTextWrapper= styled.div`
 margin-left: 1vw;
 margin-right: 3vw;
 
 `
 
 
-const Insta= styled.div`
-height: 10vh;
-position: relative;
-
-`
-
-const TopCitywrapper= styled.div`
-
-position: relative;
-margin-left: 32px;
-margin-right: 32px;
-
-`
-
-
-const TopCitywrapper1= styled.div`
+const CityTitleWrapper= styled.div`
 
 position: relative;
 margin-left: 32px;
 margin-right: 32px;
 margin-top: 10vh;
-git`
+`
 
-
-
-const DivTopCitywrapper = styled.div`
+const CityTitleWrapper1 = styled.div`
 
 margin-left: 30%;
 margin-right: 30%;
 position: relative;
 padding: 0 12px;
 
-
 `
 
-const Div2TopCitywrapper = styled.div`
+
+const CityTitleWrapper2 = styled.div`
 margin-bottom: 5vh;
 display: flex;
 flex-direction: column;
@@ -769,8 +659,15 @@ align-items: center;
 }
 `
 
+const CityContentWrapper= styled.div`
 
-const DivSecondCitywrapper = styled.div`
+position: relative;
+margin-left: 32px;
+margin-right: 32px;
+
+`
+
+const CityContentWrapper1 = styled.div`
 
 font-size: 24px;
 margin-right: 60%;
@@ -780,18 +677,7 @@ padding: 0 48px;
 
 `
 
-const DivSecondCitywrapper1 = styled.div`
-
-font-size: 24px;
-margin-left: 60%;
-position: relative;
-padding: 0 48px;
-
-
-`
-
-const Div2SecondCitywrapper = styled.div`
-
+const CityContentWrapper2 = styled.div`
 
 margin-bottom: 5vh;
 display: flex;
@@ -810,6 +696,70 @@ margin-top: 5%;
 margin-left: -20%;
 `
 
+
+const WorkTitleWrapper= styled.div`
+
+position: relative;
+margin-left: 32px;
+margin-right: 32px;
+
+`
+const WorkTitleWrapper1 = styled(CityTitleWrapper1)`
+
+`
+
+
+const WorkTitleWrapper2 = styled(CityTitleWrapper2)`
+
+`
+
+const WorkContentWrapper= styled(CityContentWrapper)`
+
+`
+
+const WorkContentWrapper1= styled.div`
+
+font-size: 24px;
+margin-left: 60%;
+position: relative;
+padding: 0 48px;
+
+`
+
+const WorkContentWrapper2= styled(CityContentWrapper2)`
+
+`
+
+const FoodTitleWrapper= styled.div`
+
+position: relative;
+margin-left: 32px;
+margin-right: 32px;
+
+`
+
+const FoodTitleWrapper1 = styled(CityTitleWrapper1)`
+
+`
+
+
+const FoodTitleWrapper2 = styled(CityTitleWrapper2)`
+
+`
+
+
+const FoodContentWrapper= styled(CityContentWrapper)`
+
+`
+
+const FoodContentWrapper1= styled(CityContentWrapper1)`
+
+`
+
+const FoodContentWrapper2= styled(CityContentWrapper2)`
+
+`
+
 const VideoWrapper = styled.div`
 display: flex;
 justify-content: space-between;
@@ -818,7 +768,7 @@ margin-bottom: 20vh;
 `
 
 
-const VideoImage = styled.div`
+const VideoImageWrapper = styled.div`
 width: 50vw;
 background-color: #F8F8F8;
 
@@ -829,7 +779,7 @@ p{
 }
 `
 
-const VideoImage1 = styled.div`
+const VideoImageWrapper1 = styled.div`
 padding: 10% 5% 10% 10%;
 display: flex;
 text-align: center;
@@ -837,54 +787,22 @@ align-items: center;
 flex-direction: column;
 `
 
-const VideoImage2 = styled.div`
+const VideoImageWrapper2 = styled.div`
 
 height: 100%;
 object-fit: contain;
 // background: url("https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bG9uZG9ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60");
 `
 
-const VideoItems = styled.div`
+const VideoItemsWrapper = styled.div`
 width: 50vw;
 background-color: white;
 
 `
 
-const VideoItem = styled.div`
+const VideoItemsWrapper1 = styled.div`
 margin-right: 32px;
 margin-left: 32px;
 width: 100%;
 
 `
-
-const FooterCaption = styled.div`
-border-top: 1px solid black;
-
-`
-
-
-const FooterCaption1 = styled.div`
-
-padding: 5% 10%;
-
-p{
-  text-align: center;
-}
-
-`
-
-
-
-
-
-
-
-// const Search= styled.div`
-// height: 5vh;
-// position: absolute;
-// top: -10vh;
-// width: 30%;
-// margin: auto;
-
-
-// `

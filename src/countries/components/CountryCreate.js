@@ -1,18 +1,16 @@
-
+import {  useContext,useState , useEffect} from 'react';
+import { API } from '../api'
+import { AuthContext } from "../contexts/AuthContext";
+import axios from "axios"
+import {useHistory} from 'react-router-dom';
 import { useFormik } from 'formik';
+import * as yup from 'yup';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import axios from "axios"
-import { API } from '../api'
-import {  useContext,useState , useEffect} from 'react';
-import { AuthContext } from "../contexts/AuthContext";
-import {useHistory} from 'react-router-dom';
-import * as yup from 'yup';
 import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
-import styled from "styled-components"
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import styled from "styled-components"
 
 function ImagePreview({ file }) {
     const [imageSrc, setImageSrc] = useState(null)
@@ -47,8 +45,7 @@ const validationSchema = yup.object({
   });
 
 
-
-export function CountryCreate() {
+ function CountryCreate() {
     const [loading, setLoading] = useState(false)
     const [file, setFile] = useState(null)
     const history = useHistory();
@@ -155,7 +152,7 @@ export function CountryCreate() {
                 helperText={formik.touched.content && formik.errors.content}
                 style={{ marginBottom: "15%", }}
                 />
-                  <ImgUpload>
+                  <ImgUploadWrapper>
                     <Button  variant="contained" component="label" sx={{ marginTop: 36}}>
                         Image Upload
                         <input
@@ -167,7 +164,7 @@ export function CountryCreate() {
                     {file && (
                         <ImagePreview file={file} />
                     )}
-                  </ImgUpload>
+                  </ImgUploadWrapper>
                 <ThemeProvider theme={theme}>
                     <Button color="neutral" variant="contained" fullWidth type="submit" sx={{ marginTop: 36}}>
                     Submit
@@ -184,7 +181,7 @@ export function CountryCreate() {
 export default CountryCreate
 
 
-const ImgUpload= styled.div`
+const ImgUploadWrapper= styled.div`
 
 
 margin-bottom: 20%;

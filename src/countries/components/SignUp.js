@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import { Formik, Field, Form } from 'formik';
-import axios from "axios"
 import { API } from '../api'
+import axios from "axios"
+import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Container from '@mui/material/Container';
-import { useFormik } from 'formik';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
@@ -21,7 +20,7 @@ const validationSchema = yup.object({
       .string('Enter your password')
   });
 
-export function Signup() {
+ function Signup() {
     const [loading, setLoading] = useState(false)
     const [success, setSuccess] = useState(false)
     
