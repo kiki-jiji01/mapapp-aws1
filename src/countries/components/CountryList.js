@@ -39,7 +39,7 @@ function CountryList() {
     {user ? (history.push(`/create-countries`)):(history.push(`/countries/login`))}
   }
 
-  // Get the coutrylists data form API
+  // Get the coutrylists data from API
   useEffect(() => {
     function fetchCountries() {
       axios.get(API.countries.list)
