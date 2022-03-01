@@ -7,7 +7,7 @@
 
 
 ## :globe_with_meridians:　App URL
-### **https://master.d3upxxitskitpz.amplifyapp.com**  
+### **https://master.d3upxxitskitpz.amplifyapp.com**   ※PC推奨(レスポンシブデザイン開発中です)
 
 
 ## :ocean:　概要 
@@ -41,6 +41,8 @@
 
 
 ## :hammer:　今後実装したい機能
+・動画を全画面表示させるようにする。
+
 ・地図上のピンの位置を動かし、指し示した場所に関連した動画を表示させる機能。<br>
 （現時点では検索ボックスで検索した時のみ動画が表示される仕様)
 
@@ -50,6 +52,8 @@
 
 ## :memo:　スライド資料
 <a href="https://docs.google.com/presentation/d/1mqU2NHPshweJYHgzRK3IUENxkl6g5kjR-WjSTsFpFfc/edit?usp=sharing">スライド資料</a>
+
+### ※Backendのコードはこちらのレポジトリになります。　**https://github.com/kiki-jiji01/mapwith-django**
 
 # Getting Started with Create React App
 
