@@ -9,7 +9,7 @@ function Work ({videos}){
 
         return(
          <div>
-            <WorkTitleWrapper>
+            <WorkTitleWrapper id='work'>
               <WorkTitleWrapper1>
                 <WorkTitleWrapper2>             
                   <h1>Work</h1>          
@@ -38,6 +38,8 @@ function Work ({videos}){
                 <VideoImageWrapper2>
                  <img src="https://images.unsplash.com/photo-1517971129774-8a2b38fa128e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjIyfHx3b3JraW5nfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" height="440vh" width="330vw" />
                 </VideoImageWrapper2>
+                <p>Working is necessary elements in your life.<br/>
+                    You can feel work style here. </p>
                 </VideoImageWrapper1>
               </VideoImageWrapper>
             </VideoWrapper>

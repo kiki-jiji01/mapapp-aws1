@@ -11,14 +11,14 @@ import TextField from '@material-ui/core/TextField';
 
 
 const validationSchema = yup.object({
-    country_name: yup
-      .string('Enter your country_name'),
-    //   .email('Enter a valid country_name')
-    //   .required('country_name is required'),
-    content: yup
-      .string('Enter your content')
-    //   .min(8, 'content should be of minimum 8 characters length')
-    //   .required('content is required'),
+    email: yup
+      .string('Enter your email')
+      .email('Enter a valid email')
+      .required('Email is required'),
+    password: yup
+      .string('Enter your password')
+      .min(8, 'password should be of minimum 8 characters length')
+      .required('password is required'),
   });
 
  function Login() {

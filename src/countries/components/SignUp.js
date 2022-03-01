@@ -9,15 +9,17 @@ import TextField from '@material-ui/core/TextField';
 
 const validationSchema = yup.object({
     email: yup
-      .string('Enter your email'),
-    //   .email('Enter a valid country_name')
-    //   .required('country_name is required'),
+      .string('Enter your email')
+      .email('Enter a valid email')
+      .required('Email is required'),
     password1: yup
-      .string('Enter your password'),
-    //   .min(8, 'content should be of minimum 8 characters length')
-    //   .required('content is required'),
+      .string('Enter your password')
+      .min(8, 'password should be of minimum 8 characters length')
+      .required('password is required'),
     password2: yup
       .string('Enter your password')
+      .min(8, 'password should be of minimum 8 characters length')
+      .required('password is required'),
   });
 
  function Signup() {
@@ -57,7 +59,7 @@ const validationSchema = yup.object({
             </div>
             <form onSubmit={formik.handleSubmit}>
                 <TextField
-                fullWidth
+                fullWidth       
                 id="email"
                 name="email"
                 label="email"

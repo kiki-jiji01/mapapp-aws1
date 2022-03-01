@@ -73,11 +73,11 @@ function Header (){
             </Box>
           
             <HeaderWrapper2> 
-              <LinkedinWrapper>
-               <FontAwesomeIcon icon={faLinkedin} size="lg" mask={ faCircle } size="2x" transform="shrink-6" />
+              <LinkedinWrapper href="https://www.linkedin.com/feed/">
+               <FontAwesomeIcon  icon={faLinkedin} size="lg" mask={ faCircle } size="2x" transform="shrink-6" color="white"/>
               </LinkedinWrapper>
-              <AirbnbWrapper>
-               <FontAwesomeIcon icon={faAirbnb} size="lg" mask={ faCircle } size="2x" transform="shrink-6"/>
+              <AirbnbWrapper  href="https://www.airbnb.com/">
+               <FontAwesomeIcon icon={faAirbnb} size="lg" mask={ faCircle } size="2x" transform="shrink-6" color="white"/>
               </AirbnbWrapper>
           
               <CountryListWrapper>
@@ -114,7 +114,7 @@ export default Header;
 
 const HeaderWrapper= styled.div`
 position: fixed;
-background-color: rgba(0, 0, 0, .65);
+background-color: #0a0908;
 width: 100%;
 z-index:2000;
 top: 0;
@@ -149,12 +149,12 @@ width: 100%;
 `
 
 
-const LinkedinWrapper= styled.div`
+const LinkedinWrapper= styled.a`
 
 margin-right: 24px;
 `
 
-const AirbnbWrapper= styled.div`
+const AirbnbWrapper= styled.a`
 margin-right: auto;
 `
 const CountryListWrapper= styled.div`

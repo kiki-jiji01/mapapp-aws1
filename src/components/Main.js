@@ -294,8 +294,8 @@ class Map extends React.Component{
               </BackGroundVideoWrapper>
               <AboveVideoWrapper>
                   <TextWrapper>
-                    <p>Are you collecting the imfomation of the country<br></br> which you wanna live work....?</p>
-                    <h1>You can do everythings here</h1>
+                    <p>Are you collecting the imfomation of the country<br></br> which you wanna live, work....?</p>
+                    <h1>OK. You can do everythings here.</h1>
                   </TextWrapper>
                   <SearchBox
                   googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM&v=3.exp&libraries=geometry,drawing,places"
@@ -408,27 +408,29 @@ p{
 `
 
 const TextWrapper = styled.div`
-margin-top: 10vh;
+margin-top: 20vh;
 margin-bottom: 5vh;
 text-align: center;
 color: white;
 
 p{
-    font-size: 36px;
+    font-size: 28px;
     line-height: 120%;
-    margin-bottom: 8vh;
+    margin-bottom: 10vh;
+    letter-spacing: -1px;
 }
 
 h1{
-    // margin-top: 5vh;
-    font-size: 48px;
+    font-family: 'DDINExpRegular';
+    font-size: 64px;
+    padding-top: 10px;
 }
 `
 
 
 const MapWrapper= styled.div`
 position: relative;
-margin: -5% 20% 10% 20%;
+margin: -2% 20% 10% 20%;
 background-color: rgba(239,239,239,.85);
 position: relative;
 z-index: 100;

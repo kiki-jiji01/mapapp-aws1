@@ -9,7 +9,7 @@ function Food ({videos}){
 
         return(
             <div>
-            <FoodTitleWrapper>
+            <FoodTitleWrapper id='food'>
             　<FoodTitleWrapper1>
                <FoodTitleWrapper2>             
                   <h1>Food</h1>          
@@ -33,8 +33,8 @@ function Food ({videos}){
                 <VideoImageWrapper2>
                   <img src="https://images.unsplash.com/photo-1579113800032-c38bd7635818?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTEwfHxmb29kfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" height="440vh" width="330vw" />
                 </VideoImageWrapper2>
-                  <p>Cityscape is one of the important elements for living there.
-                    You can feel the city you find here. </p>
+                  <p>Eating is one of the pleasure elements in your life.<br/>
+                    You can feel food culture here. </p>
                 </VideoImageWrapper1>
               </VideoImageWrapper>
               <VideoItemsWrapper>

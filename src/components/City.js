@@ -8,7 +8,7 @@ function City ({videos}){
 
         return(
             <div>
-            <CityTitleWrapper>
+            <CityTitleWrapper id='city'>
             　<CityTitleWrapper1>
                 <CityTitleWrapper2>             
                     <h1>City</h1>          
@@ -32,6 +32,8 @@ function City ({videos}){
                     <VideoImageWrapper2>
                     <img src="https://images.unsplash.com/photo-1523304867125-2293c498e08a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzh8fGxvbmRvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" height="440vh" width="330vw" />
                     </VideoImageWrapper2>
+                    <p>Cityscape is one of the important elements for living there.<br/>
+                    You can feel its atmosphere here. </p>
                 </VideoImageWrapper1>
                 </VideoImageWrapper> 
                 <VideoItemsWrapper>
@@ -50,7 +52,7 @@ export default City;
 
 
 export const CityTitleWrapper= styled.div`
-
+id="city"
 position: relative;
 margin-left: 32px;
 margin-right: 32px;
