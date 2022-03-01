@@ -35,13 +35,13 @@ function ImagePreview({ file }) {
 
 const validationSchema = yup.object({
     country_name: yup
-      .string('Enter your country_name'),
-    //   .email('Enter a valid country_name')
-    //   .required('country_name is required'),
+      .string('Enter your country_name')
+      .email('Enter a valid country_name')
+      .required('country_name is required'),
     content: yup
       .string('Enter your content')
-    //   .min(8, 'content should be of minimum 8 characters length')
-    //   .required('content is required'),
+      .min(8, 'content should be of minimum 8 characters length')
+      .required('content is required'),
   });
 
 

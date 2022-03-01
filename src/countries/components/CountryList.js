@@ -14,8 +14,7 @@ const styles = {
    
   },
   "&.MuiButton-text": {
-    color: "black",
-    
+    color: "black"
     
   },
   "&.MuiButton-contained": {
@@ -39,7 +38,7 @@ function CountryList() {
     {user ? (history.push(`/create-countries`)):(history.push(`/countries/login`))}
   }
 
-  // Get the coutrylists data form API
+  // Get the coutrylists data from API
   useEffect(() => {
     function fetchCountries() {
       axios.get(API.countries.list)
@@ -58,10 +57,10 @@ function CountryList() {
     <ListWrapper>
       <ListWrapper1>
        <TextWrapper><p>Your Country List</p></TextWrapper>
-       <CreateBuutonWrapper>
+       <CreateButtonWrapper>
             <FontAwesomeIcon icon={faPen} size="sx"   transform="shrink-10" style={{ marginRight: "-8px"}} />  
-            <Button sx={styles} variant="text"   onClick = {push}>CREATE LIST</Button>
-       </CreateBuutonWrapper>
+            <Button sx={styles} variant="text"  style={{ fontFamily: "DDINDINBold", letterSpacing: "1px"}}  onClick = {push}>CREATE LIST</Button>
+       </CreateButtonWrapper>
       </ListWrapper1>
       
       {!countries && "Loading..."}
@@ -108,7 +107,7 @@ p{
 
 `
 
-const CreateBuutonWrapper = styled.div`
+const CreateButtonWrapper = styled.div`
 
 display: flex;
 align-items: center;

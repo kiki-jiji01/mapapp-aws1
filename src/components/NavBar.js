@@ -11,22 +11,22 @@ function NavBar (){
         <NavWrapper>
           <NavWrapper1>
             <NavWrapper2>
-              <NavCityWrapper>
-                <span>
-                 <FontAwesomeIcon icon={faCity} size="lg" mask={ faCircle } size="2x" transform="shrink-6"/>
-                </span>
-                <NavTextWrapper>City</NavTextWrapper>
+              <NavCityWrapper >
+                <a href='#city'>
+                 <FontAwesomeIcon icon={faCity} size="lg" size="2x" transform="shrink-6" color='#0a0908'/>
+                </a>
+                <NavTextWrapper >City</NavTextWrapper>
               </NavCityWrapper>
               <NavWorkWrapper>
-                <span>
-                 <FontAwesomeIcon icon={faBriefcase}  size="lg"  mask={ faCircle } size="2x" transform="shrink-6"/> 
-                </span>
-                <NavTextWrapper>Work</NavTextWrapper>
+                <a href='#work'>
+                 <FontAwesomeIcon icon={faBriefcase}  size="lg" size="2x" transform="shrink-6" color='#0a0908'/> 
+                </a>
+                <NavTextWrapper >Work</NavTextWrapper>
               </NavWorkWrapper>
               <NavFoodWrapper>
-                <span>                     
-                 <FontAwesomeIcon icon={faUtensils}  size="lg"  mask={ faCircle } size="2x" transform="shrink-6"/>               
-                </span>
+                <a href='#food'>                     
+                 <FontAwesomeIcon icon={faUtensils}  size="lg"  size="2x" transform="shrink-6" color='#0a0908'/>               
+                </a>
                 <NavTextWrapper>Food</NavTextWrapper>
               </NavFoodWrapper>
             </NavWrapper2>
@@ -46,7 +46,8 @@ display: block;
 border-top: 1px solid rgba(0,0,0,.15);
 position: -webkit-sticky;
 position: sticky;
-top: 8.5vh;
+top: 6.5vh;
+z-index: 10;
 `
 
 const NavWrapper1= styled.div`
@@ -70,12 +71,14 @@ sapn{
 `
 
 const NavCityWrapper= styled.div`
-background-color: hsla(0,0%,100%,.8);
 color: rgba(0, 0, 0, 0.9);
-font-family: "MaisonNeue-Medium","Helvetica Neue",Helvetica,Arial,sans-serif;
+// font-family: "MaisonNeue-Medium","Helvetica Neue",Helvetica,Arial,sans-serif;
+font-family: 'DDINExpRegular',"Helvetica Neue",Helvetica,Arial,sans-serif;
 display: flex;
+align-items: center;
 text-transform: none;
 font-size: 14px;
+font-weight: 600;
 line-height: 24px;
 letter-spacing: 0;
 
@@ -100,7 +103,7 @@ const NavFoodWrapper= styled(NavCityWrapper)`
 
 
 const NavTextWrapper= styled.div`
-margin-left: 1vw;
-margin-right: 3vw;
+margin-left: 0vw;
+margin-right: 1.5vw;
 
 `
