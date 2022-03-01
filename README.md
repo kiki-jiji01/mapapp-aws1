@@ -53,7 +53,7 @@
 ## :memo:　スライド資料
 <a href="https://docs.google.com/presentation/d/1mqU2NHPshweJYHgzRK3IUENxkl6g5kjR-WjSTsFpFfc/edit?usp=sharing">スライド資料</a>
 
-### ※Backendのコードはこちらのレポジトリになります。　**https://github.com/kiki-jiji01/mapwith-django**
+#### ※Backendのコードはこちらのレポジトリになります。　<br>**https://github.com/kiki-jiji01/mapwith-django**
 
 # Getting Started with Create React App
 
