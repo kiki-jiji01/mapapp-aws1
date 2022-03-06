@@ -1,6 +1,6 @@
 import React,{ useEffect, useState ,useContext} from "react"
-import { API } from "../api"
-import { AuthContext } from "../contexts/AuthContext"
+import { API } from "../../shared-component/api"
+import { AuthContext } from '../../shared-component/contexts/AuthContext';
 import axios from "axios"
 import { useParams } from "react-router"
 import {useHistory} from 'react-router-dom';
@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import { Modal, Box } from "@mui/material";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import styled from "styled-components"
+
 
 
 const style = {
@@ -167,8 +168,6 @@ const CountryImgWrapper = styled.div`
 height: 100%;
 width: 100%;
 overflow: hidden;
-padding-right: 96px;
-padding-left: 64px;
 `
 
 const CountryDetailWrapper = styled.div`
@@ -191,7 +190,7 @@ text-align: left;
 `
 
 const CountryContentWrapper = styled.div`
-margin-bottom: 50%;
+margin-bottom: 300px;
 text-align: left;
 `
 

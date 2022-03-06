@@ -13,3 +13,6 @@ html {
     box-sizing: border-box;
     font-family: Futura,Trebuchet MS,Arial,sans-serif; 
   }
+* {
+  box-sizing: border-box;
+}

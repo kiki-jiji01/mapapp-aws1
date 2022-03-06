@@ -1,6 +1,6 @@
 import {  useContext,useState , useEffect} from 'react';
-import { API } from '../api'
-import { AuthContext } from "../contexts/AuthContext";
+import { API } from '../../shared-component/api';
+import { AuthContext } from '../../shared-component/contexts/AuthContext';
 import axios from "axios"
 import {useHistory} from 'react-router-dom';
 import { useFormik } from 'formik';

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { API } from '../api'
+import { API } from '../../shared-component/api';
 import axios from "axios"
 import { useParams } from "react-router"
 import Container from '@mui/material/Container';

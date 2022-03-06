@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { API } from "../countries/api";
-import { AuthContext } from "../countries/contexts/AuthContext";
+import { API } from '../../shared-component/api';
+import { AuthContext } from "../../shared-component/contexts/AuthContext";
 import {useHistory} from 'react-router-dom';
 import axios from "axios";
 import { Box } from "@material-ui/core";
@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faAirbnb, faLinkedin,  } from '@fortawesome/free-brands-svg-icons';
 import styled from "styled-components"
+
 
 
 const styles = {
