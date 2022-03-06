@@ -37,6 +37,7 @@ class Map extends React.Component{
             lat:0,
             lng:0,
           },
+
         }
 
         // Get Current location and set to state
@@ -262,9 +263,8 @@ class Map extends React.Component{
                   marginBottom: '100px',
                   zIndex: '1100',
                   fontWeight:'600',
-                  // borderRadius: "30px",
                   outlineStyle: "none",
-                
+                  // borderRadius: "30px",
                 }}
            /> 
         </GoogleMap>
@@ -319,8 +319,7 @@ class Map extends React.Component{
               loadingElement={<div style={{ height: `100%` }} />}
               containerElement={<div style={{ height: `70vh` }} />}
               mapElement={<div style={{ height: `100%` }} />}
-          />
-
+              />
           </MapWrapper>
 
           <Margin></Margin>
@@ -342,15 +341,14 @@ class Map extends React.Component{
 
 export default Map;
 
-const MainWrapper = styled.div`
 
-// height: 100%;
+
+const MainWrapper = styled.div`
 position: relative;
 `
 
 
 const MainWrapper1 = styled.div`
-
 top:0;
 width: 100vw;
 box-sizing: border-box;
@@ -358,22 +356,20 @@ box-sizing: border-box;
 
 
 const TopPageWrapper = styled.div`
-
 margin-bottom:100px;
 position: relative;
 height: 100vh;
 margin-top: -270px;
 `
 
-const TopPageWrapper1 = styled.div`
 
+const TopPageWrapper1 = styled.div`
 height: 100vh;
 position: relative;
-
 `
 
-const AboveVideoWrapper = styled.div`
 
+const AboveVideoWrapper = styled.div`
 padding-top: 200px;
 margin-top: 300px;
 text-align:center;
@@ -383,6 +379,7 @@ p{
   color: white;
 }
 `
+
 
 const TextWrapper = styled.div`
 margin-top: 20px;
@@ -406,7 +403,6 @@ h1{
 
 
 const MapWrapper= styled.div`
-
 position: relative;
 background-color: rgba(239,239,239,.85);
 position: relative;
@@ -414,8 +410,8 @@ z-index: 100;
 text-align: center;
 `
 
-const Margin = styled.div`
 
+const Margin = styled.div`
 height: 150px;
 `
 

@@ -107,7 +107,6 @@ export default Navbar
 
 
 const Topwrapper = styled.div`
-
 position: fixed;
 margin-left: auto;
 margin-right: auto;
@@ -128,13 +127,14 @@ display: flex;
 const LogoutButton = styled.div`
 margin-right: 64px;
 `
+
+
 const LoginButton = styled.div`
 margin-right: 64px;
 `
 
 
 const Logo= styled.div`
-
 margin-right: 50%;
 flex-grow: 1;
 flex-shrink: 1;
@@ -144,17 +144,12 @@ flex-basis: 0%;
 const Icon= styled.div`
 margin-right: 64px;
 display: flex;
-
 `
 
 const Linkedin= styled.div`
 margin-right: 12px;
-
-
 `
 
 const Airbnb= styled.div`
 margin-right: 12px;
-
-
 `

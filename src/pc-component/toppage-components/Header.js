@@ -151,7 +151,6 @@ width: 100%;
 
 
 const LinkedinWrapper= styled.a`
-
 margin-right: 24px;
 `
 

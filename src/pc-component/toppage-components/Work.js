@@ -52,7 +52,6 @@ function Work ({videos}){
 export default Work;
 
 const WorkTitleWrapper= styled.div`
-
 position: relative;
 margin-left: 32px;
 margin-right: 32px;
@@ -68,7 +67,6 @@ const WorkContentWrapper= styled(CityContentWrapper)`
 `
 
 const WorkContentWrapper1= styled.div`
-
 font-size: 24px;
 margin-left: 60%;
 position: relative;

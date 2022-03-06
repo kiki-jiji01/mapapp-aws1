@@ -39,14 +39,14 @@ function Food ({videos}){
 
 export default Food;
 
-export const FoodWrapper= styled.div`
 
+
+export const FoodWrapper= styled.div`
 background-color:rgba(255,75,62,1.0);
 margin-bottom: 10vh;
 `
 
 const FoodTitleWrapper= styled.div`
-
 position: relative;
 margin-left: 32px;
 margin-right: 32px;
@@ -63,7 +63,6 @@ const FoodTitleWrapper2 = styled(CityTitleWrapper2)`
 
 
 const FoodContentWrapper= styled(CityContentWrapper)`
-
 padding-top: 15px;
 `
 
@@ -74,8 +73,6 @@ const FoodContentWrapper2= styled(CityContentWrapper2)`
 `
 
 const FoodVideoWrapper = styled(VideoWrapper)`
-
 color: white;
 background-color:rgba(255,75,62,0.7);
-
 `

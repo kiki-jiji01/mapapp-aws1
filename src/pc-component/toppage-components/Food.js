@@ -50,8 +50,9 @@ function Food ({videos}){
 
 export default Food;
 
-const FoodTitleWrapper= styled.div`
 
+
+const FoodTitleWrapper= styled.div`
 position: relative;
 margin-left: 32px;
 margin-right: 32px;
@@ -60,10 +61,8 @@ margin-right: 32px;
 const FoodTitleWrapper1 = styled(CityTitleWrapper1)`
 `
 
-
 const FoodTitleWrapper2 = styled(CityTitleWrapper2)`
 `
-
 
 const FoodContentWrapper= styled(CityContentWrapper)`
 `

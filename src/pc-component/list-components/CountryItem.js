@@ -52,9 +52,6 @@ export default CountryItem;
 
 
 const FlowWrapper= styled.div`
-
-
-
 padding: 8px 64px 8px 64px;
 background-color: rgba(239,239,239,.85);
 
@@ -63,5 +60,4 @@ p{
   font-size: 12px;
   border: 1px solid #000;
 }
-
 `

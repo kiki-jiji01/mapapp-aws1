@@ -51,6 +51,8 @@ function CountryList() {
     return () => null
   }, [])
 
+
+
   return (
     
     
@@ -75,42 +77,37 @@ function CountryList() {
 
 export default CountryList
 
+
 const ListWrapper = styled.div`
-
 margin-top: 20vh;
-
 `
+
 
 const ListItemWrapper = styled.div`
-
 margin-left 5%;
-
 `
 
-const ListWrapper1= styled.div`
 
+const ListWrapper1= styled.div`
 margin-left: 30%;
 margin-right: 30%;
 margin-bottom: 5vh;
 font-size: 36px;
 color: black;
-
 `
 
-const TextWrapper= styled.div`
 
+const TextWrapper= styled.div`
 text-align:center;
 margin-bottom: 15vh;
 p{
   letter-spacing: 6px;
 }
-
 `
 
-const CreateButtonWrapper = styled.div`
 
+const CreateButtonWrapper = styled.div`
 display: flex;
 align-items: center;
 justify-content: center;
-
 `

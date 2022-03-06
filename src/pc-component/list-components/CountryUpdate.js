@@ -24,6 +24,8 @@ const validationSchema = yup.object({
     //   .required('content is required'),
   });
 
+
+
 // function to show preview image
 function ImagePreview({ file }) {
     const [imageSrc, setImageSrc] = useState(null)
@@ -220,9 +222,6 @@ export default CountryUpdate
 
 
 const ImgUploadWrapper= styled.div`
-
-
 margin-bottom: 20%;
 display: flex;
-
 `

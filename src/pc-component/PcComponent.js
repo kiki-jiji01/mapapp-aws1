@@ -2,12 +2,12 @@ import Main from './toppage-components/Main';
 import Header from './toppage-components/Header';
 import Login from "./list-components/Login";
 import CountryList from "./list-components/CountryList";
-import ErrorBoundary from '../shared-component/Error';
 import CountryCreate from "./list-components/CountryCreate";
 import CountryUpdate from "./list-components/CountryUpdate";
 import SignUp from "./list-components/SignUp";
 import ConfirmEmail from "./list-components/ConfirmEmail";
 import CountryDetail from "./list-components/CountryDetail";
+import ErrorBoundary from '../shared-component/Error';
 import { AuthContextProvider } from '../shared-component/contexts/AuthContext';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -37,6 +37,7 @@ const PcComponent = () => {
            </ErrorBoundary>
           </AuthContextProvider>
        </Router>
+       
     );
              
 }

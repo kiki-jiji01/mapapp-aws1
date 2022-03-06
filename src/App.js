@@ -6,8 +6,6 @@ import MediaQuery from "react-responsive";
 
 
 
-
-
 const App = () => {
 
 
