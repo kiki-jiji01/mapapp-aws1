@@ -1,7 +1,7 @@
 import { useEffect, useState , useContext} from "react"
 import ListPage from "./ListPage"
-import { AuthContext } from "../contexts/AuthContext"
-import { API } from "../api"
+import { AuthContext } from '../../shared-component/contexts/AuthContext';
+import { API } from '../../shared-component/api';
 import axios from "axios"
 import {useHistory} from 'react-router-dom';
 import Button from '@mui/material/Button';

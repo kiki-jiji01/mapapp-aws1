@@ -1,5 +1,5 @@
 import React,{useContext} from 'react';
-import { AuthContext } from "../contexts/AuthContext"
+import { AuthContext } from '../../shared-component/contexts/AuthContext';
 import {useHistory} from 'react-router-dom';
 import {Grid, Typography} from '@material-ui/core';
 import Card from '@mui/material/Card';

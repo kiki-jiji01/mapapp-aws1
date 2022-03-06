@@ -32,14 +32,14 @@ function City ({videos}){
                     <VideoImageWrapper2>
                     <img src="https://images.unsplash.com/photo-1523304867125-2293c498e08a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzh8fGxvbmRvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" height="440vh" width="330vw" />
                     </VideoImageWrapper2>
-                    <p>Cityscape is one of the important elements for living there.<br/>
+                    <p>Cityscape is one of the important elements for living there.
                     You can feel its atmosphere here. </p>
                 </VideoImageWrapper1>
                 </VideoImageWrapper> 
                 <VideoItemsWrapper>
-                <VideoItemsWrapper1>
+                  <VideoItemsWrapper1>
                     <VideoList  videos={videos} />
-                </VideoItemsWrapper1>
+                  </VideoItemsWrapper1>
                 </VideoItemsWrapper>
             </VideoWrapper>
             </div>
@@ -73,7 +73,6 @@ margin-bottom: 5vh;
 display: flex;
 flex-direction: column;
 align-items: center;
-
 ::before{
   content: '';
   height: 1px;
@@ -110,6 +109,7 @@ padding: 0 48px;
 
 export const CityContentWrapper2 = styled.div`
 
+line-height: 1.5;
 margin-bottom: 5vh;
 display: flex;
 flex-direction: column;
@@ -139,7 +139,6 @@ export const VideoImageWrapper = styled.div`
 width: 50vw;
 background-color: #F8F8F8;
 
-
 p{
   margin-top: 10vh;
   width: 80%;
@@ -147,11 +146,19 @@ p{
 `
 
 export const VideoImageWrapper1 = styled.div`
-padding: 10% 5% 10% 10%;
+
+
 display: flex;
-text-align: center;
 align-items: center;
 flex-direction: column;
+
+h3{
+    text-align: center;
+}
+
+p{
+    max-width: 330px;
+}
 `
 
 export const VideoImageWrapper2 = styled.div`
@@ -167,7 +174,6 @@ background-color: white;
 `
 
 export const VideoItemsWrapper1 = styled.div`
-margin-right: 32px;
-margin-left: 32px;
+padding: 40px 20px 20px 20px;
 width: 100%;
 `

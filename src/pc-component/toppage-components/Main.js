@@ -258,13 +258,13 @@ class Map extends React.Component{
                 placeholder="Enter a location" 
                 autocomplete="new-password"
                 style={{
-                  width: '30%',
-                  height: '40px',
-                  paddingLeft: '16px',
-                  marginTop: '20vh',
+                  width: '50%',
+                  padding: '8px',
+                  marginTop: '180px',
                   marginBottom: '2rem',
                   zIndex: '1100',
-                  borderRadius: "30px",
+                  fontWeight:'600',
+                  // borderRadius: "30px",
                   outlineStyle: "none",
                 
                 }}
@@ -280,22 +280,31 @@ class Map extends React.Component{
 
           <TopPageWrapper>
             <TopPageWrapper1>
-              <BackGroundVideoWrapper>
-                <ReactPlayer 
-                url="https://assets.mixkit.co/videos/preview/mixkit-venice-central-canal-at-night-4646-large.mp4"
-                playing={true}
-                autoPlay={true}
-                muted={true}
-                loop={true}
-                width='100%'
-                height='100%'
-                zindex="-100"
-                />
-              </BackGroundVideoWrapper>
+
+              　<video  
+                autoPlay
+                muted
+                loop
+                src="https://assets.mixkit.co/videos/preview/mixkit-venice-central-canal-at-night-4646-large.mp4"
+              　style={{position:"absolute",
+                        top:0,
+                        left:0,
+                        bottom: 0,
+                        right: 0, 
+                        overflow: "hidden", 
+                        objectPosition: "center",
+                        zIndex:-1000, 
+                        objectFit:"cover", 
+                        width: "100%", 
+                        height: "100%"
+                      }}
+                >
+                </video>
+           
               <AboveVideoWrapper>
                   <TextWrapper>
                     <p>Are you collecting the imfomation of the country<br></br> which you wanna live, work....?</p>
-                    <h1>OK. You can do everythings here.</h1>
+                    <h1>Then, You are Perfect.</h1>
                   </TextWrapper>
                   <SearchBox
                   googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM&v=3.exp&libraries=geometry,drawing,places"
@@ -305,15 +314,16 @@ class Map extends React.Component{
                   />
               </AboveVideoWrapper>
             </TopPageWrapper1>
-            <MapWrapper>
+          </TopPageWrapper>
+
+          <MapWrapper>
               <MapWithAMarker
               googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGX39_vj1YuXzup9jOmR29Iw_u_5Y4JQM&v=3.exp&libraries=geometry,drawing,places"
               loadingElement={<div style={{ height: `100%` }} />}
-              containerElement={<div style={{ height: `60vh` }} />}
+              containerElement={<div style={{ height: `70vh` }} />}
               mapElement={<div style={{ height: `100%` }} />}
               />
-            </MapWrapper>
-          </TopPageWrapper>
+          </MapWrapper>
 
           <Margin></Margin>
           
@@ -343,7 +353,7 @@ position: relative;
 
 const MainWrapper1 = styled.div`
 
-position: absolute;
+
 top:0;
 width: 100vw;
 box-sizing: border-box;
@@ -351,48 +361,29 @@ box-sizing: border-box;
 
 
 const TopPageWrapper = styled.div`
-margin-bottom:10vh;
+
+margin-bottom:150px;
 position: relative;
 height: 100vh;
-display: flex;
--webkit-flex-direction: column;
-flex-direction: column;
-`
 
+`
 
 const TopPageWrapper1 = styled.div`
+
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
 position: relative;
-padding-top: 56.212%;
-width: 100%;
+
 `
 
-const BackGroundVideoWrapper = styled.div`
-position: absolute;
-top: 0;
-left: 0;
-bottom: 0;
-right: 0;
-overflow: hidden;
-width: 100%;
-height: 100%;
-object-position: center;
-z-index: -1000;
-object-fit: cover;
-
-::before{
-  　content: "";
-    position: absolute;
-    background-color: rgba(0,0,0,.3);
-    z-index: 10;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-`
 
 const AboveVideoWrapper = styled.div`
-
+display: flex;
+flex-direction: column;
+max-width: 640px;
 text-align:center;
 position: absolute;
 top: 50%;
@@ -408,13 +399,13 @@ p{
 `
 
 const TextWrapper = styled.div`
-margin-top: 20vh;
+margin-top: 40px;
 margin-bottom: 5vh;
 text-align: center;
 color: white;
 
 p{
-    font-size: 28px;
+    font-size: 24px;
     line-height: 120%;
     margin-bottom: 10vh;
     letter-spacing: -1px;
@@ -429,20 +420,17 @@ h1{
 
 
 const MapWrapper= styled.div`
+
 position: relative;
-margin: -2% 20% 10% 20%;
 background-color: rgba(239,239,239,.85);
 position: relative;
 z-index: 100;
 text-align: center;
-display: flex;
-  -webkit-flex-direction: column;
-  flex-direction: column;
 `
 
 const Margin = styled.div`
 
-height: 50vh;
+height: 150px;
 `
 
 

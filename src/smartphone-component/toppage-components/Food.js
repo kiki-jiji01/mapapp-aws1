@@ -8,7 +8,7 @@ import styled from "styled-components"
 function Food ({videos}){
 
         return(
-            <div>
+          <FoodWrapper>
             <FoodTitleWrapper id='food'>
             　<FoodTitleWrapper1>
                <FoodTitleWrapper2>             
@@ -21,40 +21,37 @@ function Food ({videos}){
             　<FoodContentWrapper1>
                 <FoodContentWrapper2>
                   <p>To eat is to color your life.</p>
-                  <Border></Border>
                 </FoodContentWrapper2> 
               </FoodContentWrapper1> 
             </FoodContentWrapper>
       
-            <VideoWrapper>
-              <VideoImageWrapper>
-                <VideoImageWrapper1>
-                  <h3>Food</h3>
-                <VideoImageWrapper2>
-                  <img src="https://images.unsplash.com/photo-1579113800032-c38bd7635818?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTEwfHxmb29kfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" height="440vh" width="330vw" />
-                </VideoImageWrapper2>
-                  <p>Eating is one of the pleasure elements in your life.<br/>
-                    You can feel food culture here. </p>
-                </VideoImageWrapper1>
-              </VideoImageWrapper>
+            <FoodVideoWrapper>
               <VideoItemsWrapper>
                 <VideoItemsWrapper1>
                   <VideoList  videos={videos} />
                 </VideoItemsWrapper1>
               </VideoItemsWrapper>
-        　　</VideoWrapper>
-          </div>
+         　　</FoodVideoWrapper>
+          </FoodWrapper>
         );
     }
 
 
 export default Food;
 
+export const FoodWrapper= styled.div`
+
+background-color:rgba(255,75,62,1.0);
+margin-bottom: 10vh;
+`
+
 const FoodTitleWrapper= styled.div`
 
 position: relative;
 margin-left: 32px;
 margin-right: 32px;
+padding-top: 15px;
+color: white;
 `
 
 const FoodTitleWrapper1 = styled(CityTitleWrapper1)`
@@ -66,6 +63,8 @@ const FoodTitleWrapper2 = styled(CityTitleWrapper2)`
 
 
 const FoodContentWrapper= styled(CityContentWrapper)`
+
+padding-top: 15px;
 `
 
 const FoodContentWrapper1= styled(CityContentWrapper1)`
@@ -74,3 +73,9 @@ const FoodContentWrapper1= styled(CityContentWrapper1)`
 const FoodContentWrapper2= styled(CityContentWrapper2)`
 `
 
+const FoodVideoWrapper = styled(VideoWrapper)`
+
+color: white;
+background-color:rgba(255,75,62,0.7);
+
+`

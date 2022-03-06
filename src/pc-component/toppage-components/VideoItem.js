@@ -10,15 +10,11 @@ const VideoItem = ({video}) => {
     
     return (
        <VideoCardWrapper> 
-         <VideoCardWrapper1> 
-            
-              <iframe src={VideoSrc} />
-           
-                
-                 {video.snippet.title}
-               
-            
-         </VideoCardWrapper1> 
+            <iframe 
+            src={VideoSrc} 
+            style={{ display: "block", width: "100%",height: "auto"}}
+            />
+            <p>{video.snippet.title}</p>
        </VideoCardWrapper>
        
      
@@ -27,16 +23,10 @@ const VideoItem = ({video}) => {
 export default VideoItem;
 
 const VideoCardWrapper = styled.div`
-width: 50%;
-margin-bottom: 60px;
+width: calc((100% - 60px) / 2);
+margin-bottom: 30px;
 box-sizing: border-box;
-
-`
-
-const VideoCardWrapper1 = styled.div`
-width:80%;         
-
-
+overflow: hidden;
 `
 
 
