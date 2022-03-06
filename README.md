@@ -27,6 +27,11 @@
 また場所を地理的に把握することはその場所をイメージをしやすくなったり、旅をする高揚感を得ることができたりと<br>
 新しい場所に向かう際に欠かせないものである、といった思いから動画と共に地図も表示させることになりました。
 
+## :memo:　スライド資料
+<a href="https://docs.google.com/presentation/d/1mqU2NHPshweJYHgzRK3IUENxkl6g5kjR-WjSTsFpFfc/edit?usp=sharing">スライド資料</a>
+
+#### ※Backendのコードはこちらのレポジトリになります。　<br>**https://github.com/kiki-jiji01/mapwith-django**
+
 
 ## :books:アプリの利用方法
 #### 検索ボックスに国や都市名を入力すると動画が表示されます。また地図もその場所を指してくれます。
@@ -52,10 +57,6 @@
 
 ・ターゲットセッティングを細かくしていき、それに合わせて表示される動画内容も変える。または、利用者の目的に合わせた動画を表示させる。(現時点では、景観、仕事、食事の3ジャンル)
 
-## :memo:　スライド資料
-<a href="https://docs.google.com/presentation/d/1mqU2NHPshweJYHgzRK3IUENxkl6g5kjR-WjSTsFpFfc/edit?usp=sharing">スライド資料</a>
-
-#### ※Backendのコードはこちらのレポジトリになります。　<br>**https://github.com/kiki-jiji01/mapwith-django**
 
 # Getting Started with Create React App
 
