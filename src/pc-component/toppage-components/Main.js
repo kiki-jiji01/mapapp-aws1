@@ -7,7 +7,6 @@ import Food from "./Food";
 import Geocode from "react-geocode";
 import AutoComplete from 'react-google-autocomplete';
 import {InfoWindow, withScriptjs, withGoogleMap, GoogleMap,Marker} from "react-google-maps";
-import ReactPlayer from 'react-player';
 import styled from "styled-components";
 
 
@@ -15,7 +14,7 @@ Geocode.setApiKey(process.env.REACT_APP_GEOCODE_API_KEY)
 
 
 
-class Map extends React.Component{
+class Main extends React.Component{
 
 
         state = {
@@ -264,9 +263,8 @@ class Map extends React.Component{
                   marginBottom: '2rem',
                   zIndex: '1100',
                   fontWeight:'600',
-                  // borderRadius: "30px",
                   outlineStyle: "none",
-                
+                  // borderRadius: "30px"
                 }}
            /> 
         </GoogleMap>
@@ -280,27 +278,25 @@ class Map extends React.Component{
 
           <TopPageWrapper>
             <TopPageWrapper1>
-
-              　<video  
-                autoPlay
-                muted
-                loop
-                src="https://assets.mixkit.co/videos/preview/mixkit-venice-central-canal-at-night-4646-large.mp4"
-              　style={{position:"absolute",
-                        top:0,
-                        left:0,
-                        bottom: 0,
-                        right: 0, 
-                        overflow: "hidden", 
-                        objectPosition: "center",
-                        zIndex:-1000, 
-                        objectFit:"cover", 
-                        width: "100%", 
-                        height: "100%"
-                      }}
-                >
-                </video>
-           
+            　<video  
+              autoPlay
+              muted
+              loop
+              src="https://assets.mixkit.co/videos/preview/mixkit-venice-central-canal-at-night-4646-large.mp4"
+            　style={{position:"absolute",
+                      top:0,
+                      left:0,
+                      bottom: 0,
+                      right: 0, 
+                      overflow: "hidden", 
+                      objectPosition: "center",
+                      zIndex:-1000, 
+                      objectFit:"cover", 
+                      width: "100%", 
+                      height: "100%"
+                    }}
+              >
+              </video>
               <AboveVideoWrapper>
                   <TextWrapper>
                     <p>Are you collecting the imfomation of the country<br></br> which you wanna live, work....?</p>
@@ -342,18 +338,16 @@ class Map extends React.Component{
     }
 }
 
-export default Map;
+export default Main;
+
+
 
 const MainWrapper = styled.div`
-
-// height: 100%;
 position: relative;
 `
 
 
 const MainWrapper1 = styled.div`
-
-
 top:0;
 width: 100vw;
 box-sizing: border-box;
@@ -361,15 +355,14 @@ box-sizing: border-box;
 
 
 const TopPageWrapper = styled.div`
-
 margin-bottom:150px;
 position: relative;
 height: 100vh;
 
 `
 
-const TopPageWrapper1 = styled.div`
 
+const TopPageWrapper1 = styled.div`
 height: 100vh;
 display: flex;
 flex-direction: column;
@@ -398,6 +391,7 @@ p{
 }
 `
 
+
 const TextWrapper = styled.div`
 margin-top: 40px;
 margin-bottom: 5vh;
@@ -420,7 +414,6 @@ h1{
 
 
 const MapWrapper= styled.div`
-
 position: relative;
 background-color: rgba(239,239,239,.85);
 position: relative;
@@ -428,8 +421,8 @@ z-index: 100;
 text-align: center;
 `
 
-const Margin = styled.div`
 
+const Margin = styled.div`
 height: 150px;
 `
 

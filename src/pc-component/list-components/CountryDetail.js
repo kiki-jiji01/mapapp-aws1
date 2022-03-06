@@ -99,6 +99,7 @@ const textstyles = {
       <DetailWrapper>
       {country && (
       <Grid container spacing={2}>
+
         <Grid item xs={5}  style={{height: "80vh", paddingLeft: "16px", paddingRight:"16px"}}>
          {country.country_image && (
             <CountryImgWrapper>
@@ -110,6 +111,7 @@ const textstyles = {
             </CountryImgWrapper>  
           )}
         </Grid>
+
         <Grid item xs={7}  style={{height: "72vh", position: "relative"}}>
             <CountryDetailWrapper>
               <CountryDetailWrapper1>
@@ -147,6 +149,7 @@ const textstyles = {
               </CountryDetailWrapper1>
             </CountryDetailWrapper>
         </Grid>
+
       </Grid>
       )}
       </DetailWrapper>
@@ -157,12 +160,13 @@ const textstyles = {
 export default CountryDetail
 
 
-const DetailWrapper = styled.div`
 
+const DetailWrapper = styled.div`
 margin-top: 20vh;
 height: 100vh;
 width: 100vw;
 `
+
 
 const CountryImgWrapper = styled.div`
 height: 100%;
@@ -170,14 +174,14 @@ width: 100%;
 overflow: hidden;
 `
 
+
 const CountryDetailWrapper = styled.div`
-
 padding: 10% ;
-
 display: flex;
 text-align: center;
 flex-direction: column;
 `
+
 
 const CountryDetailWrapper1 = styled.div`
 margin-left: 20%;
@@ -186,27 +190,27 @@ position: absolute;
 
 const CountryNameWrapper = styled.div`
 text-align: left;
-
 `
+
 
 const CountryContentWrapper = styled.div`
 margin-bottom: 300px;
 text-align: left;
 `
 
+
 const EditWrapper = styled.div`
 display: flex;
-
 `
-const Border = styled.div`
 
+
+const Border = styled.div`
 height: 20px;
 background-color: rgba(192,192,192,0.8);
 font-size: 0;
 line-height: 0;
 width: 40vw;
 margin-bottom: 15vh;
-
 align-items: flex-end;
 `
 

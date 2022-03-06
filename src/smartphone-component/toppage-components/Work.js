@@ -38,6 +38,8 @@ function Work ({videos}){
 
 export default Work;
 
+
+
 const WorkWrapper= styled.div`
 background-color:rgba(34,51,59,1.0);
 margin-bottom: 10vh;
@@ -45,7 +47,6 @@ margin-bottom: 10vh;
 
 
 const WorkTitleWrapper= styled.div`
-
 position: relative;
 padding-top: 15px;
 margin-left: 32px;
@@ -72,10 +73,8 @@ const WorkContentWrapper2= styled(CityContentWrapper2)`
 
 
 const WorkVideoWrapper = styled(VideoWrapper)`
-
 color: white;
 background-color:rgba(34,51,59,0.7);
-
 `
 
 

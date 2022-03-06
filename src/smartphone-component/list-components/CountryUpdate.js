@@ -220,9 +220,6 @@ export default CountryUpdate
 
 
 const ImgUploadWrapper= styled.div`
-
-
 margin-bottom: 20%;
 display: flex;
-
 `

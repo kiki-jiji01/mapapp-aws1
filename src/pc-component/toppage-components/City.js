@@ -60,13 +60,11 @@ margin-top: 10vh;
 `
 
 export const CityTitleWrapper1 = styled.div`
-
 margin-left: 30%;
 margin-right: 30%;
 position: relative;
 padding: 0 12px;
 `
-
 
 export const CityTitleWrapper2 = styled.div`
 margin-bottom: 5vh;
@@ -93,14 +91,12 @@ align-items: center;
 `
 
 export const CityContentWrapper= styled.div`
-
 position: relative;
 margin-left: 32px;
 margin-right: 32px;
 `
 
 export const CityContentWrapper1 = styled.div`
-
 font-size: 24px;
 margin-right: 60%;
 position: relative;
@@ -108,7 +104,6 @@ padding: 0 48px;
 `
 
 export const CityContentWrapper2 = styled.div`
-
 line-height: 1.5;
 margin-bottom: 5vh;
 display: flex;
@@ -117,7 +112,6 @@ align-items: center;
 `
 
 export const Border = styled.div`
-
 height: 4px;
 background-color: #000;
 font-size: 0;
@@ -134,7 +128,6 @@ margin-bottom: 20vh;
 // margin-top: 20vh;
 `
 
-
 export const VideoImageWrapper = styled.div`
 width: 50vw;
 background-color: #F8F8F8;
@@ -146,8 +139,6 @@ p{
 `
 
 export const VideoImageWrapper1 = styled.div`
-
-
 display: flex;
 align-items: center;
 flex-direction: column;
@@ -162,16 +153,15 @@ p{
 `
 
 export const VideoImageWrapper2 = styled.div`
-
 height: 100%;
 object-fit: contain;
-// background: url("https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bG9uZG9ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60");
 `
 
 export const VideoItemsWrapper = styled.div`
 width: 50vw;
 background-color: white;
 `
+
 
 export const VideoItemsWrapper1 = styled.div`
 padding: 40px 20px 20px 20px;

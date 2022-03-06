@@ -17,9 +17,7 @@ const styles = {
      
    },
    "&.MuiButton-text": {
-     color: "white",
-     
-     
+     color: "white",  
    },
    "&.MuiButton-contained": {
      color: "yellow"
@@ -46,8 +44,6 @@ const styles = {
   "&.MuiButton-outlined": {
     color: "brown"
   },
- 
-
 };
 
 
@@ -135,6 +131,7 @@ position: relative;
 align-items: center;
 `
 
+
 const LogoWrapper= styled.div`
 flex-grow: 1;
 flex-shrink: 1;
@@ -151,13 +148,14 @@ width: 100%;
 
 
 const LinkedinWrapper= styled.a`
-
 margin-right: 24px;
 `
 
 const AirbnbWrapper= styled.a`
 margin-right: auto;
 `
+
+
 const CountryListWrapper= styled.div`
 margin-right: 18px;
 display: flex;

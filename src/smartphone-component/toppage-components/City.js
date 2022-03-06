@@ -34,6 +34,7 @@ function City ({videos}){
                   </VideoItemsWrapper>
               </VideoWrapper>
             </CityWrapper>
+
         );
     }
 
@@ -41,10 +42,12 @@ function City ({videos}){
 export default City;
 
 
+
 export const CityWrapper= styled.div`
 background-color:rgba(169,146,125,1.0);
 margin-bottom: 10vh;
 `
+
 
 export const CityTitleWrapper= styled.div`
 id="city"
@@ -54,21 +57,19 @@ margin-right: 32px;
 color:  white;
 `
 
+
 export const CityTitleWrapper1 = styled.div`
-
 position: relative;
-
 `
 
 
 export const CityTitleWrapper2 = styled.div`
-
 font-size: 24px;
 align-items: center;
 `
 
-export const CityContentWrapper= styled.div`
 
+export const CityContentWrapper= styled.div`
 position: relative;
 margin-left: 32px;
 margin-right: 32px;
@@ -76,20 +77,20 @@ color:  white;
 margin-bottom: 5vh;
 `
 
-export const CityContentWrapper1 = styled.div`
 
+export const CityContentWrapper1 = styled.div`
 font-size: 24px;
 position: relative;
 `
 
-export const CityContentWrapper2 = styled.div`
 
+export const CityContentWrapper2 = styled.div`
 line-height: 1.3;
 margin-top: -3vh;
 `
 
-export const Border = styled.div`
 
+export const Border = styled.div`
 height: 4px;
 background-color: #000;
 font-size: 0;
@@ -99,16 +100,16 @@ margin-top: 5%;
 margin-left: -20%;
 `
 
-export const VideoWrapper = styled.div`
 
+export const VideoWrapper = styled.div`
 color: white;
 background-color:rgba(169,146,125,0.7);
-
 `
+
 
 export const VideoItemsWrapper = styled.div`
-
 `
+
 
 export const VideoItemsWrapper1 = styled.div`
 padding: 40px 20px 20px 20px;

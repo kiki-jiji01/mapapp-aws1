@@ -29,5 +29,4 @@ display: flex;
 flex-wrap: wrap;
 justify-content: space-between;
 overflow: hidden;
-
 `

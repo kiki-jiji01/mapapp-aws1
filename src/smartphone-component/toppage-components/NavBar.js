@@ -38,9 +38,9 @@ function NavBar (){
 
 export default NavBar;
 
+
+
 const NavWrapper = styled.div`
-
-
 width: 100%;
 display: block;
 border-top: 1px solid rgba(0,0,0,.15);
@@ -50,16 +50,11 @@ top: 6.5vh;
 z-index: 10;
 `
 
-const NavWrapper1= styled.div`
 
+const NavWrapper1= styled.div`
 margin-left: 5vw;
-// position: -webkit-sticky;
-// position: sticky;
-// top: 0;
-span{
-  
-}
 `
+
 
 const NavWrapper2= styled.div`
 display: flex;
@@ -72,7 +67,6 @@ sapn{
 
 const NavCityWrapper= styled.div`
 color: rgba(0, 0, 0, 0.9);
-// font-family: "MaisonNeue-Medium","Helvetica Neue",Helvetica,Arial,sans-serif;
 font-family: 'DDINExpRegular',"Helvetica Neue",Helvetica,Arial,sans-serif;
 display: flex;
 align-items: center;
@@ -81,29 +75,18 @@ font-size: 14px;
 font-weight: 600;
 line-height: 24px;
 letter-spacing: 0;
-
-
-
-// ::after{
-//   content: "|";
-//     margin-left: 10px;
-//     margin-right: 8px;
-//     color: rgba(0,0,0,.45);
-
-// }
 `
+
 
 const NavWorkWrapper= styled(NavCityWrapper)`
-
 `
 
-const NavFoodWrapper= styled(NavCityWrapper)`
 
+const NavFoodWrapper= styled(NavCityWrapper)`
 `
 
 
 const NavTextWrapper= styled.div`
 margin-left: 0vw;
 margin-right: 1.5vw;
-
 `

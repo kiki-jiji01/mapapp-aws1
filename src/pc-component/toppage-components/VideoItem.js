@@ -22,6 +22,8 @@ const VideoItem = ({video}) => {
 };
 export default VideoItem;
 
+
+
 const VideoCardWrapper = styled.div`
 width: calc((100% - 60px) / 2);
 margin-bottom: 30px;
