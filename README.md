@@ -58,6 +58,60 @@
 ・ターゲットセッティングを細かくしていき、それに合わせて表示される動画内容も変える。または、利用者の目的に合わせた動画を表示させる。(現時点では、景観、仕事、食事の3ジャンル)
 
 
+## Development
+#### frontend 
+1. Clone the repository
+
+```
+git clone https://github.com/kiki-jiji01/mapapp-aws1.git
+```
+2.Go into the repository
+```
+cd mapapp-aws1
+```
+
+3.Install dependencies
+```
+npm install
+```
+
+4.Run the app
+
+```
+npm start
+```
+
+if you want to see the map, please get "geocode api key" and set it up to ".env, Main.js".
+
+
+#### backend 
+1. Clone the repository
+```
+git clone https://github.com/kiki-jiji01/mapwith-django.git
+```
+2.Go into the repository
+```
+cd mapwith-django
+```
+
+3.Enter the virtual environment
+```
+source env/bin/activate
+```
+
+4.following this site 
+
+<a href="https://engineer-lifestyle-blog.com/code/python/django-restframework-environment-reproduce-with-github/">here</a>
+```
+pip install -r requirements.txt
+.
+.
+.
+python manage.py runserver
+```
+After that, you can see this app  at http://localhost:3000/　　　
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -104,7 +158,6 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
 ### Code Splitting
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
