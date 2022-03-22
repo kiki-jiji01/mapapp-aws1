@@ -7,7 +7,7 @@
 
 
 ## :globe_with_meridians:　App URL
-### **https://master.d3upxxitskitpz.amplifyapp.com**   ※PC推奨(レスポンシブデザイン開発中です)
+### **https://master.d3upxxitskitpz.amplifyapp.com**  
 
 
 ## :ocean:　概要 
