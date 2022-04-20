@@ -19,7 +19,7 @@ function CountryItem  ({country})  {
         {user ? (history.push(`/countries/${country.id}`)):(history.push(`/countries/login`))}
     }
 
-    if(!country)  return <div></div>
+    if(!{country})  return <div></div>
 
 
   

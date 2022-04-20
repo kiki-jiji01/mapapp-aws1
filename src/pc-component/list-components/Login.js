@@ -32,7 +32,7 @@ const validationSchema = yup.object({
         setLoading(true)
         axios.post(API.auth.login, values)
             .then(res =>  login(res.data.key))
-            .then(res => {
+            .then(() => {
                 history.push(`/country-list`)
             })
             .finally(() => setLoading(false))

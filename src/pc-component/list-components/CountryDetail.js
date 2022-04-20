@@ -72,7 +72,6 @@ const textstyles = {
         }
         })
           .then(res => {
-            console.log(res.data)
             setCountry(res.data)
           })
       }

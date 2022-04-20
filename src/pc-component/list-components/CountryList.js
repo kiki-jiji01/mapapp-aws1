@@ -23,8 +23,6 @@ const styles = {
   "&.MuiButton-outlined": {
     color: "brown"
   },
- 
-
 };
 
 

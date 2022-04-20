@@ -27,7 +27,7 @@ const validationSchema = yup.object({
 
 
 // function to show preview image
-function ImagePreview({ file }) {
+function ImagePreview({file}) {
     const [imageSrc, setImageSrc] = useState(null)
 
     useEffect(() => {
@@ -96,14 +96,10 @@ export function CountryUpdate() {
         return () => null
     }, [id, token])
 
-    console.log(country.country_name)
-
-
 
 
     function handleSubmit(values) {
 
-        console.log(values)
         setLoading(true)
         const data = new FormData()
         data.append('country_image', file)
@@ -113,15 +109,12 @@ export function CountryUpdate() {
 
 
         { file  ? (
-
         axios.put(API.countries.update(id), data, {
             headers: {
-                "Authorization": `Token ${token}`,
-               
+                "Authorization": `Token ${token}`              
             }
         })
             .then(res => {
-                console.log(res.data)
                 history.push(`/country-list`)
             })
             .finally(() => {
