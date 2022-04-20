@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 function VideoList ({videos})  {
 
-        if(!videos)  return <div></div>
+        if(!{videos})  return <div></div>
         
         // pass video data to VideoItem component
         const renderedVideos =  videos.map((video) => {

@@ -24,9 +24,6 @@ class Main extends React.Component{
           workVideos:[],
           placeName: "",
           address :"",
-          city :"",
-          area :"",
-          state :"",
           zoom :"15",
           height :"400",
           mapPosition : {
@@ -55,62 +52,16 @@ class Main extends React.Component{
               },() => {
                 Geocode.fromLatLng(position.coords.latitude,position.coords.longitude)
                 .then(response => {
-      
-                 const address = response.results[0].formatted_address,
-                       addressArray = response.results[0].address_components,
-                       city = this.getCity(addressArray),
-                       area = this.getArea(addressArray),
-                       state = this.getState(addressArray);
-      
+                 const address = response.results[0].formatted_address;         
                  this.setState({
                     address : (address) ? address : "",
-                    city : (city) ? city: "",
-                    area : (area) ? area: "",
-                    state: (state)? state: "",
                   })
                 })
               })
             })
           }
         }
-        
-        // get the current city
-        getCity = (addressArray) => {
-          let city = '';
-          for(let index=0; index<addressArray.length; index++) {
-            if(addressArray[index].types[0]&&'administrative_area_level_2' === addressArray[index].types[0]) {
-             city=addressArray[index].long_name;
-             return city;
-            }
-          }
-        }
-        // get the current are
-        getArea=(addressArray) => {
-          let area = '';
-          for(let index=0; index<addressArray.length; index++) {
-            if(addressArray[index].types[0]){
-              for(let j =0; j<addressArray.length; j++) {
-                if('sublocalty_level_1' === addressArray[index].types[j] || 'localty' ===addressArray[index].types[j]) {
-              area = addressArray[index].long_name;
-              return area;
-              }
-              }
-            }
-          }
-        }
-         // get the current state
-        getState =(addressArray) => {
-          let state = '';
-          for(let index=0; index<addressArray.length; index++) {
-            for(let index=0; index<addressArray.length; index++) {
-              if(addressArray[index].types[0] && 'administrative_area_level_1' ===addressArray[index].types[0]) {
-                state = addressArray[index].long_name;
-                return state;
-              }
-            }
-          }
-        }
-
+               
         // Function when the marker in map draged
         onMarkerDragEnd= (event) => {
           let newLat = event.latLng.lat();
@@ -118,18 +69,9 @@ class Main extends React.Component{
      
           Geocode.fromLatLng(newLat,newLng)
           .then(response => {
-           console.log('response', response)
-           const address = response.results[0].formatted_address,
-                 addressArray = response.results[0].address_components,
-                 city = this.getCity(addressArray),
-                 area = this.getArea(addressArray),
-                 state = this.getState(addressArray);
-     
+           const address = response.results[0].formatted_address;
              this.setState({
                address : (address) ? address : "",
-               city : (city) ? city: "",
-               area : (area) ? area: "",
-               state: (state)? state: "",
                markerPosition: {
                  lat:newLat,
                  lng:newLng
@@ -149,7 +91,6 @@ class Main extends React.Component{
                     q: termFromSearchBar
                 }
             })
-
             this.setState({
               videos: response.data.items,
             });
@@ -164,7 +105,6 @@ class Main extends React.Component{
                   q: 'food'+termFromSearchBar
               }
           })
-
           this.setState({
             foodVideos: response.data.items,
           });
@@ -178,11 +118,11 @@ class Main extends React.Component{
                   q: 'work'+termFromSearchBar
               }
           })
-
           this.setState({
             workVideos: response.data.items,
           });
           console.log("this is resp",response);
+          console.log(this.state.workVideos);
         };
 
 
@@ -191,19 +131,12 @@ class Main extends React.Component{
         // function when user selected place in the searchbox
         onPlaceSelected = (place) => {
         const address = place.formatted_address,
-              addressArray = place.address_components,
               placeName = place.address_components[0].long_name,
-              city = this.getCity(addressArray),
-              area = this.getArea(addressArray),
-              state = this.getState(addressArray),
               newLat = place.geometry.location.lat(),
               newLng = place.geometry.location.lng();
           
           this.setState({
             address: (address) ? address : '',
-            area: (area) ? area : '',
-            city: (city) ? city : '',
-            state: (state) ? state : '',
             placeName: (placeName) ? placeName : '',         
             markerPosition: {
                 lat: newLat,
@@ -226,7 +159,7 @@ class Main extends React.Component{
       // Defining GoogleMap
       const MapWithAMarker = withScriptjs(withGoogleMap(props =>
         <GoogleMap
-          defaultZoom={8}
+          defaultZoom={4}
           defaultCenter={{ lat: this.state.mapPosition.lat , lng: this.state.mapPosition.lng }}
         >
           <Marker

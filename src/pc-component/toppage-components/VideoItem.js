@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 const VideoItem = ({video}) => {
 
-    if(!video)  return <div></div>
+    if(!{video})  return <div></div>
 
     //  create the youtube url using data 
     const VideoSrc= `https://www.youtube.com/embed/${video.id.videoId}`
@@ -16,12 +16,9 @@ const VideoItem = ({video}) => {
             />
             <p>{video.snippet.title}</p>
        </VideoCardWrapper>
-       
-     
     )
 };
 export default VideoItem;
-
 
 
 const VideoCardWrapper = styled.div`

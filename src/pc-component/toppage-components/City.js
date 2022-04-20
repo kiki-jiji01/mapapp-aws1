@@ -19,7 +19,7 @@ function City ({videos}){
             <CityContentWrapper>
             　<CityContentWrapper1>
                 <CityContentWrapper2>
-                    <p>The cityscape remains in your heart forever.  </p>
+                    <p>The cityscape remains in your heart forever.</p>
                     <Border></Border>
                 </CityContentWrapper2> 
                 </CityContentWrapper1> 
