@@ -339,7 +339,7 @@ p{
 }
 
 h1{
-    font-family: 'DDINExpRegular';
+    font-family: 'DDINExpRegular',"Times New Roman",serif;
     font-size: 64px;
     padding-top: 10px;
 }

@@ -59,7 +59,7 @@ function CountryList() {
        <TextWrapper><p>Your Country List</p></TextWrapper>
        <CreateButtonWrapper>
             <FontAwesomeIcon icon={faPen} size="sx"   transform="shrink-10" style={{ marginRight: "-8px"}} />  
-            <Button sx={styles} variant="text"  style={{ fontFamily: "DDINDINBold", letterSpacing: "1px"}}  onClick = {push}>CREATE LIST</Button>
+            <Button sx={styles} variant="text"  style={{letterSpacing: "1px"}}  onClick = {push}>CREATE LIST</Button>
        </CreateButtonWrapper>
       </ListWrapper1>
       
@@ -102,6 +102,7 @@ p{
 `
 
 const CreateButtonWrapper = styled.div`
+font-family: 'DDINExpRegular',"Times New Roman",serif;
 display: flex;
 align-items: center;
 justify-content: center;
